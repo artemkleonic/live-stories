@@ -1,0 +1,63 @@
+/* =========================
+   STORY 1: "Целлофан"
+   индивидуальная тема + фон
+   ========================= */
+
+/* 1) Токены темы именно этого рассказа */
+.story-body{
+  --paper: rgba(15, 18, 22, .70);
+  --paper2: rgba(15, 18, 22, .48);
+  --stroke2: rgba(255,255,255,.14);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* акценты истории */
+  --glow: rgba(255,179,107,.22);
+  --glow2: rgba(255,216,168,.14);
+
+  /* цвет прогресс-бара/акцента */
+  --accentA: rgba(255,179,107,.90);
+  --accentB: rgba(255,216,168,.38);
+  --accentShadow: rgba(255,179,107,.35);
+}
+
+/* Сепия-режим — тоже индивидуально можно править */
+.story-body[data-theme="sepia"]{
+  --paper: rgba(24, 18, 12, .78);
+  --paper2: rgba(24, 18, 12, .54);
+
+  --glow: rgba(255,201,140,.20);
+  --glow2: rgba(255,231,195,.12);
+
+  --accentA: rgba(255,201,140,.92);
+  --accentB: rgba(255,231,195,.36);
+  --accentShadow: rgba(255,201,140,.32);
+}
+
+/* 2) Фон ТОЛЬКО для этой истории */
+.bg-story{
+  background:
+    radial-gradient(1000px 650px at 25% 10%, var(--glow), transparent 60%),
+    radial-gradient(900px 650px at 80% 15%, rgba(124,242,199,.08), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.78)),
+    url("./img/bg-story-1.jpg"); /* <-- индивидуальный фон истории */
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 35%, transparent 45%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.76), transparent 55%);
+  pointer-events:none;
+}
+
+/* 3) Цвет прогресс-бара под историю */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}

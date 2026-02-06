@@ -1,0 +1,698 @@
+/* =========================================================
+   DOLIUM / STORIES — PREMIUM AMBER UI (FULL CSS)
+   стиль: DOLIUM VENANDI (референс), тепло, золото, дерево, искры
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&display=swap");
+
+:root{
+  /* base */
+  --bg0:#050302;
+  --bg1:#090402;
+  --bg2:#120805;
+
+  /* amber / gold */
+  --gold:#f6d3a6;
+  --gold2:#ffe5c8;
+  --amber:#ffb36b;
+  --copper:#c8753a;
+  --ember:#ff7a3a;
+
+  /* text */
+  --txt: rgba(255,255,255,.94);
+  --muted: rgba(255,255,255,.82);
+  --dim: rgba(255,255,255,.62);
+
+  /* strokes */
+  --stroke: rgba(246,211,166,.28);
+  --stroke2: rgba(255,255,255,.12);
+
+  /* glass */
+  --glassA: rgba(16, 9, 6, .76);
+  --glassB: rgba(16, 9, 6, .42);
+
+  /* shadows */
+  --shadow: 0 26px 90px rgba(0,0,0,.66);
+  --shadow2: 0 14px 45px rgba(0,0,0,.56);
+
+  /* radius */
+  --r: 14px;
+  --r2: 22px;
+  --r3: 28px;
+
+  /* layout */
+  --max: 1120px;
+
+  /* motion */
+  --ease: 320ms cubic-bezier(.2,.85,.2,1);
+
+  /* card sizing */
+  --cardH: 160px;
+  --cardHsm: 150px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  color: var(--txt);
+  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg0);
+  overflow-x:hidden;
+}
+
+a{ color:inherit; text-decoration:none; }
+p{ margin:0; }
+h1,h2,h3,h4{ margin:0; }
+::selection{ background: rgba(255,179,107,.22); }
+
+/* =========================================================
+   BACKGROUND (as on ref: warm embers, but NOT “hell”)
+   ========================================================= */
+.bg{
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+
+  background:
+    /* мягкие “лампы” */
+    radial-gradient(1100px 650px at 18% 18%, rgba(255,192,130,.14), transparent 64%),
+    radial-gradient(900px 520px at 82% 20%, rgba(255,150,80,.12), transparent 64%),
+
+    /* тёплая дымка снизу */
+    radial-gradient(1200px 850px at 50% 120%, rgba(0,0,0,.80), transparent 58%),
+
+    /* вуаль */
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.72)),
+
+    /* твой фон */
+    url("./img/bg-index.jpg");
+
+  background-size: cover;
+  background-position: center;
+  filter: saturate(1.14) contrast(1.07) brightness(.92);
+  transform: scale(1.02);
+}
+
+/* искры (мягкие, дорогие, без “адской” агрессии) */
+.bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.55;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(2px 2px at 10% 30%, rgba(255,226,191,.55), transparent 60%),
+    radial-gradient(2px 2px at 18% 68%, rgba(255,122,58,.45), transparent 60%),
+    radial-gradient(2px 2px at 28% 40%, rgba(255,179,107,.45), transparent 60%),
+    radial-gradient(2px 2px at 42% 22%, rgba(255,226,191,.35), transparent 60%),
+    radial-gradient(2px 2px at 62% 18%, rgba(255,226,191,.40), transparent 60%),
+    radial-gradient(2px 2px at 74% 55%, rgba(255,122,58,.35), transparent 60%),
+    radial-gradient(2px 2px at 86% 34%, rgba(255,179,107,.35), transparent 60%),
+    radial-gradient(2px 2px at 90% 72%, rgba(255,226,191,.30), transparent 60%);
+  filter: blur(.35px);
+  animation: emberFloat 9s ease-in-out infinite alternate;
+}
+
+@keyframes emberFloat{
+  from{ transform: translateY(0px); opacity:.42; }
+  to{ transform: translateY(-14px); opacity:.62; }
+}
+
+/* =========================================================
+   WRAP
+   ========================================================= */
+.wrap{
+  width: min(var(--max), calc(100% - 28px));
+  margin: 14px auto 40px;
+}
+
+/* =========================================================
+   TOPBAR — like DOLIUM header (gold serif + glass)
+   ========================================================= */
+.topbar{
+  width: min(var(--max), calc(100% - 28px));
+  margin: 12px auto 0;
+  padding: 16px 18px 14px;
+
+  border-radius: 26px;
+  border: 1px solid rgba(246,211,166,.26);
+
+  background:
+    radial-gradient(680px 260px at 20% 0%, rgba(255,122,58,.12), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
+    linear-gradient(180deg, rgba(16,9,6,.86), rgba(16,9,6,.46));
+
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow2);
+  position: relative;
+  overflow:hidden;
+
+  display:flex;
+  align-items:flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+/* тонкий “золотой блик” */
+.topbar::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  background: linear-gradient(90deg, transparent, rgba(255,226,191,.18), transparent);
+  transform: translateX(-65%);
+  animation: topSheen 7s ease-in-out infinite;
+}
+
+@keyframes topSheen{
+  0%{ transform: translateX(-70%); opacity:.10; }
+  50%{ transform: translateX(65%); opacity:.24; }
+  100%{ transform: translateX(130%); opacity:.12; }
+}
+
+.brand{
+  display:flex;
+  gap: 12px;
+  align-items:flex-start;
+}
+
+/* RM квадрат скрываем — он ломает “брендовый” вид */
+.brand__mark{ display:none; }
+
+.brand__title{
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(246,211,166,.96);
+  text-shadow: 0 14px 34px rgba(0,0,0,.62);
+  line-height: 1.12;
+  font-size: 20px;
+}
+
+.brand__tag{
+  margin-top: 4px;
+  color: rgba(246,211,166,.62);
+  font-size: 12px;
+  letter-spacing: .02em;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content:flex-end;
+  padding-top: 2px;
+}
+
+.nav__link{
+  font-size: 13px;
+  padding: 9px 12px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(246,211,166,.16);
+  background: rgba(0,0,0,.18);
+  color: rgba(255,226,191,.86);
+
+  transition: var(--ease);
+  box-shadow: 0 10px 26px rgba(0,0,0,.28);
+}
+
+.nav__link:hover{
+  transform: translateY(-1px);
+  border-color: rgba(246,211,166,.26);
+  background:
+    radial-gradient(220px 120px at 30% 10%, rgba(255,122,58,.18), transparent 62%),
+    rgba(0,0,0,.22);
+  box-shadow: 0 16px 34px rgba(0,0,0,.44);
+}
+.nav__link:active{ transform: translateY(0); }
+
+/* =========================================================
+   HERO — скрываем (референс = только витрина карточек)
+   ========================================================= */
+.hero{ display:none; }
+
+/* sections (тоже убираем заголовки, как на рефе) */
+.section{ margin-top: 14px; padding: 0; }
+.section__head{ display:none; }
+
+/* =========================================================
+   GRID
+   ========================================================= */
+.grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+/* =========================================================
+   CARD — “витрина” как на рефе
+   uses: --img:url(...)
+   ========================================================= */
+.card{
+  position: relative;
+  border-radius: 26px;
+  overflow:hidden;
+
+  padding: 16px 16px 14px;
+  min-height: var(--cardH);
+
+  border: 1px solid rgba(246,211,166,.22);
+  box-shadow: var(--shadow2);
+
+  /* богато: подсветка + затемнение + картинка */
+   background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.55)),
+    var(--img);
+
+  filter:
+    saturate(1.35)
+    contrast(1.15)
+    brightness(1.08);
+
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0);
+  transition: var(--ease);
+}
+
+/* внутренняя виньетка */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+   background:
+    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.06), transparent 62%),
+    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.62), transparent 68%);
+  opacity: .85;
+
+}
+
+/* тонкая внутренняя рамка */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,226,191,.18),
+      transparent 45%,
+      rgba(255,122,58,.12)
+    );
+  mix-blend-mode: screen;
+  opacity:.55;
+}
+
+
+.card:hover{
+  transform: translateY(-4px);
+  filter:
+    saturate(1.55)
+    contrast(1.18)
+    brightness(1.14);
+}
+
+
+/* top row */
+.card__top{
+  position: relative;
+  z-index: 1;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* badge / meta */
+.badge,
+.pill--num{
+  font-size: 12px;
+  font-weight: 800;
+  padding: 7px 10px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(246,211,166,.26);
+  background:
+    radial-gradient(180px 90px at 30% 10%, rgba(255,122,58,.18), transparent 62%),
+    rgba(0,0,0,.18);
+
+  color: rgba(255,226,191,.96);
+  backdrop-filter: blur(8px);
+}
+
+.meta,
+.pill--time{
+  font-size: 12px;
+  padding: 7px 10px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.26);
+  color: rgba(255,255,255,.86);
+  backdrop-filter: blur(8px);
+}
+
+/* title */
+.card__title{
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+
+  font-family:"Cinzel", serif;
+  font-weight: 800;
+  letter-spacing: .03em;
+
+  font-size: clamp(26px, 4.2vw, 40px);
+  line-height: 1.04;
+
+  color: rgba(255,255,255,.96);
+  text-shadow: 0 16px 40px rgba(0,0,0,.70);
+}
+
+/* desc */
+.card__desc{
+  position: relative;
+  z-index: 1;
+  margin-top: 6px;
+
+  color: rgba(255,255,255,.84);
+  font-size: 13px;
+  line-height: 1.5;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* bottom row */
+.card__bottom{
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  font-size: 11px;
+  padding: 7px 9px;
+  border-radius: 999px;
+
+  border: 1px solid rgba(246,211,166,.16);
+  background:
+    radial-gradient(160px 90px at 30% 10%, rgba(255,179,107,.14), transparent 62%),
+    rgba(0,0,0,.22);
+
+  color: rgba(255,226,191,.88);
+  backdrop-filter: blur(9px);
+}
+
+.card__arrow{
+  margin-left: auto;
+  font-size: 20px;
+  opacity: .95;
+  color: rgba(255,255,255,.92);
+  transition: var(--ease);
+  text-shadow: 0 12px 30px rgba(0,0,0,.60);
+}
+.card:hover .card__arrow{
+  transform: translateX(4px);
+  color: rgba(255,226,191,.98);
+}
+
+/* =========================================================
+   PROMO CARD — как баннер DOLIUM, более “плотный”
+   ========================================================= */
+.card--promo{
+  min-height: 170px;
+  border-color: rgba(246,211,166,.30);
+
+  background:
+    radial-gradient(1100px 460px at 18% 18%, rgba(255,122,58,.22), transparent 64%),
+    radial-gradient(900px 360px at 85% 16%, rgba(255,226,191,.14), transparent 64%),
+    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.88)),
+    var(--img, linear-gradient(135deg, rgba(255,179,107,.20), rgba(0,0,0,.76)));
+}
+
+.card--promo .card__title{
+  text-transform: uppercase;
+  letter-spacing: .10em;
+  font-size: clamp(18px, 3vw, 30px);
+  color: rgba(246,211,166,.96);
+}
+
+.card--promo .card__desc{
+  -webkit-line-clamp: 4;
+}
+
+/* =========================================================
+   ABOUT / CONTACT panels — same luxury glass
+   ========================================================= */
+.section--split{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.panel{
+  border-radius: 26px;
+  border: 1px solid rgba(246,211,166,.20);
+  padding: 16px 16px;
+
+  background:
+    radial-gradient(680px 260px at 20% 0%, rgba(255,122,58,.12), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
+    linear-gradient(180deg, rgba(16,9,6,.82), rgba(16,9,6,.34));
+
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow2);
+}
+
+.panel--soft{
+  border-color: rgba(246,211,166,.26);
+}
+
+.panel__title{
+  font-family:"Cinzel", serif;
+  font-weight: 700;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(246,211,166,.94);
+  font-size: 16px;
+}
+
+.panel__text{
+  margin-top: 8px;
+  color: rgba(255,255,255,.84);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.contact{
+  margin-top: 12px;
+  display:flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+
+  padding: 12px 14px;
+  border-radius: 18px;
+
+  border: 1px solid rgba(246,211,166,.22);
+  background:
+    radial-gradient(260px 140px at 30% 10%, rgba(255,122,58,.16), transparent 62%),
+    rgba(0,0,0,.22);
+
+  color: rgba(255,226,191,.94);
+  transition: var(--ease);
+  box-shadow: 0 14px 30px rgba(0,0,0,.45);
+}
+
+.btn:hover{
+  transform: translateY(-2px);
+  border-color: rgba(246,211,166,.32);
+  box-shadow: var(--shadow2), 0 0 0 1px rgba(255,122,58,.12);
+}
+.btn:active{ transform: translateY(0); }
+
+.btn--primary{
+  background:
+    radial-gradient(320px 160px at 30% 10%, rgba(255,122,58,.24), transparent 62%),
+    radial-gradient(320px 160px at 85% 10%, rgba(255,226,191,.12), transparent 64%),
+    rgba(0,0,0,.20);
+}
+.btn--ghost{
+  background: rgba(0,0,0,.26);
+}
+
+/* footer */
+.footer{
+  margin-top: 16px;
+  padding: 8px 2px 2px;
+  display:flex;
+  justify-content: space-between;
+  align-items:center;
+  color: rgba(246,211,166,.56);
+  font-size: 12px;
+}
+.footer__right{ opacity: .95; }
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 520px){
+  .wrap{ width: calc(100% - 18px); }
+  .topbar{ width: calc(100% - 18px); border-radius: 22px; padding: 14px 14px 12px; }
+  .brand__title{ font-size: 18px; }
+  .card{ border-radius: 22px; padding: 14px 14px 12px; min-height: var(--cardHsm); }
+  .card::after{ inset: 9px; border-radius: 16px; }
+  .panel{ border-radius: 22px; }
+}
+
+@media (min-width: 780px){
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .section--split{ grid-template-columns: 1fr 1fr; }
+
+  /* promo spans full width */
+  .card--promo{ grid-column: 1 / -1; }
+}
+
+@media (min-width: 1100px){
+  .grid{ gap: 18px; }
+  .card{ min-height: 175px; }
+  .brand__title{ font-size: 22px; }
+}
+
+/* =========================================================
+   Anti “white tile” artifacts (TG/Chrome)
+   ========================================================= */
+.controls, .controls *{ -webkit-tap-highlight-color: transparent; }
+
+.btn, .card, .nav__link{
+  -webkit-appearance:none;
+  appearance:none;
+  background-clip: padding-box;
+}
+
+.btn:focus, .btn:focus-visible,
+.nav__link:focus, .nav__link:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(246,211,166,.18) !important;
+}
+/* =========================================================
+   OVERRIDE — SUPER BRIGHT CARDS (NO ZOOM / NO JUMP)
+   вставь В КОНЕЦ styles.css
+   ========================================================= */
+
+/* 1) убираем эффект "картинка увеличивается" — никаких scale */
+.card{
+  transform: translateY(0) !important;
+  transition: 320ms cubic-bezier(.2,.85,.2,1) !important;
+  will-change: transform, filter !important;
+}
+
+/* 2) делаем фон ярким и контрастным (жестко) */
+.card{
+  /* твой --img остаётся как есть: style="--img:url(...)" */
+  background:
+    /* лёгкая подложка, чтобы текст не умирал */
+    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.22)),
+    var(--img) !important;
+
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+
+  /* ВОТ ТУТ ЯРКОСТЬ */
+  filter:
+    saturate(2.9)
+    contrast(1.55)
+    brightness(1.45) !important;
+}
+
+/* 3) ослабляем твою "убийственную" виньетку, которая глушит фото */
+.card::before{
+  opacity: .55 !important;
+  background:
+    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.04), transparent 66%),
+    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.38), transparent 74%) !important;
+}
+
+/* 4) добавляем прожекторный свет поверх фото (делает "вау") */
+.card::after{
+  /* оставляем рамку? нет — заменяем на свет, рамка будет давать отдельный артефакт */
+  inset: 0 !important;
+  border: 0 !important;
+  border-radius: inherit !important;
+
+  opacity: .95 !important;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,245,220,.46),
+      transparent 38%,
+      rgba(255,140,70,.34)
+    ) !important;
+
+  mix-blend-mode: screen !important;
+}
+
+/* 5) hover — только подъем, БЕЗ scale (это важно для "не зумится") */
+.card:hover{
+  transform: translateY(-6px) !important;
+  filter:
+    saturate(3.2)
+    contrast(1.6)
+    brightness(1.55) !important;
+}
+
+/* 6) promo можно оставить чуть спокойнее, чтобы не выжигало */
+.card--promo{
+  filter:
+    saturate(2.2)
+    contrast(1.35)
+    brightness(1.28) !important;
+}
+.card--promo:hover{
+  transform: translateY(-6px) !important;
+  filter:
+    saturate(2.6)
+    contrast(1.42)
+    brightness(1.36) !important;
+}
+
+/* 7) на мобиле добавим еще яркости (в TG webview часто темнее) */
+@media (max-width: 520px){
+  .card{
+    filter:
+      saturate(3.3)
+      contrast(1.65)
+      brightness(1.6) !important;
+  }
+  .card:hover{
+    transform: translateY(-5px) !important;
+  }
+}

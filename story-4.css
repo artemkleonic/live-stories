@@ -1,0 +1,93 @@
+/* =========================
+   STORY — Бандитский Петербург
+   Холодная ночь, неон, город
+   ========================= */
+
+.story-body{
+  --paper: rgba(10, 14, 18, .78);
+  --paper2: rgba(10, 14, 18, .56);
+  --stroke2: rgba(255,255,255,.10);
+
+  --glow: rgba(120,180,255,.15);
+  --glow2: rgba(200,220,255,.06);
+
+  --accentA: rgba(140,200,255,.9);
+  --accentB: rgba(200,230,255,.35);
+  --accentShadow: rgba(140,200,255,.25);
+}
+
+/* Фон истории */
+.bg-story{
+  background:
+    radial-gradient(900px 600px at 20% 10%, var(--glow), transparent 60%),
+    radial-gradient(800px 600px at 80% 20%, rgba(150,200,255,.05), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.88)),
+    url("./img/bg-story-4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Подсветка прогресс-бара */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 22px var(--accentShadow);
+}
+/* ===== FIX: белый прямоугольник в Лаврентии (Chrome/моб) ===== */
+
+/* если где-то в styles.css у controls стоит белый фон — перекрываем */
+.story-body .controls,
+.story-body .controls__row,
+.story-body .controls__left,
+.story-body .controls__right{
+  background: transparent !important;
+}
+
+/* сама панель controls (если она в отдельной "карточке") */
+.story-body .controls{
+  border: 1px solid rgba(255,255,255,.10) !important;
+  background: rgba(12, 14, 20, .42) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+/* чипы/кнопки в панели */
+.story-body .chip,
+.story-body .btn{
+  background: rgba(12, 14, 20, .36) !important;
+  border: 1px solid rgba(255,255,255,.12) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+
+/* hover/active чтобы не “высветлялось” */
+.story-body .chip:hover,
+.story-body .btn:hover{
+  background: rgba(12, 14, 20, .52) !important;
+}
+
+/* если какой-то класс chip--ghost задан белым */
+.story-body .chip--ghost{
+  background: rgba(12, 14, 20, .28) !important;
+}
+
+/* акцентная кнопка */
+.story-body .chip--accent,
+.story-body .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(255,255,255,.12) !important;
+  color: rgba(10,10,12,.92) !important; /* если у тебя акцент светлый */
+}
+
+/* иногда белый квадрат — это outline при фокусе (Chrome моб) */
+.story-body .chip:focus,
+.story-body .chip:focus-visible,
+.story-body .btn:focus,
+.story-body .btn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(120,160,255,.22) !important;
+}
+
+/* если “квадрат” появляется именно вокруг всей панели — убираем возможный белый box-shadow */
+.story-body .controls{
+  box-shadow: 0 10px 30px rgba(0,0,0,.35) !important;
+}

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Рассказы моего отца</title>
+
+  <!-- Шрифт Cinzel в CSS подтянется через @import, Manrope можно оставить как базовый -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <!-- .brand__mark скрыт CSS-ом, можно оставить или убрать -->
+      <div class="brand__mark">RM</div>
+      <div class="brand__text">
+        <div class="brand__title">Рассказы моего отца</div>
+        <div class="brand__tag">Душевные истории. Без пафоса. По-честному.</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="nav__link" href="#stories">Рассказы</a>
+      <a class="nav__link" href="#about">О проекте</a>
+      <a class="nav__link" href="#contact">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- HERO скрыт CSS-ом (как в референсе). Можешь не добавлять вообще. -->
+    <section class="hero" aria-hidden="true"></section>
+
+    <section id="stories" class="section">
+      <div class="section__head">
+        <h3 class="section__title">Рассказы</h3>
+        <p class="section__sub">Нажми на карточку — откроется отдельная страница рассказа.</p>
+      </div>
+
+      <div class="grid">
+        <!-- Карточка 1 -->
+        <a class="card" href="story-1.html" style="--img:url('./img/bg-story-1.jpg')">
+          <div class="card__top">
+            <span class="badge">№1</span>
+            <span class="meta">5–7 мин</span>
+          </div>
+          <h4 class="card__title">Целлофан</h4>
+          <p class="card__desc">
+            Про мороз, тишину и человеческую привычку спасать хоть что-то — даже если поздно.
+          </p>
+          <div class="card__bottom">
+            <span class="pill">Философия</span>
+            <span class="pill">Зима</span>
+            <span class="card__arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Карточка 2 -->
+        <a class="card" href="story-2.html" style="--img:url('./img/bg-story-2.jpg')">
+          <div class="card__top">
+            <span class="badge">№2</span>
+            <span class="meta">6–8 мин</span>
+          </div>
+          <h4 class="card__title">Голова и шея</h4>
+          <p class="card__desc">
+            Про то, как меняются роли, когда жизнь резко становится взрослой — и что остаётся внутри.
+          </p>
+          <div class="card__bottom">
+            <span class="pill">Люди</span>
+            <span class="pill">Ирония</span>
+            <span class="card__arrow">→</span>
+          </div>
+        </a>
+
+        <!-- Карточка 3 — Лаврентий -->
+        <a class="card story-card" href="story-3.html" aria-label="Открыть историю: Лаврентий" style="--img:url('./img/bg-story-3.jpg')">
+          <div class="card__top">
+            <span class="badge">№3</span>
+            <span class="meta">9–12 мин</span>
+          </div>
+
+          <h3 class="card__title">Лаврентий</h3>
+
+          <p class="card__desc">
+            Кот в чёрно-белом «смокинге», который пришёл сам — и остался.
+            История о тишине, доме, войне и странном ощущении, что рядом есть наблюдатель… и хранитель направления.
+          </p>
+
+          <div class="card__bottom">
+            <span class="pill">Кот</span>
+            <span class="pill">Мистика</span>
+            <span class="card__arrow" aria-hidden="true">→</span>
+          </div>
+        </a>
+
+        <!-- Карточка 4 — Бандитский Петербург (перенесён к Лаврентию) -->
+        <a class="card" href="story-4.html" style="--img:url('./img/bg-story-4.jpg')">
+          <div class="card__top">
+            <span class="badge">№4</span>
+            <span class="meta">8–10 мин</span>
+          </div>
+          <h4 class="card__title">Бандитский Петербург</h4>
+          <p class="card__desc">
+            Коммуналка на Невском, врачи, стажировки и ощущение, что город тебя проверяет на прочность.
+          </p>
+          <div class="card__bottom">
+            <span class="pill">Город</span>
+            <span class="pill">Воспоминания</span>
+            <span class="card__arrow">→</span>
+          </div>
+        </a>
+
+        <!-- PROMO (между блоками рассказов, на десктопе растянется на 2 колонки) -->
+        <a class="card card--promo" href="products.html" style="--img:url('./img/promo-index.jpg')">
+          <div class="card__top">
+            <span class="badge">DOLIUM VENANDI</span>
+            <span class="meta">акция</span>
+          </div>
+
+          <h4 class="card__title">Вино и крепкий алкоголь</h4>
+          <p class="card__desc">
+            Для настоящих охотников и гурманов. Подборки, дегустации, подарочные наборы.
+          </p>
+
+          <div class="card__bottom">
+            <span class="pill">Подробнее</span>
+            <span class="card__arrow">→</span>
+          </div>
+        </a>
+
+        <!-- (Если будут новые рассказы — добавляй карточки ниже) -->
+      </div>
+    </section>
+
+    <section id="about" class="section section--split">
+      <div class="panel">
+        <h3 class="panel__title">О проекте</h3>
+        <p class="panel__text">
+          Это тихий сайт без “маркетинга”. Тут важно, чтобы читателю было тепло.
+          Поэтому минимум шума — максимум воздуха, хороший шрифт и понятная навигация.
+        </p>
+      </div>
+
+      <div id="contact" class="panel panel--soft">
+        <h3 class="panel__title">Контакты</h3>
+        <p class="panel__text">
+          Тут можно почту/телеграм/кнопку “Предложить историю”.
+        </p>
+        <div class="contact">
+          <a class="btn btn--primary" href="#">Написать</a>
+          <a class="btn btn--ghost" href="#">Поделиться сайтом</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Рассказы моего отца</div>
+      <div class="footer__right">Сделано по-доброму.</div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* =========================
+   STORY 2: "Голова и шея"
+   индивидуальная тема + фон
+   ========================= */
+
+.story-body{
+  --paper: rgba(12, 14, 18, .72);
+  --paper2: rgba(12, 14, 18, .50);
+  --stroke2: rgba(255,255,255,.14);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* тёплый костёр + спокойные сумерки */
+  --glow: rgba(255,140,84,.22);
+  --glow2: rgba(255,209,168,.12);
+
+  /* акцент (кнопки/прогресс) */
+  --accentA: rgba(255,140,84,.92);
+  --accentB: rgba(255,209,168,.34);
+  --accentShadow: rgba(255,140,84,.33);
+}
+
+.story-body[data-theme="sepia"]{
+  --paper: rgba(22, 16, 12, .80);
+  --paper2: rgba(22, 16, 12, .56);
+
+  --glow: rgba(255,174,120,.20);
+  --glow2: rgba(255,231,205,.12);
+
+  --accentA: rgba(255,174,120,.92);
+  --accentB: rgba(255,231,205,.34);
+  --accentShadow: rgba(255,174,120,.30);
+}
+
+/* фон истории */
+.bg-story{
+  background:
+    radial-gradient(1000px 650px at 22% 14%, var(--glow), transparent 60%),
+    radial-gradient(900px 650px at 78% 18%, rgba(124,242,199,.06), transparent 55%),
+    linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.78)),
+    url("./img/bg-story-2.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 30%, transparent 40%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.76), transparent 55%);
+  pointer-events:none;
+}
+
+/* цвет прогресс-бара под историю */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
