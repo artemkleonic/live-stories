@@ -1,0 +1,50 @@
+/* =========================================================
+   STORY 5 — "По собачьей тропе"
+   только тема, фон, акценты
+   ========================================================= */
+
+.story-body{
+  /* холодный зимний акцент + твой тёплый золото-янтарь */
+  --accentA: rgba(255, 201, 140, .92);     /* тёплое золото */
+  --accentB: rgba(140, 210, 255, .88);     /* холодный лёд */
+  --accentShadow: rgba(140, 210, 255, .22);
+
+  --glow: rgba(140, 210, 255, .16);
+  --glow2: rgba(255, 201, 140, .12);
+}
+
+/* фон под историю */
+.bg-story{
+  background:
+    radial-gradient(1000px 650px at 22% 12%, var(--glow), transparent 62%),
+    radial-gradient(900px 650px at 80% 18%, var(--glow2), transparent 58%),
+    linear-gradient(180deg, rgba(0,0,0,.46), rgba(0,0,0,.82)),
+    url("./img/bg-story-5.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* чуть “снега” в воздухе, очень мягко */
+.bg-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.28;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(2px 2px at 12% 22%, rgba(210,240,255,.55), transparent 65%),
+    radial-gradient(2px 2px at 26% 62%, rgba(210,240,255,.40), transparent 65%),
+    radial-gradient(2px 2px at 44% 30%, rgba(255,230,200,.35), transparent 65%),
+    radial-gradient(2px 2px at 68% 18%, rgba(210,240,255,.36), transparent 65%),
+    radial-gradient(2px 2px at 86% 44%, rgba(255,230,200,.28), transparent 65%),
+    radial-gradient(2px 2px at 92% 72%, rgba(210,240,255,.32), transparent 65%);
+  filter: blur(.25px);
+}
+
+/* чтобы заголовок на холодном фоне был “дороже” */
+.story__title{
+  text-shadow:
+    0 22px 60px rgba(0,0,0,.72),
+    0 0 18px rgba(140,210,255,.10);
+}

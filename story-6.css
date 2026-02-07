@@ -1,0 +1,53 @@
+/* =========================================================
+   STORY — "Гамбринус"
+   Одесса: полуподвал, тёплый свет, мокрая мостовая, море
+   ========================================================= */
+
+.story-body{
+  /* акцент: тёплое пиво/янтарь + ночная зелень/морской холод */
+  --accentA: rgba(255, 182, 120, .96);  /* янтарный */
+  --accentB: rgba(120, 220, 200, .88);  /* морская мята */
+  --accentShadow: rgba(255, 182, 120, .22);
+
+  --glow: rgba(255, 182, 120, .18);
+  --glow2: rgba(120, 220, 200, .10);
+}
+
+/* фон истории */
+.bg-story{
+  background:
+    radial-gradient(1100px 720px at 18% 12%, var(--glow), transparent 62%),
+    radial-gradient(900px 650px at 84% 18%, var(--glow2), transparent 58%),
+    linear-gradient(180deg, rgba(0,0,0,.44), rgba(0,0,0,.84)),
+    url("./img/bg-story-6.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* “лампы подвала” + мокрый блеск */
+.bg-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
+  mix-blend-mode: screen;
+  background:
+    radial-gradient(280px 180px at 18% 30%, rgba(255,215,160,.34), transparent 70%),
+    radial-gradient(320px 220px at 70% 26%, rgba(255,160,90,.22), transparent 72%),
+    radial-gradient(500px 280px at 60% 80%, rgba(120,220,200,.16), transparent 75%);
+  filter: blur(.25px);
+}
+
+/* заголовок — “бархат” */
+.story__title{
+  text-shadow:
+    0 22px 62px rgba(0,0,0,.74),
+    0 0 20px rgba(255,182,120,.10);
+}
+
+/* чуть “сцена ближе”: делаем бумагу чуть теплее */
+.story-body{
+  --paper: rgba(20, 14, 10, .74);
+  --paper2: rgba(20, 14, 10, .48);
+}

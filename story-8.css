@@ -1,0 +1,63 @@
+/* =========================================================
+   STORY — "Про время"
+   Тёплый тост + мягкая глубина + ощущение “валюты времени”
+   ========================================================= */
+
+.story-body{
+  /* золото + винный бордо (вместо “кислотного” янтаря) */
+  --accentA: rgba(246, 211, 166, .98);
+  --accentB: rgba(186, 86, 104, .92);
+  --accentShadow: rgba(246, 211, 166, .20);
+
+  --glow: rgba(246, 211, 166, .16);
+  --glow2: rgba(186, 86, 104, .10);
+
+  /* чуть светлее бумага — чтобы текст прям “дышал” */
+  --paper: rgba(14, 10, 9, .72);
+  --paper2: rgba(14, 10, 9, .48);
+}
+
+/* фон истории */
+.bg-story{
+  background:
+    /* тёплая лампа/свеча слева */
+    radial-gradient(1050px 760px at 18% 16%, var(--glow), transparent 62%),
+
+    /* винная глубина справа */
+    radial-gradient(900px 680px at 84% 18%, var(--glow2), transparent 58%),
+
+    /* затемнение */
+    linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.88)),
+
+    /* картинка */
+    url("./img/bg-story-8.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* тонкий намёк на “циферблат/время” (без навязчивости) */
+.bg-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.16;
+  background:
+    radial-gradient(circle at 55% 38%, rgba(255,255,255,.08) 0 2px, transparent 3px),
+    radial-gradient(circle at 55% 38%, transparent 0 210px, rgba(255,255,255,.06) 212px, transparent 214px),
+    radial-gradient(circle at 55% 38%, transparent 0 320px, rgba(255,255,255,.04) 322px, transparent 324px);
+  filter: blur(.35px);
+}
+
+/* заголовок — чуть “дороже” */
+.story__title{
+  text-shadow:
+    0 22px 62px rgba(0,0,0,.78),
+    0 0 24px rgba(246,211,166,.10);
+}
+
+/* финальные “Пейте за время” — пусть визуально держатся */
+.story__content p strong{
+  color: rgba(255, 245, 230, .96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.55);
+}
