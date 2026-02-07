@@ -692,3 +692,129 @@ body .card{
     background-position: center !important;
   }
 }
+/* =========================================================
+   MOBILE BOOST — ярче на телефоне (без красного "ада")
+   вставь в КОНЕЦ styles.css
+   ========================================================= */
+
+/* 1) общий фон страницы — светлее и сочнее только на телефоне */
+@media (max-width: 780px){
+  .bg{
+    filter: saturate(1.22) contrast(1.12) brightness(1.08) !important;
+    transform: none !important;
+  }
+
+  /* чуть светлее общая типографика */
+  body{
+    color: rgba(255,255,255,.94) !important;
+  }
+}
+
+/* 2) карточки — ярче, но без красного */
+@media (max-width: 780px){
+  .card{
+    /* меньше черной пелены поверх фото */
+    background:
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.34)),
+      var(--img) !important;
+
+    /* яркость для мобилы */
+    filter:
+      saturate(1.55)
+      contrast(1.18)
+      brightness(1.18) !important;
+  }
+
+  /* виньетка не душит фото */
+  .card::before{
+    opacity: .48 !important;
+    background:
+      radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.03), transparent 70%),
+      radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.34), transparent 78%) !important;
+  }
+
+  /* “прожектор” делаем золотым, не красным */
+  .card::after{
+    opacity: .70 !important;
+    mix-blend-mode: screen !important;
+    background:
+      linear-gradient(135deg,
+        rgba(255,244,220,.34),
+        transparent 42%,
+        rgba(246,211,166,.22)
+      ) !important;
+  }
+}
+
+/* 3) шапка/кнопки — меньше красных вспышек, больше тёплого золота */
+:root{
+  --ember: #d88a4a;        /* было слишком красное */
+  --amber: #f0b06a;        /* мягкий янтарь */
+  --copper:#b77743;        /* дерево/медь, без огня */
+}
+
+/* уменьшаем красные радиалки в топбаре/кнопках */
+.topbar{
+  background:
+    radial-gradient(680px 260px at 20% 0%, rgba(240,176,106,.10), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
+    linear-gradient(180deg, rgba(16,9,6,.86), rgba(16,9,6,.46)) !important;
+}
+
+.nav__link:hover,
+.btn,
+.btn--primary{
+  background:
+    radial-gradient(260px 140px at 30% 10%, rgba(240,176,106,.12), transparent 62%),
+    rgba(0,0,0,.22) !important;
+}
+/* TG webview обычно темнит — даем +10% */
+body.tg .bg{ filter: saturate(1.28) contrast(1.14) brightness(1.12) !important; }
+body.tg .card{ filter: saturate(1.65) contrast(1.20) brightness(1.22) !important; }
+/* =========================================================
+   MOBILE MICRO BOOST — ещё ЧУТЬ ЯРЧЕ, НО БЛАГОРОДНО
+   ========================================================= */
+
+@media (max-width: 780px){
+
+  /* фон страницы */
+  .bg{
+    filter:
+      saturate(1.30)
+      contrast(1.14)
+      brightness(1.14) !important;
+  }
+
+  /* карточки историй */
+  .card{
+    filter:
+      saturate(1.68)
+      contrast(1.22)
+      brightness(1.24) !important;
+  }
+
+  /* ещё слабее затемнение поверх фото */
+  .card::before{
+    opacity: .42 !important;
+  }
+
+  /* золотой свет — мягче, шире */
+  .card::after{
+    opacity: .78 !important;
+    background:
+      linear-gradient(
+        135deg,
+        rgba(255,248,228,.38),
+        transparent 40%,
+        rgba(246,211,166,.26)
+      ) !important;
+  }
+
+  /* текст — на полтона светлее */
+  .card__title{
+    color: rgba(255,255,255,.98) !important;
+  }
+  .card__desc{
+    color: rgba(255,255,255,.90) !important;
+  }
+}
