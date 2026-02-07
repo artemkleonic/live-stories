@@ -602,97 +602,93 @@ h1,h2,h3,h4{ margin:0; }
   outline: none !important;
   box-shadow: 0 0 0 2px rgba(246,211,166,.18) !important;
 }
-/* =========================================================
-   OVERRIDE — SUPER BRIGHT CARDS (NO ZOOM / NO JUMP)
-   вставь В КОНЕЦ styles.css
+/* /* =========================================================
+   FINAL OVERRIDE — NATURAL AMBER (PASTE AT VERY END)
    ========================================================= */
 
-/* 1) убираем эффект "картинка увеличивается" — никаких scale */
-.card{
-  transform: translateY(0) !important;
-  transition: 320ms cubic-bezier(.2,.85,.2,1) !important;
-  will-change: transform, filter !important;
+:root{
+  --amber:#f1b06b;
+  --ember:#d79a56;   /* вместо красного */
 }
 
-/* 2) делаем фон ярким и контрастным (жестко) */
-.card{
-  /* твой --img остаётся как есть: style="--img:url(...)" */
+/* убираем красные “лампы” в хедере/панелях/кнопках */
+.topbar,
+.panel,
+.btn,
+.nav__link{
   background:
-    /* лёгкая подложка, чтобы текст не умирал */
-    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.22)),
+    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
+    linear-gradient(180deg, rgba(14,9,7,.86), rgba(14,9,7,.46)) !important;
+}
+
+/* карточки: натурально, без кислотной сатурации */
+body .card{
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.52)),
     var(--img) !important;
 
-  background-position: center center !important;
-  background-size: cover !important;
-  background-repeat: no-repeat !important;
-
-  /* ВОТ ТУТ ЯРКОСТЬ */
-  filter:
-    saturate(2.9)
-    contrast(1.55)
-    brightness(1.45) !important;
+  filter: saturate(1.18) contrast(1.10) brightness(1.03) !important;
 }
 
-/* 3) ослабляем твою "убийственную" виньетку, которая глушит фото */
-.card::before{
-  opacity: .55 !important;
+/* убираем “демонический прожектор” */
+body .card::after{
+  opacity: .30 !important;
+  mix-blend-mode: normal !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255,236,210,.16),
+    transparent 55%,
+    rgba(215,154,86,.10)
+  ) !important;
+}
+
+/* виньетка мягче */
+body .card::before{
+  opacity: .78 !important;
   background:
-    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.04), transparent 66%),
-    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.38), transparent 74%) !important;
+    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.03), transparent 66%),
+    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.56), transparent 72%) !important;
 }
 
-/* 4) добавляем прожекторный свет поверх фото (делает "вау") */
-.card::after{
-  /* оставляем рамку? нет — заменяем на свет, рамка будет давать отдельный артефакт */
-  inset: 0 !important;
-  border: 0 !important;
-  border-radius: inherit !important;
-
-  opacity: .95 !important;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255,245,220,.46),
-      transparent 38%,
-      rgba(255,140,70,.34)
-    ) !important;
-
-  mix-blend-mode: screen !important;
+/* hover спокойный */
+body .card:hover{
+  transform: translateY(-4px) !important;
+  filter: saturate(1.22) contrast(1.12) brightness(1.06) !important;
 }
-
-/* 5) hover — только подъем, БЕЗ scale (это важно для "не зумится") */
-.card:hover{
-  transform: translateY(-6px) !important;
-  filter:
-    saturate(3.2)
-    contrast(1.6)
-    brightness(1.55) !important;
-}
-
-/* 6) promo можно оставить чуть спокойнее, чтобы не выжигало */
-.card--promo{
-  filter:
-    saturate(2.2)
-    contrast(1.35)
-    brightness(1.28) !important;
-}
-.card--promo:hover{
-  transform: translateY(-6px) !important;
-  filter:
-    saturate(2.6)
-    contrast(1.42)
-    brightness(1.36) !important;
-}
-
-/* 7) на мобиле добавим еще яркости (в TG webview часто темнее) */
-@media (max-width: 520px){
-  .card{
-    filter:
-      saturate(3.3)
-      contrast(1.65)
-      brightness(1.6) !important;
+/* =========================================================
+   MOBILE WEBVIEW FIX — remove white tiles
+   ========================================================= */
+@media (max-width: 900px){
+  .topbar, .panel, .controls, .controls__bar,
+  .btn, .nav__link, .badge, .meta, .pill{
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
-  .card:hover{
-    transform: translateY(-5px) !important;
+}
+/* =========================================================
+   FIX "ZOOM / CROPPED" LOOK
+   вставь в самый конец styles.css
+   ========================================================= */
+
+/* 1) общий фон страницы: убираем приближение */
+.bg{
+  transform: none !important;          /* было scale(1.02) */
+  filter: saturate(1.08) contrast(1.06) brightness(.92) !important;
+}
+
+/* 2) карточки: меньше ощущения "зумится" */
+body .card{
+  background-position: center !important;
+  background-size: 100% auto !important;   /* вместо cover */
+  /* если фото вертикальные — попробуй auto 100% */
+  /* background-size: auto 100% !important; */
+}
+
+/* 3) на мобиле — чуть мягче, чтобы не рвало композицию */
+@media (max-width: 520px){
+  body .card{
+    background-size: cover !important;      /* на мобиле лучше cover */
+    background-position: center !important;
   }
 }
