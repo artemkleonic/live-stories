@@ -189,22 +189,26 @@
   const readingEl = $("readingTime");
   if (readingEl) readingEl.textContent = `~${mins} мин`;
 
+  // ===== NEW: bigger pages + "merge tiny last page" =====
   function wordsPerPage() {
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    let base = 520;
-    if (w < 520) base = 260;
-    else if (w < 800) base = 360;
-    else if (w < 1100) base = 460;
+    // Было слишком мало на телефонах, из-за этого "страница 2 = 2 абзаца".
+    let base = 900;
 
-    if (h < 720) base -= 60;
+    if (w < 520) base = 560;       // phone
+    else if (w < 800) base = 720;  // small tablet
+    else if (w < 1100) base = 860; // laptop
+    else base = 980;              // large
+
+    if (h < 720) base -= 80;
 
     const scale =
       Number(getComputedStyle(document.body).getPropertyValue("--reader-font-scale")) || 1;
     base = Math.round(base / scale);
 
-    return Math.max(180, base);
+    return Math.max(420, base);
   }
 
   function paginateBlocks() {
@@ -213,15 +217,19 @@
     let words = 0;
     const limit = wordsPerPage();
 
-    for (const el of blocks) {
-      const w = countWords(el.textContent);
+    const wordCountEl = (el) => countWords(el.textContent);
 
+    for (const el of blocks) {
+      const w = wordCountEl(el);
+
+      // H2 начинает новую страницу (если уже есть контент)
       if (el.tagName === "H2" && current.length > 0) {
         pages.push(current);
         current = [];
         words = 0;
       }
 
+      // переполнение — закрываем страницу
       if (words + w > limit && current.length > 0) {
         pages.push(current);
         current = [];
@@ -233,6 +241,30 @@
     }
 
     if (current.length) pages.push(current);
+
+    // FIX 1: если последняя страница "огрызок" — приклеиваем к предыдущей
+    if (pages.length >= 2) {
+      const last = pages[pages.length - 1];
+      const prev = pages[pages.length - 2];
+
+      const lastWords = last.reduce((sum, el) => sum + wordCountEl(el), 0);
+      const minTail = Math.min(220, Math.round(limit * 0.35));
+
+      if (lastWords < minTail) {
+        pages[pages.length - 2] = prev.concat(last);
+        pages.pop();
+      }
+    }
+
+    // FIX 2: если осталось 2 страницы и вторая короткая — делаем одну
+    if (pages.length === 2) {
+      const secondWords = pages[1].reduce((sum, el) => sum + wordCountEl(el), 0);
+      if (secondWords < 420) {
+        pages[0] = pages[0].concat(pages[1]);
+        pages.pop();
+      }
+    }
+
     return pages;
   }
 
@@ -254,9 +286,6 @@
   const prevBtn = $("prevBtn");
   const nextBtn = $("nextBtn");
 
-  // IMPORTANT:
-  // Telegram WebView can "jump to top" on programmatic scroll & on resize events.
-  // So: in TG we DO NOT auto-scroll after rendering.
   function renderPage({ scrollTop = true } = {}) {
     pages = pages.length ? pages : paginateBlocks();
     pageIndex = clamp(pageIndex, 0, pages.length - 1);
@@ -270,7 +299,9 @@
     pages[pageIndex].forEach(el => contentHost.appendChild(el.cloneNode(true)));
 
     const human = pageIndex + 1;
+
     if (pageLabel) pageLabel.textContent = `Страница ${human}`;
+
     if (pageCounter) pageCounter.textContent = `${human} / ${pages.length}`;
     if (pagePill) pagePill.textContent = `${human} / ${pages.length}`;
 
@@ -332,34 +363,31 @@
     const t = e.touches?.[0];
     if (!t) return;
     const dy = t.clientY - tStartY;
-    if (Math.abs(dy) > 14) tMoved = true; // vertical scroll in progress
+    if (Math.abs(dy) > 14) tMoved = true;
   }, { passive: true });
 
   document.addEventListener("touchend", (e) => {
-    if (tMoved) return; // user was scrolling vertically, not swiping
+    if (tMoved) return;
     const t = e.changedTouches?.[0];
     if (!t) return;
 
     const dx = t.clientX - tStartX;
     const dy = t.clientY - tStartY;
 
-    if (Math.abs(dx) < 80) return;   // not enough horizontal intent
-    if (Math.abs(dy) > 30) return;   // too diagonal
+    if (Math.abs(dx) < 80) return;
+    if (Math.abs(dy) > 30) return;
 
     if (dx > 0) go(-1);
     else go(+1);
   }, { passive: true });
 
   // ===== resize repagination =====
-  // Telegram WebView can emit resize during scroll because UI bars show/hide.
-  // We disable resize repagination in TG to prevent jumps.
   if (!IS_TG) {
     let resizeTimer = null;
     let lastWidth = window.innerWidth;
 
     window.addEventListener("resize", () => {
       const newWidth = window.innerWidth;
-      // ignore tiny jitter
       if (Math.abs(newWidth - lastWidth) < 50) return;
       lastWidth = newWidth;
 
@@ -372,13 +400,11 @@
     const oldIdx = pageIndex;
     pages = paginateBlocks();
     if (keepIndex) pageIndex = clamp(oldIdx, 0, pages.length - 1);
-    // after font change we DO want to be at top (except TG)
     renderPage({ scrollTop: true });
   }
 
   // start
   pages = paginateBlocks();
   pageIndex = clamp(pageIndex, 0, pages.length - 1);
-  renderPage({ scrollTop: false }); // initial render: no forced scroll
-
+  renderPage({ scrollTop: false });
 })();
