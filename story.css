@@ -1,5 +1,5 @@
 /* =========================
-   STORY THEME TOKENS
+   STORY THEME TOKENS (BASE)
    ========================= */
 
 .story-body{
@@ -12,25 +12,40 @@
 
   --glow: rgba(255,179,107,.22);
   --glow2: rgba(255,216,168,.14);
+
+  /* акцент для кнопок/прогресса (по умолчанию) */
+  --accentA: rgba(255,179,107,.85);
+  --accentB: rgba(255,216,168,.35);
+  --accentShadow: rgba(255,179,107,.35);
 }
 
 .story-body[data-theme="sepia"]{
   --paper: rgba(24, 18, 12, .78);
   --paper2: rgba(24, 18, 12, .54);
+
   --glow: rgba(255,201,140,.20);
   --glow2: rgba(255,231,195,.12);
+
+  --accentA: rgba(255,201,140,.92);
+  --accentB: rgba(255,231,195,.36);
+  --accentShadow: rgba(255,201,140,.32);
 }
 
 /* =========================
-   BG
+   BG (base, image overriden in story-x.css)
    ========================= */
 
 .bg-story{
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+
   background:
     radial-gradient(1000px 650px at 25% 10%, var(--glow), transparent 60%),
     radial-gradient(900px 650px at 80% 15%, rgba(124,242,199,.08), transparent 55%),
     linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.78)),
-    url("assets/bg-story.jpg");
+    var(--story-bg, url("./img/bg-story-1.jpg"));
+
   background-size: cover;
   background-position: center;
 }
@@ -64,8 +79,8 @@
   width: 100%;
   transform-origin: left;
   transform: scaleX(0);
-  background: linear-gradient(90deg, rgba(255,179,107,.85), rgba(255,216,168,.35));
-  box-shadow: 0 0 24px rgba(255,179,107,.35);
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
 }
 
 /* =========================
@@ -127,16 +142,43 @@
 .meta__dot{ opacity:.6; }
 
 /* =========================
-   CONTROLS
+   NAV BANNER (КАРТИНКА В ЗОНЕ НАВИГАЦИИ)
+   ========================= */
+
+.story__navbanner{
+  margin-top: 16px;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 42px rgba(0,0,0,.42);
+
+  /* картинка сверху + тёмная пелена */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.55)),
+    var(--story-nav-bg, var(--story-bg, url("./img/bg-story-1.jpg")));
+  background-size: cover;
+  background-position: center;
+}
+
+/* чтобы внутри всё держалось */
+.story__navbanner-inner{
+  padding: 12px 12px;
+  backdrop-filter: blur(10px);
+}
+
+/* =========================
+   CONTROLS (твоя текущая разметка: left/right + iconbtn)
    ========================= */
 
 .controls{
-  margin-top: 18px;
-  padding: 12px 12px;
-  border-radius: 20px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.05);
-  backdrop-filter: blur(12px);
+  margin-top: 0; /* теперь controls внутри баннера, поэтому без внешнего отступа */
+}
+
+.controls{
+  padding: 0;
+  border: 0;
+  background: transparent;
+  backdrop-filter: none;
   display:flex;
   align-items:center;
   justify-content: space-between;
@@ -154,7 +196,7 @@
 .divider{
   width: 1px;
   height: 26px;
-  background: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.18);
   border-radius: 99px;
   margin: 0 2px;
 }
@@ -165,22 +207,26 @@
   gap: 10px;
   padding: 10px 12px;
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.04);
-  color: rgba(255,255,255,.88);
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.28);
+  color: rgba(255,255,255,.90);
   cursor: pointer;
   transition: .22s ease;
   box-shadow: 0 10px 22px rgba(0,0,0,.18);
+  -webkit-tap-highlight-color: transparent;
 }
+
 .iconbtn:hover{
   transform: translateY(-1px);
-  background: rgba(255,255,255,.07);
-  border-color: rgba(255,179,107,.22);
+  background: rgba(0,0,0,.38);
+  border-color: rgba(255,179,107,.24);
 }
+
 .iconbtn:active{ transform: translateY(0); }
+
 .iconbtn__text{
   font-size: 12px;
-  color: rgba(255,255,255,.72);
+  color: rgba(255,255,255,.74);
   font-weight: 700;
 }
 
@@ -193,9 +239,7 @@
    READER
    ========================= */
 
-.reader{
-  margin-top: 14px;
-}
+.reader{ margin-top: 14px; }
 
 .reader__paper{
   padding: 18px 18px 16px;
@@ -226,9 +270,7 @@
   font-size: 12px;
   color: rgba(255,255,255,.78);
 }
-.pagehint__chip--muted{
-  opacity: .85;
-}
+.pagehint__chip--muted{ opacity: .85; }
 
 .story__content{
   font-size: calc(var(--reader-font) * var(--reader-font-scale));
@@ -238,9 +280,7 @@
   padding: 2px 2px 0;
 }
 
-.story__content p{
-  margin: 0 0 18px;
-}
+.story__content p{ margin: 0 0 18px; }
 
 .story__content h2{
   margin: 28px 0 12px;
@@ -248,19 +288,7 @@
   letter-spacing: -0.01em;
 }
 
-/* “красивые кавычки” */
-.story__content p:has(> q),
-.story__content p:has(> cite){
-  border-left: 3px solid rgba(255,179,107,.35);
-  padding-left: 14px;
-  background: rgba(255,179,107,.06);
-  border-radius: 14px;
-}
-
-/* анимация появления страницы */
-.animate-in{
-  animation: fadeSlide .30s ease both;
-}
+.animate-in{ animation: fadeSlide .30s ease both; }
 @keyframes fadeSlide{
   from{ opacity:0; transform: translateY(8px); filter: blur(2px); }
   to{ opacity:1; transform: translateY(0); filter: blur(0); }
@@ -279,81 +307,21 @@
   flex-wrap: wrap;
 }
 
-.pagination .btn[disabled]{
-  opacity: .45;
-  pointer-events:none;
-}
-
-.pagenav{
-  display:flex;
-  align-items:center;
-  gap: 8px;
+.pagepill{
   padding: 10px 12px;
-  border-radius: 16px;
+  border-radius: 999px;
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(0,0,0,.16);
-}
-
-.pagenav__btn{
-  width: 42px;
-  height: 36px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.04);
-  color: rgba(255,255,255,.84);
-  cursor:pointer;
-  transition: .2s ease;
-}
-.pagenav__btn:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,179,107,.22);
-  background: rgba(255,255,255,.07);
-}
-.pagenav__btn:active{ transform: translateY(0); }
-
-.pagenav__mid{
-  min-width: 36px;
-  text-align:center;
-  font-weight: 800;
-  opacity:.9;
-}
-
-/* =========================
-   KBD HELP
-   ========================= */
-
-.kbd{
-  margin-top: 14px;
-  display:flex;
-  align-items:center;
-  gap: 8px;
-  justify-content: center;
-  color: rgba(255,255,255,.62);
+  color: rgba(255,255,255,.78);
   font-size: 12px;
-  flex-wrap: wrap;
-}
-
-.kbd__key{
-  padding: 6px 8px;
-  border-radius: 10px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(0,0,0,.18);
   font-weight: 800;
-}
-.kbd__text{ opacity:.85; }
-.kbd__sep{
-  width: 10px;
-  height: 1px;
-  background: rgba(255,255,255,.18);
-  opacity:.6;
 }
 
 /* =========================
-   FOCUS MODE
+   FOCUS MODE (без белых плиток)
    ========================= */
 
 .focus-mode .topbar,
-.focus-mode .controls,
 .focus-mode .footer{
   opacity: .55;
   filter: blur(.2px);
@@ -370,7 +338,7 @@
 }
 
 /* =========================
-   TOP BUTTON
+   TOP BUTTON + TOAST
    ========================= */
 
 .totop{
@@ -390,20 +358,13 @@
   transform: translateY(10px);
   pointer-events: none;
   transition: .22s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 .totop--show{
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
-.totop:hover{
-  transform: translateY(-1px);
-  border-color: rgba(255,179,107,.22);
-}
-
-/* =========================
-   TOAST
-   ========================= */
 
 .toast{
   position: fixed;
@@ -429,121 +390,11 @@
 /* =========================
    MOBILE
    ========================= */
+
 @media (max-width: 780px){
   .story{ padding: 18px; }
   .reader__paper{ padding: 14px; }
   .pagination{ justify-content: center; }
   .controls{ justify-content: center; }
-}
-.pagepill{
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(0,0,0,.16);
-  color: rgba(255,255,255,.78);
-  font-size: 12px;
-  font-weight: 800;
-}
-/* ===== Controls (как на твоём хорошем примере) ===== */
-
-.controls{
-  margin: 14px 0 18px;
-}
-
-.controls__bar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-
-  padding: 10px 12px;
-  border-radius: 999px;
-
-  background: rgba(255,255,255,.045);
-  border: 1px solid rgba(255,255,255,.11);
-  box-shadow: 0 18px 42px rgba(0,0,0,.42);
-  backdrop-filter: blur(12px);
-}
-
-/* две группы */
-.controls__group{
-  display:flex;
-  align-items:center;
-  gap: 10px;
-}
-
-/* чтобы всегда держались по краям */
-.controls__group--left{ flex: 1 1 auto; min-width: 0; }
-.controls__group--right{ flex: 0 0 auto; }
-
-/* ВАЖНО: на узких экранах не переносим кнопки — даём скролл */
-.controls__group--left{
-  overflow-x: auto;
-  overflow-y: hidden;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.controls__group--left::-webkit-scrollbar{ display:none; }
-
-/* кнопки */
-.chip{
-  appearance:none;
-  border: 1px solid rgba(255,255,255,.12);
-  background: rgba(255,255,255,.05);
-  color: rgba(255,255,255,.86);
-
-  padding: 9px 14px;
-  border-radius: 999px;
-
-  font-size: 13px;
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: .2px;
-
-  cursor:pointer;
-  user-select:none;
-
-  transition: transform .08s ease, background .15s ease, border-color .15s ease;
-  flex: 0 0 auto; /* НЕ сжимать в кашу */
-}
-
-.chip:hover{
-  background: rgba(255,255,255,.075);
-  border-color: rgba(255,255,255,.18);
-}
-
-.chip:active{
-  transform: translateY(1px);
-}
-
-.chip--icon{
-  padding: 9px 12px;
-  min-width: 44px;
-  text-align: center;
-}
-
-/* акцентная кнопка — завязана на переменные истории */
-.chip--accent{
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)),
-              linear-gradient(90deg, var(--accentA), var(--accentB));
-  border-color: rgba(255,255,255,.14);
-  box-shadow: 0 0 22px var(--accentShadow);
-  color: rgba(20,20,20,.92);
-}
-
-.chip--accent:hover{
-  filter: brightness(1.02);
-}
-
-/* мобилка: немного компактнее */
-@media (max-width: 560px){
-  .controls__bar{
-    border-radius: 18px;
-    padding: 10px;
-  }
-  .chip{
-    padding: 9px 12px;
-    font-size: 12.5px;
-  }
+  .story__navbanner-inner{ padding: 10px; }
 }

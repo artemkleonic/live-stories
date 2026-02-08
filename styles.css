@@ -818,3 +818,129 @@ body.tg .card{ filter: saturate(1.65) contrast(1.20) brightness(1.22) !important
     color: rgba(255,255,255,.90) !important;
   }
 }
+/* =========================================================
+   CARD 2-LEVEL LAYOUT (image top + text bottom)
+   ВСТАВЬ В САМЫЙ КОНЕЦ styles.css
+   ========================================================= */
+
+/* карточка больше НЕ является фон-картинкой */
+body .card{
+  padding: 0 !important;
+  min-height: unset !important;
+
+  border-radius: 26px;
+  overflow: hidden;
+
+  border: 1px solid rgba(246,211,166,.22);
+  box-shadow: var(--shadow2);
+
+  /* стекло/панель */
+  background:
+    radial-gradient(680px 260px at 20% 0%, rgba(255,226,191,.08), transparent 62%),
+    linear-gradient(180deg, rgba(16,9,6,.66), rgba(16,9,6,.34)) !important;
+
+  filter: none !important;
+  transform: translateZ(0);
+  transition: var(--ease);
+}
+
+/* старые эффекты подсветки карточки выключаем (они были под full-bg) */
+body .card::before,
+body .card::after{
+  display: none !important;
+}
+
+/* верхняя часть — картинка */
+.card__media{
+  position: relative;
+  height: 190px;              /* можно 170–240 под вкус */
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* “дорогая” пелена поверх картинки, чтобы badge читался */
+  filter: saturate(1.25) contrast(1.10) brightness(1.05);
+}
+
+/* мягкая виньетка на картинке */
+.card__media::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(900px 420px at 50% 10%, rgba(0,0,0,.10), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.46));
+}
+
+/* top row остаётся поверх картинки */
+.card__media .card__top{
+  position: absolute;
+  inset: 14px 14px auto 14px;
+  z-index: 2;
+}
+
+/* низ — текстовый блок */
+.card__body{
+  padding: 14px 16px 14px;
+  background:
+    radial-gradient(520px 220px at 20% 0%, rgba(246,211,166,.10), transparent 62%),
+    linear-gradient(180deg, rgba(16,9,6,.80), rgba(16,9,6,.42));
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* заголовок/описание — теперь без гигантского размера (это уже не “постер”) */
+.card__body .card__title{
+  margin-top: 0 !important;
+  font-size: 18px !important;          /* можно 17–20 */
+  line-height: 1.15 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase;
+}
+
+.card__body .card__desc{
+  margin-top: 8px !important;
+  font-size: 13px;
+  line-height: 1.55;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* низ с тегами */
+.card__body .card__bottom{
+  margin-top: 12px !important;
+}
+
+/* hover: слегка поднимаем и “оживляем” картинку, а не весь блок */
+body .card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow2), 0 18px 46px rgba(0,0,0,.45);
+}
+body .card:hover .card__media{
+  filter: saturate(1.35) contrast(1.12) brightness(1.10);
+  transform: scale(1.02);
+  transition: var(--ease);
+}
+
+/* стрелка */
+.card__arrow{
+  margin-left: auto;
+}
+
+/* промо — делаем чуть выше картинку */
+.card--promo .card__media{
+  height: 210px;
+}
+
+/* адаптив */
+@media (max-width: 520px){
+  body .card{ border-radius: 22px; }
+  .card__media{ height: 165px; }
+  .card__media .card__top{ inset: 12px 12px auto 12px; }
+  .card__body{ padding: 12px 14px 12px; }
+  .card__body .card__title{ font-size: 17px !important; }
+}

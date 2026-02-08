@@ -21,6 +21,7 @@
       data-story-author="Aleksey Ivakhnenko"
       data-story-date="January 17">
 
+  <!-- фон истории -->
   <div class="bg bg-story" aria-hidden="true"></div>
 
   <!-- прогресс чтения -->
@@ -45,48 +46,56 @@
   <main class="wrap">
     <article class="story" id="storyRoot">
 
-      <div class="story__head">
-        <div class="story__kicker">История</div>
-        <h1 class="story__title" id="storyTitle">Целлофан</h1>
+      <!-- ШАПКА ГЛАВЫ С ФОТО + НАВИГАЦИЯ -->
+      <header class="storyhead" aria-label="Шапка истории">
+        <div class="storyhead__bg" aria-hidden="true"></div>
 
-        <div class="story__meta">
-          <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
-          <span class="meta__dot">•</span>
-          <span class="meta__item" id="storyDate">January 17</span>
-          <span class="meta__dot">•</span>
-          <span class="meta__item" id="readingTime">~0 мин</span>
-        </div>
-      </div>
+        <div class="storyhead__content">
+          <div class="story__kicker">История</div>
+          <h1 class="story__title" id="storyTitle">Целлофан</h1>
 
-      <!-- панель управления чтением -->
-      <section class="controls" aria-label="Управление чтением">
-        <div class="controls__left">
-          <button class="iconbtn" id="btnBack" title="Назад к списку (Esc)" aria-label="Назад к списку">
-            ← <span class="iconbtn__text">К списку</span>
-          </button>
-
-          <div class="divider"></div>
-
-          <button class="iconbtn" id="btnFocus" title="Фокус-режим" aria-label="Фокус-режим">
-            ◉ <span class="iconbtn__text">Фокус</span>
-          </button>
-
-          <button class="iconbtn" id="btnTheme" title="Сменить тему" aria-label="Сменить тему">
-            ☾ <span class="iconbtn__text">Тема</span>
-          </button>
-
-          <div class="divider"></div>
-
-          <button class="iconbtn" id="btnMinus" title="Уменьшить шрифт" aria-label="Уменьшить шрифт">A−</button>
-          <button class="iconbtn" id="btnPlus" title="Увеличить шрифт" aria-label="Увеличить шрифт">A+</button>
+          <div class="story__meta">
+            <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="storyDate">January 17</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="readingTime">~0 мин</span>
+          </div>
         </div>
 
-        <div class="controls__right">
-          <button class="btn btn--ghost btn--tiny" id="btnCopyLink" title="Скопировать ссылку">Ссылка</button>
-          <button class="btn btn--primary btn--tiny" id="btnShare" title="Поделиться">Поделиться</button>
-        </div>
-      </section>
+        <!-- НАВИГАЦИЯ / КНОПКИ (возвращаем!) -->
+        <div class="storyhead__controls">
+          <section class="controls" aria-label="Управление чтением">
+            <div class="controls__left">
+              <button class="iconbtn" id="btnBack" title="Назад к списку (Esc)" aria-label="Назад к списку">
+                ← <span class="iconbtn__text">К списку</span>
+              </button>
 
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnFocus" title="Фокус-режим" aria-label="Фокус-режим">
+                ◉ <span class="iconbtn__text">Фокус</span>
+              </button>
+
+              <button class="iconbtn" id="btnTheme" title="Сменить тему" aria-label="Сменить тему">
+                ☾ <span class="iconbtn__text">Тема</span>
+              </button>
+
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnMinus" title="Уменьшить шрифт" aria-label="Уменьшить шрифт">A−</button>
+              <button class="iconbtn" id="btnPlus" title="Увеличить шрифт" aria-label="Увеличить шрифт">A+</button>
+            </div>
+
+            <div class="controls__right">
+              <button class="btn btn--ghost btn--tiny" id="btnCopyLink" title="Скопировать ссылку">Ссылка</button>
+              <button class="btn btn--primary btn--tiny" id="btnShare" title="Поделиться">Поделиться</button>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <!-- ЧТЕНИЕ -->
       <section class="reader">
         <div class="reader__paper">
           <div class="pagehint">
@@ -114,8 +123,8 @@
     </footer>
   </main>
 
-  <!-- ТЕКСТ (для каждой истории меняешь только этот template) -->
-  <template id="storyText">
+  <!-- ТЕКСТ -->
+ <template id="storyText">
     <p>Мороз в этом году был злой и равнодушный ко всему живому.</p>
 
     <p>Такой мороз не воюет, не пугает, не демонстрирует силу. Он просто делает своё дело. Тихо, методично и без эмоций.</p>
