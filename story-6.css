@@ -1,19 +1,27 @@
-/* =========================================================
-   STORY — "Гамбринус"
-   Одесса: полуподвал, тёплый свет, мокрая мостовая, море
-   ========================================================= */
+/* =========================
+   STORY 6: "Гамбринус"
+   тема + фон + шапка с фото + controls (как Story-1)
+   ========================= */
 
 .story-body{
-  /* акцент: тёплое пиво/янтарь + ночная зелень/морской холод */
-  --accentA: rgba(255, 182, 120, .96);  /* янтарный */
-  --accentB: rgba(120, 220, 200, .88);  /* морская мята */
+  /* бумага чуть теплее */
+  --paper: rgba(20, 14, 10, .74);
+  --paper2: rgba(20, 14, 10, .48);
+  --stroke2: rgba(255,255,255,.14);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* акцент: янтарь + морская мята */
+  --accentA: rgba(255, 182, 120, .96);
+  --accentB: rgba(120, 220, 200, .88);
   --accentShadow: rgba(255, 182, 120, .22);
 
   --glow: rgba(255, 182, 120, .18);
   --glow2: rgba(120, 220, 200, .10);
 }
 
-/* фон истории */
+/* фон страницы истории */
 .bg-story{
   background:
     radial-gradient(1100px 720px at 18% 12%, var(--glow), transparent 62%),
@@ -39,15 +47,114 @@
   filter: blur(.25px);
 }
 
-/* заголовок — “бархат” */
-.story__title{
+/* лёгкая виньетка */
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 35%, transparent 45%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.78), transparent 55%);
+  pointer-events:none;
+}
+
+/* прогресс-бар */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
+
+/* =========================
+   STORY HEADER WITH PHOTO
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.74)),
+    url("./img/bg-story-6.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+.storyhead .story__title{
   text-shadow:
     0 22px 62px rgba(0,0,0,.74),
     0 0 20px rgba(255,182,120,.10);
 }
 
-/* чуть “сцена ближе”: делаем бумагу чуть теплее */
-.story-body{
-  --paper: rgba(20, 14, 10, .74);
-  --paper2: rgba(20, 14, 10, .48);
+/* блок controls снизу */
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* controls внутри шапки — без мыла */
+.storyhead__controls .controls{
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* кнопки — читаемее */
+.storyhead__controls .iconbtn{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
+}
+
+/* мобила */
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
+}
+
+/* =========================================================
+   BIG PHOTO INSIDE TEXT
+   ========================================================= */
+
+.story-body .story__content img{
+  display: block;
+  width: 100% !important;
+  max-width: 980px !important;
+  height: auto;
+
+  margin: 18px auto 22px;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+
+  max-height: none;
+}
+
+.story-body .story__content p > img{
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 780px){
+  .story-body .story__content img{
+    max-width: 100% !important;
+    border-radius: 16px;
+  }
 }

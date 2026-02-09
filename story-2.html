@@ -21,8 +21,10 @@
       data-story-author="Aleksey Ivakhnenko"
       data-story-date="February 3 at 15:28">
 
+  <!-- фон истории -->
   <div class="bg bg-story" aria-hidden="true"></div>
 
+  <!-- прогресс чтения -->
   <div class="readbar" aria-hidden="true">
     <div class="readbar__fill" id="readbarFill"></div>
   </div>
@@ -44,36 +46,56 @@
   <main class="wrap">
     <article class="story" id="storyRoot">
 
-      <div class="story__head">
-        <div class="story__kicker">История</div>
-        <h1 class="story__title" id="storyTitle">Голова и шея</h1>
+      <!-- ШАПКА ГЛАВЫ С ФОТО + НАВИГАЦИЯ -->
+      <header class="storyhead" aria-label="Шапка истории">
+        <div class="storyhead__bg" aria-hidden="true"></div>
 
-        <div class="story__meta">
-          <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
-          <span class="meta__dot">•</span>
-          <span class="meta__item" id="storyDate">February 3 at 15:28</span>
-          <span class="meta__dot">•</span>
-          <span class="meta__item" id="readingTime">~0 мин</span>
-        </div>
-      </div>
+        <div class="storyhead__content">
+          <div class="story__kicker">История</div>
+          <h1 class="story__title" id="storyTitle">Голова и шея</h1>
 
-      <section class="controls" aria-label="Управление чтением">
-        <div class="controls__left">
-          <button class="iconbtn" id="btnBack">← <span class="iconbtn__text">К списку</span></button>
-          <div class="divider"></div>
-          <button class="iconbtn" id="btnFocus">◉ <span class="iconbtn__text">Фокус</span></button>
-          <button class="iconbtn" id="btnTheme">☾ <span class="iconbtn__text">Тема</span></button>
-          <div class="divider"></div>
-          <button class="iconbtn" id="btnMinus">A−</button>
-          <button class="iconbtn" id="btnPlus">A+</button>
+          <div class="story__meta">
+            <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="storyDate">February 3 at 15:28</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="readingTime">~0 мин</span>
+          </div>
         </div>
 
-        <div class="controls__right">
-          <button class="btn btn--ghost btn--tiny" id="btnCopyLink">Ссылка</button>
-          <button class="btn btn--primary btn--tiny" id="btnShare">Поделиться</button>
-        </div>
-      </section>
+        <!-- НАВИГАЦИЯ / КНОПКИ -->
+        <div class="storyhead__controls">
+          <section class="controls" aria-label="Управление чтением">
+            <div class="controls__left">
+              <button class="iconbtn" id="btnBack" title="Назад к списку (Esc)" aria-label="Назад к списку">
+                ← <span class="iconbtn__text">К списку</span>
+              </button>
 
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnFocus" title="Фокус-режим" aria-label="Фокус-режим">
+                ◉ <span class="iconbtn__text">Фокус</span>
+              </button>
+
+              <button class="iconbtn" id="btnTheme" title="Сменить тему" aria-label="Сменить тему">
+                ☾ <span class="iconbtn__text">Тема</span>
+              </button>
+
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnMinus" title="Уменьшить шрифт" aria-label="Уменьшить шрифт">A−</button>
+              <button class="iconbtn" id="btnPlus" title="Увеличить шрифт" aria-label="Увеличить шрифт">A+</button>
+            </div>
+
+            <div class="controls__right">
+              <button class="btn btn--ghost btn--tiny" id="btnCopyLink" title="Скопировать ссылку">Ссылка</button>
+              <button class="btn btn--primary btn--tiny" id="btnShare" title="Поделиться">Поделиться</button>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <!-- ЧТЕНИЕ -->
       <section class="reader">
         <div class="reader__paper">
           <div class="pagehint">
@@ -81,19 +103,19 @@
             <span class="pagehint__chip pagehint__chip--muted" id="pageCounter">1 / 1</span>
           </div>
 
-          <div class="story__content animate-in" id="pageContent"></div>
+          <div class="story__content animate-in" id="pageContent" aria-live="polite"></div>
 
           <div class="pagination">
-            <button class="btn btn--ghost" id="prevBtn">← Назад</button>
+            <button class="btn btn--ghost" id="prevBtn" aria-label="Предыдущая страница">← Назад</button>
             <span class="pagepill" id="pagePill">1 / 1</span>
-            <button class="btn btn--primary" id="nextBtn">Дальше →</button>
+            <button class="btn btn--primary" id="nextBtn" aria-label="Следующая страница">Дальше →</button>
           </div>
         </div>
       </section>
 
     </article>
 
-    <button class="totop" id="toTop">↑</button>
+    <button class="totop" id="toTop" aria-label="Наверх">↑</button>
 
     <footer class="footer">
       <div>© <span id="y"></span> Рассказы моего отца</div>
@@ -101,6 +123,7 @@
     </footer>
   </main>
 
+  <!-- ТЕКСТ -->
   <template id="storyText">
   <p>Говорят, мужчина это голова, а женщина шея.</p>
   <p>Мол, куда шея повернёт, туда и голова смотрит. Фраза старая, заезженная, почти как тосты на свадьбе, которые никто не слушает. Но с возрастом вдруг начинаешь понимать, что в ней не про власть. В ней про направление.</p>
@@ -312,7 +335,6 @@
 
   <p>И тихо записывает результат.</p>
 </template>
-
 
   <script src="story.js" defer></script>
 </body>

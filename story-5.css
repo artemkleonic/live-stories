@@ -1,19 +1,26 @@
-/* =========================================================
-   STORY 5 — "По собачьей тропе"
-   только тема, фон, акценты
-   ========================================================= */
+/* =========================
+   STORY 5: "По собачьей тропе"
+   тема + фон + шапка с фото + controls (как Story-1)
+   ========================= */
 
 .story-body{
-  /* холодный зимний акцент + твой тёплый золото-янтарь */
-  --accentA: rgba(255, 201, 140, .92);     /* тёплое золото */
-  --accentB: rgba(140, 210, 255, .88);     /* холодный лёд */
+  --paper: rgba(12, 14, 18, .72);
+  --paper2: rgba(12, 14, 18, .50);
+  --stroke2: rgba(255,255,255,.14);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* холодный зимний акцент + тёплое золото */
+  --accentA: rgba(255, 201, 140, .92);
+  --accentB: rgba(140, 210, 255, .88);
   --accentShadow: rgba(140, 210, 255, .22);
 
   --glow: rgba(140, 210, 255, .16);
   --glow2: rgba(255, 201, 140, .12);
 }
 
-/* фон под историю */
+/* фон */
 .bg-story{
   background:
     radial-gradient(1000px 650px at 22% 12%, var(--glow), transparent 62%),
@@ -24,7 +31,6 @@
   background-position: center;
 }
 
-/* чуть “снега” в воздухе, очень мягко */
 .bg-story::before{
   content:"";
   position:absolute;
@@ -42,9 +48,99 @@
   filter: blur(.25px);
 }
 
-/* чтобы заголовок на холодном фоне был “дороже” */
-.story__title{
+/* прогресс-бар */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
+
+/* =========================
+   STORY HEADER WITH PHOTO (как Story-1)
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.74)),
+    url("./img/bg-story-5.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+.storyhead .story__title{
   text-shadow:
     0 22px 60px rgba(0,0,0,.72),
     0 0 18px rgba(140,210,255,.10);
+}
+
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+.storyhead__controls .controls{
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.storyhead__controls .iconbtn{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
+}
+
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
+}
+
+/* =========================================================
+   BIG PHOTO INSIDE TEXT (как в Story-1)
+   ========================================================= */
+
+.story-body .story__content img{
+  display: block;
+  width: 100% !important;
+  max-width: 980px !important;
+  height: auto;
+
+  margin: 18px auto 22px;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+
+  max-height: none;
+}
+
+.story-body .story__content p > img{
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+
+@media (max-width: 780px){
+  .story-body .story__content img{
+    max-width: 100% !important;
+    border-radius: 16px;
+  }
 }

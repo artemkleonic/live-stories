@@ -1,10 +1,10 @@
-/* =========================================================
-   STORY — "Про время"
-   Тёплый тост + мягкая глубина + ощущение “валюты времени”
-   ========================================================= */
+/* =========================
+   STORY 8: "Про время"
+   шапка с фото (как Story-1) + тема/фон/акцент
+   ========================= */
 
 .story-body{
-  /* золото + винный бордо (вместо “кислотного” янтаря) */
+  /* золото + винный бордо */
   --accentA: rgba(246, 211, 166, .98);
   --accentB: rgba(186, 86, 104, .92);
   --accentShadow: rgba(246, 211, 166, .20);
@@ -12,30 +12,26 @@
   --glow: rgba(246, 211, 166, .16);
   --glow2: rgba(186, 86, 104, .10);
 
-  /* чуть светлее бумага — чтобы текст прям “дышал” */
   --paper: rgba(14, 10, 9, .72);
   --paper2: rgba(14, 10, 9, .48);
+  --stroke2: rgba(255,255,255,.12);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
 }
 
 /* фон истории */
 .bg-story{
   background:
-    /* тёплая лампа/свеча слева */
     radial-gradient(1050px 760px at 18% 16%, var(--glow), transparent 62%),
-
-    /* винная глубина справа */
     radial-gradient(900px 680px at 84% 18%, var(--glow2), transparent 58%),
-
-    /* затемнение */
     linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.88)),
-
-    /* картинка */
     url("./img/bg-story-8.jpg");
   background-size: cover;
   background-position: center;
 }
 
-/* тонкий намёк на “циферблат/время” (без навязчивости) */
+/* тонкий намёк на циферблат */
 .bg-story::before{
   content:"";
   position:absolute;
@@ -49,15 +45,105 @@
   filter: blur(.35px);
 }
 
-/* заголовок — чуть “дороже” */
-.story__title{
+/* виньетка */
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 35%, transparent 45%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.78), transparent 55%);
+  pointer-events:none;
+}
+
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
+
+/* =========================
+   STORYHEAD (как в Story-1)
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.82)),
+    url("./img/bg-story-8.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+.storyhead .story__title{
   text-shadow:
     0 22px 62px rgba(0,0,0,.78),
     0 0 24px rgba(246,211,166,.10);
 }
 
-/* финальные “Пейте за время” — пусть визуально держатся */
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* убираем белые квадраты/карточность */
+.storyhead__controls .controls,
+.storyhead__controls .controls__row,
+.storyhead__controls .controls__bar,
+.storyhead__controls .controls__left,
+.storyhead__controls .controls__right{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* сами кнопки — как “дорогие” */
+.storyhead__controls .iconbtn,
+.storyhead__controls .btn{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+
+.storyhead__controls .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: rgba(10,10,12,.92) !important;
+}
+
+/* фокус без белого outline */
+.storyhead__controls .iconbtn:focus,
+.storyhead__controls .iconbtn:focus-visible,
+.storyhead__controls .btn:focus,
+.storyhead__controls .btn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(246,211,166,.20) !important;
+}
+
+/* сильные строки в конце — держим визуально */
 .story__content p strong{
-  color: rgba(255, 245, 230, .96);
+  color: rgba(255,245,230,.96);
   text-shadow: 0 12px 26px rgba(0,0,0,.55);
+}
+
+/* мобила */
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
 }

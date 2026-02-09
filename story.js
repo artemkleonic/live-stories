@@ -105,17 +105,24 @@
 
   applyFont();
 
-  // ===== theme =====
+  // ===== theme (ink -> sepia -> light) =====
   const keyTheme = `${storyId}_theme`;
   const savedTheme = localStorage.getItem(keyTheme);
   if (savedTheme) document.body.setAttribute("data-theme", savedTheme);
 
-  safeOn($("btnTheme"), "click", () => {
+  const THEMES = ["ink", "sepia", "light"];
+
+  function cycleTheme() {
     const current = document.body.getAttribute("data-theme") || "ink";
-    const next = current === "ink" ? "sepia" : "ink";
+    const idx = THEMES.indexOf(current);
+    const next = THEMES[(idx + 1 + THEMES.length) % THEMES.length] || "ink";
     document.body.setAttribute("data-theme", next);
     localStorage.setItem(keyTheme, next);
-  });
+    toast(next === "ink" ? "Тема: тёмная" : next === "sepia" ? "Тема: сепия" : "Тема: светлая");
+  }
+
+  safeOn($("btnTheme"), "click", cycleTheme);
+
 
   // ===== focus mode =====
   const keyFocus = `${storyId}_focus`;

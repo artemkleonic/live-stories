@@ -944,3 +944,302 @@ body .card:hover .card__media{
   .card__body{ padding: 12px 14px 12px; }
   .card__body .card__title{ font-size: 17px !important; }
 }
+/* =========================
+   THEME: LIGHT (paper)
+   ========================= */
+.story-body[data-theme="light"]{
+  color: rgba(18,18,20,.92);
+
+  /* светлый фон + бумага */
+  --paper: rgba(255,255,255,.92);
+  --paper2: rgba(255,255,255,.78);
+
+  /* текст/вторичные */
+  --txt: rgba(18,18,20,.92);
+  --muted: rgba(18,18,20,.72);
+  --dim: rgba(18,18,20,.58);
+
+  /* обводки */
+  --stroke: rgba(0,0,0,.14);
+  --stroke2: rgba(0,0,0,.10);
+}
+
+/* фон затемняем меньше, чтобы не было “грязи” */
+.story-body[data-theme="light"] .bg-story{
+  filter: saturate(1.05) contrast(1.02) brightness(1.02);
+}
+
+/* reader paper */
+.story-body[data-theme="light"] .reader__paper,
+.story-body[data-theme="light"] .story__content{
+  color: rgba(18,18,20,.92);
+}
+
+/* controls — чтобы не вываливались белые/чёрные квадраты */
+.story-body[data-theme="light"] .controls{
+  background: rgba(255,255,255,.66) !important;
+  border: 1px solid rgba(0,0,0,.12) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* кнопки */
+.story-body[data-theme="light"] .chip,
+.story-body[data-theme="light"] .btn,
+.story-body[data-theme="light"] .iconbtn{
+  background: rgba(255,255,255,.72) !important;
+  border: 1px solid rgba(0,0,0,.14) !important;
+  color: rgba(18,18,20,.92) !important;
+}
+
+/* hover */
+.story-body[data-theme="light"] .chip:hover,
+.story-body[data-theme="light"] .btn:hover,
+.story-body[data-theme="light"] .iconbtn:hover{
+  background: rgba(255,255,255,.88) !important;
+}
+
+/* акцентная */
+.story-body[data-theme="light"] .chip--accent,
+.story-body[data-theme="light"] .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(0,0,0,.10) !important;
+  color: rgba(10,10,12,.92) !important;
+}
+
+/* фокус — аккуратно, без белого квадрата */
+.story-body[data-theme="light"] .chip:focus,
+.story-body[data-theme="light"] .chip:focus-visible,
+.story-body[data-theme="light"] .btn:focus,
+.story-body[data-theme="light"] .btn:focus-visible,
+.story-body[data-theme="light"] .iconbtn:focus,
+.story-body[data-theme="light"] .iconbtn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(0,0,0,.14) !important;
+}
+
+/* мета/вторичный текст */
+.story-body[data-theme="light"] .story__meta,
+.story-body[data-theme="light"] .brand__tag,
+.story-body[data-theme="light"] .pagehint__chip--muted{
+  color: rgba(18,18,20,.66) !important;
+}
+
+/* topbar */
+.story-body[data-theme="light"] .topbar{
+  background: rgba(255,255,255,.62);
+  border-bottom: 1px solid rgba(0,0,0,.10);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+/* FIX: в light теме шапка истории должна быть светлой (она на тёмном фоне) */
+.story-body[data-theme="light"] .story__kicker,
+.story-body[data-theme="light"] .story__title,
+.story-body[data-theme="light"] .story__meta{
+  color: rgba(255,255,255,.92) !important;
+  text-shadow:
+    0 18px 50px rgba(0,0,0,.78),
+    0 2px 0 rgba(0,0,0,.30);
+}
+
+/* вторичное в мета чуть мягче */
+.story-body[data-theme="light"] .story__meta{
+  color: rgba(255,255,255,.80) !important;
+}
+
+/* а вот ВНУТРИ бумаги — наоборот, тёмный текст */
+.story-body[data-theme="light"] .reader__paper,
+.story-body[data-theme="light"] .reader__paper .story__content{
+  color: rgba(18,18,20,.92) !important;
+  text-shadow: none !important;
+}
+/* =========================================================
+   FIX: controls плохо видны в LIGHT теме
+   ========================================================= */
+
+.story-body[data-theme="light"] .storyhead__controls,
+.story-body[data-theme="light"] .controls{
+  background: rgba(245,246,248,.92) !important; /* плотный светлый */
+  border-top: 1px solid rgba(0,0,0,.12) !important;
+  box-shadow:
+    0 -1px 0 rgba(255,255,255,.6) inset,
+    0 10px 28px rgba(0,0,0,.14) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* сами кнопки — тёмный текст + чёткая рамка */
+.story-body[data-theme="light"] .chip,
+.story-body[data-theme="light"] .iconbtn,
+.story-body[data-theme="light"] .btn{
+  background: rgba(255,255,255,.96) !important;
+  color: rgba(20,22,26,.92) !important;
+  border: 1px solid rgba(0,0,0,.18) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.8) inset,
+    0 2px 6px rgba(0,0,0,.10);
+}
+
+/* hover — чтобы было видно, что это кнопка */
+.story-body[data-theme="light"] .chip:hover,
+.story-body[data-theme="light"] .iconbtn:hover,
+.story-body[data-theme="light"] .btn:hover{
+  background: rgba(255,255,255,1) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.9) inset,
+    0 4px 10px rgba(0,0,0,.16);
+}
+
+/* активная (нажатая) */
+.story-body[data-theme="light"] .chip:active,
+.story-body[data-theme="light"] .iconbtn:active,
+.story-body[data-theme="light"] .btn:active{
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 1px 3px rgba(0,0,0,.18);
+}
+
+/* акцентная кнопка (Поделиться) — оставить цвет */
+.story-body[data-theme="light"] .chip--accent,
+.story-body[data-theme="light"] .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  color: rgba(10,10,12,.92) !important;
+  border-color: rgba(0,0,0,.14) !important;
+}
+
+/* иконки/буквы A− A+ сделать контрастнее */
+.story-body[data-theme="light"] .chip--icon,
+.story-body[data-theme="light"] .iconbtn{
+  font-weight: 700;
+}
+/* =========================================================
+   LIGHT THEME — НОРМАЛЬНО: светлая бумага + тёмный UI
+   (убирает белые “простыни” и делает кнопки/заголовки видимыми)
+   ========================================================= */
+
+.story-body[data-theme="light"]{
+  /* Светлая "бумага" для чтения */
+  --paper: rgba(255, 252, 246, .96);
+  --paper2: rgba(255, 252, 246, .86);
+
+  /* Текст на бумаге */
+  --txt: rgba(16, 18, 20, .92);
+  --muted: rgba(16, 18, 20, .68);
+  --dim: rgba(16, 18, 20, .55);
+
+  /* Обводки */
+  --stroke2: rgba(16,18,20,.14);
+}
+
+/* 1) Заголовок/мета на картинке: добавляем тёмную вуаль, чтобы всё читалось */
+.story-body[data-theme="light"] .story__head,
+.story-body[data-theme="light"] .story__kicker,
+.story-body[data-theme="light"] .story__title,
+.story-body[data-theme="light"] .story__meta{
+  position: relative;
+  z-index: 1;
+}
+
+.story-body[data-theme="light"] .story__head::before{
+  content:"";
+  position:absolute;
+  left:-16px; right:-16px;
+  top:-14px; bottom:-14px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.18));
+  box-shadow: 0 18px 40px rgba(0,0,0,.22);
+  z-index: -1;
+}
+
+.story-body[data-theme="light"] .story__kicker{
+  color: rgba(255,255,255,.78) !important;
+}
+.story-body[data-theme="light"] .story__meta{
+  color: rgba(255,255,255,.75) !important;
+}
+.story-body[data-theme="light"] .story__title{
+  color: rgba(255,255,255,.96) !important;
+  text-shadow: 0 18px 46px rgba(0,0,0,.55) !important;
+}
+
+/* 2) Панель controls в светлой теме НЕ белая. Это тёмное стекло. */
+.story-body[data-theme="light"] .controls,
+.story-body[data-theme="light"] .controls__bar{
+  background: transparent !important;
+}
+
+.story-body[data-theme="light"] .controls{
+  background: rgba(12, 14, 18, .55) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  box-shadow: 0 14px 38px rgba(0,0,0,.28) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 18px;
+}
+
+/* 3) Кнопки/чипы — нормальный контраст (видно всегда) */
+.story-body[data-theme="light"] .chip,
+.story-body[data-theme="light"] .iconbtn,
+.story-body[data-theme="light"] .btn{
+  background: rgba(12, 14, 18, .38) !important;
+  border: 1px solid rgba(255,255,255,.16) !important;
+  color: rgba(255,255,255,.92) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset !important;
+}
+
+.story-body[data-theme="light"] .chip:hover,
+.story-body[data-theme="light"] .iconbtn:hover,
+.story-body[data-theme="light"] .btn:hover{
+  background: rgba(12, 14, 18, .52) !important;
+}
+
+.story-body[data-theme="light"] .chip:focus,
+.story-body[data-theme="light"] .chip:focus-visible,
+.story-body[data-theme="light"] .btn:focus,
+.story-body[data-theme="light"] .btn:focus-visible,
+.story-body[data-theme="light"] .iconbtn:focus,
+.story-body[data-theme="light"] .iconbtn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(140,200,255,.22) !important;
+}
+
+/* Акцентная кнопка — остаётся акцентной, но не “пластик” */
+.story-body[data-theme="light"] .chip--accent,
+.story-body[data-theme="light"] .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  color: rgba(10,10,12,.92) !important;
+}
+
+/* 4) Читалка: бумага светлая, текст тёмный — читаемость максимальная */
+.story-body[data-theme="light"] .reader__paper{
+  background: var(--paper) !important;
+  border: 1px solid rgba(16,18,20,.10) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.14) !important;
+}
+
+.story-body[data-theme="light"] .story__content{
+  color: var(--txt) !important;
+}
+.story-body[data-theme="light"] .story__content p{
+  color: var(--txt) !important;
+}
+.story-body[data-theme="light"] .story__content h2{
+  color: rgba(12,14,16,.92) !important;
+}
+
+/* 5) Pagehint (твои “Страница 5 / 5”): чтобы не выглядело бледно */
+.story-body[data-theme="light"] .pagehint__chip{
+  background: rgba(12,14,18,.40) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.90) !important;
+}
+.story-body[data-theme="light"] .pagehint__chip--muted{
+  color: rgba(255,255,255,.78) !important;
+}
+
+/* 6) Прогресс-бар — пусть остаётся “дорогим” */
+.story-body[data-theme="light"] .readbar__fill{
+  box-shadow: 0 0 22px var(--accentShadow);
+}

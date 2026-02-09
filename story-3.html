@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Лаврентий — Рассказы моего отца</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Marck+Script&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Marck+Script&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css" />
-<link rel="stylesheet" href="story.css" />
-<link rel="stylesheet" href="story-3.css" />
-
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="story.css">
+  <link rel="stylesheet" href="story-3.css">
 </head>
 
 <body class="story-body no-copy"
@@ -22,8 +21,10 @@
       data-story-author="Aleksey Ivakhnenko"
       data-story-date="November 4 at 10:45">
 
+  <!-- фон истории -->
   <div class="bg bg-story" aria-hidden="true"></div>
 
+  <!-- прогресс чтения -->
   <div class="readbar" aria-hidden="true">
     <div class="readbar__fill" id="readbarFill"></div>
   </div>
@@ -36,56 +37,93 @@
         <div class="brand__tag">Душевные истории. Без пафоса.</div>
       </div>
     </a>
+
+    <nav class="nav">
+      <a class="nav__link" href="index.html#stories">Все рассказы</a>
+    </nav>
   </header>
 
   <main class="wrap">
-    <article class="story">
-      <div class="story__head">
-        <div class="story__kicker">История</div>
-        <h1 class="story__title">Лаврентий</h1>
-        <div class="story__meta">
-          Aleksey Ivakhnenko • November 4 at 10:45 • <span id="readingTime">~0 мин</span>
+    <article class="story" id="storyRoot">
+
+      <!-- ШАПКА ГЛАВЫ С ФОТО + НАВИГАЦИЯ (как Story-1) -->
+      <header class="storyhead" aria-label="Шапка истории">
+        <div class="storyhead__bg" aria-hidden="true"></div>
+
+        <div class="storyhead__content">
+          <div class="story__kicker">История</div>
+          <h1 class="story__title" id="storyTitle">Лаврентий</h1>
+
+          <div class="story__meta">
+            <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="storyDate">November 4 at 10:45</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="readingTime">~0 мин</span>
+          </div>
         </div>
-      </div>
-<div class="controls" aria-label="Панель управления чтением">
-  <div class="controls__bar">
-    <div class="controls__group controls__group--left">
-      <button class="chip" id="btnBack" type="button">← К списку</button>
-      <button class="chip" id="btnFocus" type="button">⦿ Фокус</button>
-      <button class="chip" id="btnTheme" type="button">◐ Тема</button>
-      <button class="chip chip--icon" id="btnMinus" type="button" aria-label="Уменьшить шрифт">A−</button>
-      <button class="chip chip--icon" id="btnPlus" type="button" aria-label="Увеличить шрифт">A+</button>
-    </div>
 
-    <div class="controls__group controls__group--right">
-      <button class="chip" id="btnCopyLink" type="button">Ссылка</button>
-      <button class="chip chip--accent" id="btnShare" type="button">Поделиться</button>
-    </div>
-  </div>
-</div>
+        <!-- controls снизу -->
+        <div class="storyhead__controls">
+          <section class="controls" aria-label="Управление чтением">
+            <div class="controls__left">
+              <button class="iconbtn" id="btnBack" title="Назад к списку (Esc)" aria-label="Назад к списку">
+                ← <span class="iconbtn__text">К списку</span>
+              </button>
 
+              <div class="divider"></div>
 
-     <section class="reader">
+              <button class="iconbtn" id="btnFocus" title="Фокус-режим" aria-label="Фокус-режим">
+                ◉ <span class="iconbtn__text">Фокус</span>
+              </button>
+
+              <button class="iconbtn" id="btnTheme" title="Сменить тему" aria-label="Сменить тему">
+                ☾ <span class="iconbtn__text">Тема</span>
+              </button>
+
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnMinus" title="Уменьшить шрифт" aria-label="Уменьшить шрифт">A−</button>
+              <button class="iconbtn" id="btnPlus" title="Увеличить шрифт" aria-label="Увеличить шрифт">A+</button>
+            </div>
+
+            <div class="controls__right">
+              <button class="btn btn--ghost btn--tiny" id="btnCopyLink" title="Скопировать ссылку">Ссылка</button>
+              <button class="btn btn--primary btn--tiny" id="btnShare" title="Поделиться">Поделиться</button>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <!-- ЧТЕНИЕ -->
+      <section class="reader">
         <div class="reader__paper">
           <div class="pagehint">
             <span class="pagehint__chip" id="pageLabel">Страница 1</span>
             <span class="pagehint__chip pagehint__chip--muted" id="pageCounter">1 / 1</span>
           </div>
 
-          <div class="story__content animate-in" id="pageContent"></div>
+          <div class="story__content animate-in" id="pageContent" aria-live="polite"></div>
 
           <div class="pagination">
-            <button class="btn btn--ghost" id="prevBtn">← Назад</button>
+            <button class="btn btn--ghost" id="prevBtn" aria-label="Предыдущая страница">← Назад</button>
             <span class="pagepill" id="pagePill">1 / 1</span>
-            <button class="btn btn--primary" id="nextBtn">Дальше →</button>
+            <button class="btn btn--primary" id="nextBtn" aria-label="Следующая страница">Дальше →</button>
           </div>
         </div>
       </section>
 
-
     </article>
+
+    <button class="totop" id="toTop" aria-label="Наверх">↑</button>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> Рассказы моего отца</div>
+      <div class="footer__right">Сделано по-доброму.</div>
+    </footer>
   </main>
 
+  <!-- ТЕКСТ (вставляй весь как есть) -->
   <template id="storyText">
     <p>Есть у меня кот.</p>
 

@@ -1,6 +1,6 @@
 /* =========================
-   STORY — Бандитский Петербург
-   Холодная ночь, неон, город
+   STORY 4: "Бандитский Петербург"
+   тема + фон + шапка с фото + controls (как Story-1)
    ========================= */
 
 .story-body{
@@ -8,15 +8,31 @@
   --paper2: rgba(10, 14, 18, .56);
   --stroke2: rgba(255,255,255,.10);
 
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* холодная ночь, неон */
   --glow: rgba(120,180,255,.15);
   --glow2: rgba(200,220,255,.06);
 
-  --accentA: rgba(140,200,255,.9);
+  --accentA: rgba(140,200,255,.90);
   --accentB: rgba(200,230,255,.35);
   --accentShadow: rgba(140,200,255,.25);
 }
 
-/* Фон истории */
+.story-body[data-theme="sepia"]{
+  --paper: rgba(22, 16, 12, .80);
+  --paper2: rgba(22, 16, 12, .56);
+
+  --glow: rgba(255,201,140,.16);
+  --glow2: rgba(255,231,205,.10);
+
+  --accentA: rgba(255,201,140,.92);
+  --accentB: rgba(255,231,205,.30);
+  --accentShadow: rgba(255,201,140,.28);
+}
+
+/* фон истории */
 .bg-story{
   background:
     radial-gradient(900px 600px at 20% 10%, var(--glow), transparent 60%),
@@ -27,67 +43,109 @@
   background-position: center;
 }
 
-/* Подсветка прогресс-бара */
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 30%, transparent 40%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.76), transparent 55%);
+  pointer-events:none;
+}
+
+/* прогресс-бар */
 .readbar__fill{
   background: linear-gradient(90deg, var(--accentA), var(--accentB));
   box-shadow: 0 0 22px var(--accentShadow);
 }
-/* ===== FIX: белый прямоугольник в Лаврентии (Chrome/моб) ===== */
 
-/* если где-то в styles.css у controls стоит белый фон — перекрываем */
-.story-body .controls,
-.story-body .controls__row,
-.story-body .controls__left,
-.story-body .controls__right{
+/* =========================
+   STORY HEADER WITH PHOTO (как Story-1)
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.76)),
+    url("./img/bg-story-4.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+.storyhead .story__title{
+  text-shadow: 0 18px 46px rgba(0,0,0,.70);
+}
+
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px 12px 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* ВАЖНО: не даём “белым плиткам” появляться в TG */
+.storyhead__controls .controls{
+  margin: 0 !important;
   background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
-/* сама панель controls (если она в отдельной "карточке") */
-.story-body .controls{
-  border: 1px solid rgba(255,255,255,.10) !important;
-  background: rgba(12, 14, 20, .42) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 16px;
+.storyhead__controls .iconbtn{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
 }
 
-/* чипы/кнопки в панели */
-.story-body .chip,
-.story-body .btn{
-  background: rgba(12, 14, 20, .36) !important;
-  border: 1px solid rgba(255,255,255,.12) !important;
-  color: rgba(255,255,255,.92) !important;
+/* мобила */
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
 }
 
-/* hover/active чтобы не “высветлялось” */
-.story-body .chip:hover,
-.story-body .btn:hover{
-  background: rgba(12, 14, 20, .52) !important;
+/* =========================================================
+   BIG PHOTO INSIDE TEXT
+   ========================================================= */
+
+.story-body .story__content img{
+  display: block;
+  width: 100% !important;
+  max-width: 980px !important;
+  height: auto;
+
+  margin: 18px auto 22px;
+  border-radius: 18px;
+
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+
+  max-height: none;
 }
 
-/* если какой-то класс chip--ghost задан белым */
-.story-body .chip--ghost{
-  background: rgba(12, 14, 20, .28) !important;
+.story-body .story__content p > img{
+  margin-top: 14px;
+  margin-bottom: 18px;
 }
 
-/* акцентная кнопка */
-.story-body .chip--accent,
-.story-body .btn--primary{
-  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
-  border-color: rgba(255,255,255,.12) !important;
-  color: rgba(10,10,12,.92) !important; /* если у тебя акцент светлый */
-}
-
-/* иногда белый квадрат — это outline при фокусе (Chrome моб) */
-.story-body .chip:focus,
-.story-body .chip:focus-visible,
-.story-body .btn:focus,
-.story-body .btn:focus-visible{
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(120,160,255,.22) !important;
-}
-
-/* если “квадрат” появляется именно вокруг всей панели — убираем возможный белый box-shadow */
-.story-body .controls{
-  box-shadow: 0 10px 30px rgba(0,0,0,.35) !important;
+@media (max-width: 780px){
+  .story-body .story__content img{
+    max-width: 100% !important;
+    border-radius: 16px;
+  }
 }

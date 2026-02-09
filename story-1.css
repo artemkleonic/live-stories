@@ -85,7 +85,7 @@
 .storyhead__content{
   position: relative;
   z-index: 2;
-  padding: 26px 26px 18px;
+  padding: 500px 26px 18px;
 }
 
 /* чтобы title не “утонул” */
@@ -121,5 +121,45 @@
 /* мобила */
 @media (max-width: 780px){
   .storyhead{ border-radius: 22px; }
-  .storyhead__content{ padding: 18px 18px 14px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
+}
+/* =========================================================
+   STORY 1 — BIG PHOTO INSIDE TEXT
+   (увеличиваем <img> в самой истории, оглавление не трогаем)
+   вставь в КОНЕЦ story-1.css
+   ========================================================= */
+
+.story-body .story__content img{
+  display: block;
+  width: 100%;
+  max-width: 980px;          /* насколько крупно разрешаем */
+  height: auto;
+
+  margin: 18px auto 22px;
+  border-radius: 18px;
+
+  /* чтобы картинка выглядела “дорого” и читалась */
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+
+  /* если где-то есть inline width/height — перебиваем */
+  max-height: none;
+}
+
+/* если картинка была внутри <p> и браузер даёт ей строчное поведение */
+.story-body .story__content p > img{
+  margin-top: 14px;
+  margin-bottom: 18px;
+}
+
+/* мобила — всегда во всю ширину бумаги */
+@media (max-width: 780px){
+  .story-body .story__content img{
+    max-width: 100%;
+    border-radius: 16px;
+  }
+}
+.story-body .story__content img{
+  width: 100% !important;
+  max-width: 980px !important;
 }

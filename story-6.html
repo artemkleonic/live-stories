@@ -10,97 +10,105 @@
   <link rel="stylesheet" href="./story-6.css" />
 </head>
 
-<body class="story-body"
-  data-story-id="story-gambrinus"
-  data-story-title="Гамбринус"
-  data-story-author="Aleksey Ivakhnenko"
-  data-story-date="February 7 • 10:41"
-  data-theme="ink"
->
-  <!-- прогресс чтения -->
+<body class="story-body no-copy"
+      data-theme="ink"
+      data-story-id="story-gambrinus"
+      data-story-title="Гамбринус"
+      data-story-author="Aleksey Ivakhnenko"
+      data-story-date="February 7 • 10:41">
+
+  <div class="bg bg-story" aria-hidden="true"></div>
+
   <div class="readbar" aria-hidden="true">
     <div class="readbar__fill" id="readbarFill"></div>
   </div>
 
-  <!-- фон истории -->
-  <div class="bg bg-story" aria-hidden="true"></div>
-
-  <!-- шапка -->
   <header class="topbar">
-    <div class="brand">
+    <a href="index.html" class="brand brand--link">
       <div class="brand__mark">RM</div>
       <div class="brand__text">
-        <div class="brand__title">РАССКАЗЫ МОЕГО ОТЦА</div>
+        <div class="brand__title">Рассказы моего отца</div>
         <div class="brand__tag">Душевные истории. Без пафоса.</div>
       </div>
-    </div>
+    </a>
 
     <nav class="nav">
-      <a class="nav__link nav__link--pill" href="index.html#stories">Все рассказы</a>
+      <a class="nav__link" href="index.html#stories">Все рассказы</a>
     </nav>
   </header>
 
   <main class="wrap">
-    <article class="story">
-      <div class="story__kicker">ИСТОРИЯ</div>
+    <article class="story" id="storyRoot">
 
-      <h1 class="story__title" id="storyTitle">Гамбринус</h1>
+      <!-- STORYHEAD (как в 1-й истории) -->
+      <header class="storyhead" aria-label="Шапка истории">
+        <div class="storyhead__bg" aria-hidden="true"></div>
 
-      <div class="story__meta">
-        <span id="storyAuthor">Aleksey Ivakhnenko</span>
-        <span class="meta__dot">•</span>
-        <span id="storyDate">February 7 • 10:41</span>
-        <span class="meta__dot">•</span>
-        <span id="readingTime">~12 мин</span>
-      </div>
+        <div class="storyhead__content">
+          <div class="story__kicker">История</div>
+          <h1 class="story__title" id="storyTitle">Гамбринус</h1>
 
-      <!-- панель управления -->
-      <div class="controls">
-        <div class="controls__bar">
-          <div class="controls__group controls__group--left">
-            <button class="chip" id="btnBack" type="button">← К списку</button>
-            <button class="chip" id="btnFocus" type="button">Фокус</button>
-            <button class="chip" id="btnTheme" type="button">Тема</button>
-            <button class="chip chip--icon" id="btnMinus" type="button" aria-label="Уменьшить шрифт">A−</button>
-            <button class="chip chip--icon" id="btnPlus" type="button" aria-label="Увеличить шрифт">A+</button>
-          </div>
-
-          <div class="controls__group controls__group--right">
-            <button class="chip" id="btnCopyLink" type="button">Ссылка</button>
-            <button class="chip chip--accent" id="btnShare" type="button">Поделиться</button>
+          <div class="story__meta">
+            <span class="meta__item" id="storyAuthor">Aleksey Ivakhnenko</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="storyDate">February 7 • 10:41</span>
+            <span class="meta__dot">•</span>
+            <span class="meta__item" id="readingTime">~0 мин</span>
           </div>
         </div>
-      </div>
 
-      <!-- читатель -->
+        <div class="storyhead__controls">
+          <section class="controls" aria-label="Управление чтением">
+            <div class="controls__left">
+              <button class="iconbtn" id="btnBack" type="button">
+                ← <span class="iconbtn__text">К списку</span>
+              </button>
+
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnFocus" type="button">
+                ◉ <span class="iconbtn__text">Фокус</span>
+              </button>
+
+              <button class="iconbtn" id="btnTheme" type="button">
+                ☾ <span class="iconbtn__text">Тема</span>
+              </button>
+
+              <div class="divider"></div>
+
+              <button class="iconbtn" id="btnMinus" type="button" aria-label="Уменьшить шрифт">A−</button>
+              <button class="iconbtn" id="btnPlus" type="button" aria-label="Увеличить шрифт">A+</button>
+            </div>
+
+            <div class="controls__right">
+              <button class="btn btn--ghost btn--tiny" id="btnCopyLink" type="button">Ссылка</button>
+              <button class="btn btn--primary btn--tiny" id="btnShare" type="button">Поделиться</button>
+            </div>
+          </section>
+        </div>
+      </header>
+
+      <!-- READER -->
       <section class="reader">
         <div class="reader__paper">
           <div class="pagehint">
-            <span class="pagehint__chip pagehint__chip--muted" id="pageLabel">Страница 1</span>
-            <span class="pagehint__chip" id="pagePill">1 / 1</span>
+            <span class="pagehint__chip" id="pageLabel">Страница 1</span>
             <span class="pagehint__chip pagehint__chip--muted" id="pageCounter">1 / 1</span>
           </div>
 
-          <div class="story__content" id="pageContent"></div>
-        </div>
+          <div class="story__content animate-in" id="pageContent"></div>
 
-        <div class="pagination">
-          <button class="btn btn--ghost btn--tiny" id="prevBtn" type="button">←</button>
-          <!-- <div class="pagenav" aria-hidden="true">
-            <div class="pagenav__mid" id="pageCounterMid">листай</div>
-          </div> -->
-          <button class="btn btn--ghost btn--tiny" id="nextBtn" type="button">→</button>
-        </div>
-
-        <div class="kbd" aria-hidden="true">
-          <span class="kbd__key">←</span><span class="kbd__text">пред.</span>
-          <span class="kbd__sep"></span>
-          <span class="kbd__key">→</span><span class="kbd__text">след.</span>
-          <span class="kbd__sep"></span>
-          <span class="kbd__key">Esc</span><span class="kbd__text">к списку</span>
+          <div class="pagination">
+            <button class="btn btn--ghost" id="prevBtn" type="button">← Назад</button>
+            <span class="pagepill" id="pagePill">1 / 1</span>
+            <button class="btn btn--primary" id="nextBtn" type="button">Дальше →</button>
+          </div>
         </div>
       </section>
+
     </article>
+
+    <button class="totop" id="toTop" type="button" aria-label="Наверх">↑</button>
 
     <footer class="footer">
       <div>© <span id="y"></span> Рассказы моего отца</div>
@@ -108,10 +116,7 @@
     </footer>
   </main>
 
-  <button class="totop" id="toTop" type="button" aria-label="Наверх">↑</button>
-
-  <!-- ТЕКСТ ИСТОРИИ -->
-  <template id="storyText">
+<template id="storyText">
 
     <h2>Пролог</h2>
 
@@ -333,6 +338,6 @@
 
   </template>
 
-  <script src="./story.js"></script>
+  <script src="./story.js" defer></script>
 </body>
 </html>

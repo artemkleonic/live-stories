@@ -1,7 +1,7 @@
-/* =========================================================
-   STORY — "Вечер перед вылетом"
-   Дождь / ночь / аэропортовый шум + тепло камина
-   ========================================================= */
+/* =========================
+   STORY 7: "Вечер перед вылетом"
+   тема + фон + шапка с фото + controls (как Story-1)
+   ========================= */
 
 .story-body{
   /* мокрый асфальт + янтарь виски */
@@ -15,27 +15,24 @@
   /* бумага чуть “уютнее” */
   --paper: rgba(16, 12, 10, .74);
   --paper2: rgba(16, 12, 10, .50);
+  --stroke2: rgba(255,255,255,.14);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
 }
 
 /* фон истории */
 .bg-story{
   background:
-    /* тёплое пятно от камина слева */
     radial-gradient(1050px 760px at 18% 18%, var(--glow), transparent 62%),
-
-    /* холодный дождевой свет справа */
     radial-gradient(980px 720px at 84% 16%, var(--glow2), transparent 58%),
-
-    /* вуаль/ночь */
     linear-gradient(180deg, rgba(0,0,0,.52), rgba(0,0,0,.88)),
-
-    /* картинка */
     url("./img/bg-story-7.jpg");
   background-size: cover;
   background-position: center;
 }
 
-/* “дождевые нитки” — очень тонко, чтобы было дорого, а не спецэффект */
+/* “дождевые нитки” — тонко */
 .bg-story::before{
   content:"";
   position:absolute;
@@ -54,16 +51,107 @@
   filter: blur(.35px);
 }
 
+/* лёгкая виньетка */
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 35%, transparent 45%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.78), transparent 55%);
+  pointer-events:none;
+}
+
+/* прогресс-бар */
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
+
+/* =========================
+   STORY HEADER WITH PHOTO (как в 1 story)
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78)),
+    url("./img/bg-story-7.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
 /* заголовок — “тепло внутри” */
-.story__title{
+.storyhead .story__title{
   text-shadow:
     0 22px 62px rgba(0,0,0,.78),
     0 0 22px rgba(255,184,120,.10);
 }
 
-/* цитатные абзацы (если будут q/cite) — чуть “amber” */
-.story__content p:has(> q),
-.story__content p:has(> cite){
+/* controls внутри шапки */
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* сброс “карточности”, чтобы не было белых прямоугольников */
+.storyhead__controls .controls{
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* кнопки — читаемее */
+.storyhead__controls .iconbtn{
+  background: rgba(255,255,255,.06) !important;
+  border-color: rgba(255,255,255,.14) !important;
+}
+
+/* цитаты (без :has, чтобы работало везде) */
+.story__content p.quote,
+.story__content p.cite,
+.story__content blockquote{
   border-left-color: rgba(255,184,120,.38);
   background: rgba(255,184,120,.06);
+}
+
+/* мобила */
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
+}
+
+/* если в тексте будут картинки — делаем “как в 1 story” */
+.story-body .story__content img{
+  display:block;
+  width:100% !important;
+  max-width: 980px !important;
+  height:auto;
+  margin: 18px auto 22px;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+}
+@media (max-width: 780px){
+  .story-body .story__content img{ border-radius: 16px; }
 }
