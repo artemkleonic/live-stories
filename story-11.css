@@ -1,0 +1,152 @@
+/* =========================
+   STORY 10: "Палата №6"
+   шапка с фото (как Story-8/9) + своя тема/фон/акцент
+   ========================= */
+
+.story-body{
+  /* холодная больничная сталь + тревожный янтарь */
+  --accentA: rgba(214, 236, 255, .96);   /* холодный свет */
+  --accentB: rgba(255, 179, 107, .92);   /* тёплый янтарь */
+  --accentShadow: rgba(214, 236, 255, .18);
+
+  --glow:  rgba(214, 236, 255, .14);
+  --glow2: rgba(255, 179, 107, .10);
+
+  --paper:  rgba(10, 12, 16, .76);
+  --paper2: rgba(10, 12, 16, .50);
+  --stroke2: rgba(255,255,255,.12);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+}
+
+/* фон истории */
+.bg-story{
+  background:
+    radial-gradient(1050px 760px at 14% 14%, var(--glow), transparent 62%),
+    radial-gradient(900px 680px at 86% 18%, var(--glow2), transparent 58%),
+    linear-gradient(180deg, rgba(0,0,0,.48), rgba(0,0,0,.92)),
+    url("./img/bg-story-11.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* лёгкий “госпитальный” намёк: вертикальная решётка/плитка */
+.bg-story::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.10;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(255,255,255,.10) 0 1px,
+      transparent 1px 34px
+    );
+  mix-blend-mode: overlay;
+  filter: blur(.25px);
+}
+
+/* виньетка */
+.bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 32%, transparent 42%, rgba(0,0,0,.66) 80%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.82), transparent 55%);
+  pointer-events:none;
+}
+
+.readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB));
+  box-shadow: 0 0 24px var(--accentShadow);
+}
+
+/* =========================
+   STORYHEAD (как в Story-8/9)
+   ========================= */
+
+.storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.86)),
+    url("./img/bg-story-11.jpg") center / cover no-repeat;
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+.storyhead .story__title{
+  text-shadow:
+    0 22px 62px rgba(0,0,0,.78),
+    0 0 24px rgba(214,236,255,.10);
+}
+
+.storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(10,12,16,.72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* убираем белые квадраты/карточность */
+.storyhead__controls .controls,
+.storyhead__controls .controls__row,
+.storyhead__controls .controls__bar,
+.storyhead__controls .controls__left,
+.storyhead__controls .controls__right{
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* кнопки */
+.storyhead__controls .iconbtn,
+.storyhead__controls .btn{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+
+.storyhead__controls .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  color: rgba(10,10,12,.92) !important;
+}
+
+/* фокус без белого outline */
+.storyhead__controls .iconbtn:focus,
+.storyhead__controls .iconbtn:focus-visible,
+.storyhead__controls .btn:focus,
+.storyhead__controls .btn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(214,236,255,.18) !important;
+}
+
+/* strong */
+.story__content p strong{
+  color: rgba(255,245,230,.96);
+  text-shadow: 0 12px 26px rgba(0,0,0,.55);
+}
+
+/* мобила */
+@media (max-width: 780px){
+  .storyhead{ border-radius: 22px; }
+  .storyhead__content{ padding: 200px 18px 14px; }
+}

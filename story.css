@@ -398,3 +398,90 @@
   .controls{ justify-content: center; }
   .story__navbanner-inner{ padding: 10px; }
 }
+/* =========================================================
+   STORY TYPOGRAPHY — iPhone-like + readable on PC
+   PASTE AT VERY END of story.css
+   ========================================================= */
+
+.story-body{
+  /* iPhone-like system stack */
+  --font-ui: -apple-system, BlinkMacSystemFont,
+             "SF Pro Text","SF Pro Display",
+             "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  /* fixed readable scale for PC (no jumping with vw) */
+  --reader-font: 18px;
+  --reader-lh: 1.72;
+  --reader-track: 0.12px;
+
+  /* ideal measure */
+  --measure: 72ch;
+}
+
+/* base font for story pages */
+.story-body,
+.story-body .controls,
+.story-body .iconbtn,
+.story-body .btn,
+.story-body .pagehint__chip,
+.story-body .pagepill,
+.story-body .story__meta{
+  font-family: var(--font-ui) !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* limit line length in reader for PC */
+.reader__paper,
+.story__content{
+  max-width: var(--measure);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* main text: readable, not “loose” */
+.story__content{
+  font-size: calc(var(--reader-font) * var(--reader-font-scale)) !important;
+  line-height: var(--reader-lh) !important;
+  letter-spacing: var(--reader-track) !important;
+  color: rgba(255,255,255,.92);
+}
+
+/* paragraphs spacing */
+.story__content p{
+  margin: 0 0 0.95em !important;
+}
+
+/* headings inside text: keep them clean (no Cinzel in body text) */
+.story__content h2,
+.story__content h3{
+  font-family: var(--font-ui) !important;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+  margin: 1.4em 0 .6em !important;
+}
+
+/* story title can stay “display-like”, but make it iOS-feeling */
+.story__title{
+  font-family: var(--font-ui) !important;
+  font-weight: 650;
+  letter-spacing: -0.04em;
+}
+
+/* kicker: less shouting */
+.story__kicker{
+  font-family: var(--font-ui) !important;
+  letter-spacing: .18em;
+}
+
+/* PC boost */
+@media (min-width: 1200px){
+  .story-body{ --reader-font: 19px; }
+}
+
+/* mobile stays comfortable */
+@media (max-width: 780px){
+  .story-body{ --reader-font: 17px; }
+}

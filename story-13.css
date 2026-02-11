@@ -1,0 +1,243 @@
+/* =========================================================
+   STORY 13 — "Не кормите белых лебедей"
+   ЦЕЛЬ: 1:1 поведение/вид как у "Лаврентия" (Story-3),
+   но с ледяной палитрой и своим фоном.
+   Работает и с "правильной" и с "неправильной" разметкой.
+   ========================================================= */
+
+/* ===== 1) Токены темы (только цвета) ===== */
+.story-body[data-story-id="story-13"]{
+  --paper: rgba(8, 10, 12, .72);
+  --paper2: rgba(8, 10, 12, .50);
+  --stroke2: rgba(255,255,255,.12);
+
+  --reader-font-scale: 1;
+  --reader-font: clamp(16px, 1.15vw, 20px);
+
+  /* ice / steel / pale cyan */
+  --glow: rgba(160, 230, 255, .16);
+  --glow2: rgba(255, 255, 255, .10);
+
+  --accentA: rgba(212, 244, 255, .95);
+  --accentB: rgba(140, 210, 230, .30);
+  --accentShadow: rgba(160, 230, 255, .22);
+
+  /* фон как переменная, чтобы story.css работал “как надо” */
+  --story-bg: url("./img/bg-story-13.jpg");
+  --story-nav-bg: url("./img/bg-story-13.jpg");
+}
+
+/* sepia (если включаешь) */
+.story-body[data-story-id="story-13"][data-theme="sepia"]{
+  --paper: rgba(20, 16, 14, .80);
+  --paper2: rgba(20, 16, 14, .56);
+
+  --glow: rgba(255, 231, 205, .10);
+  --glow2: rgba(255, 255, 255, .08);
+
+  --accentA: rgba(255, 231, 205, .92);
+  --accentB: rgba(212, 244, 255, .22);
+  --accentShadow: rgba(255, 231, 205, .22);
+}
+
+/* ===== 2) BG (как Story-3, но лед) ===== */
+.story-body[data-story-id="story-13"] .bg-story{
+  background:
+    radial-gradient(900px 650px at 18% 22%, var(--glow), transparent 60%),
+    radial-gradient(1000px 700px at 82% 24%, var(--glow2), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.40), rgba(0,0,0,.88)),
+    var(--story-bg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+}
+
+.story-body[data-story-id="story-13"] .bg-story::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  background:
+    radial-gradient(1200px 900px at 50% 30%, transparent 40%, rgba(0,0,0,.62) 78%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.76), transparent 55%);
+  pointer-events:none;
+}
+
+/* ===== 3) Readbar ===== */
+.story-body[data-story-id="story-13"] .readbar__fill{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  box-shadow: 0 0 26px var(--accentShadow) !important;
+}
+
+/* =========================================================
+   4) STORY HEADER WITH PHOTO — как Story-3
+   ========================================================= */
+.story-body[data-story-id="story-13"] .storyhead{
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 22px 60px rgba(0,0,0,.55);
+}
+
+.story-body[data-story-id="story-13"] .storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 650px at 22% 22%, rgba(160,230,255,.18), transparent 62%),
+    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.84)),
+    var(--story-bg) center / cover no-repeat !important;
+  transform: scale(1.02);
+}
+
+/* постер */
+.story-body[data-story-id="story-13"] .storyhead__content{
+  position: relative;
+  z-index: 2;
+  padding: 500px 26px 18px;
+}
+
+/* ===== заголовок: поддержка двух вариантов классов ===== */
+.story-body[data-story-id="story-13"] .storyhead .story__title,
+.story-body[data-story-id="story-13"] .storyhead__title{
+  text-shadow: 0 18px 46px rgba(0,0,0,.70);
+}
+
+/* ===== 5) Controls внизу шапки (без белых плиток) ===== */
+.story-body[data-story-id="story-13"] .storyhead__controls{
+  position: relative;
+  z-index: 2;
+  padding: 12px;
+  background: rgba(6, 8, 10, .72);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+
+/* вырубаем “стекло/плитки” внутри */
+.story-body[data-story-id="story-13"] .storyhead__controls .controls,
+.story-body[data-story-id="story-13"] .storyhead__controls .controls__row,
+.story-body[data-story-id="story-13"] .storyhead__controls .controls__bar{
+  margin: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* если разметка “кривая” (есть center) */
+.story-body[data-story-id="story-13"] .controls__row{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.story-body[data-story-id="story-13"] .controls__left,
+.story-body[data-story-id="story-13"] .controls__right{
+  display:flex;
+  align-items:center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.story-body[data-story-id="story-13"] .controls__center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* кнопки */
+.story-body[data-story-id="story-13"] .storyhead__controls .iconbtn,
+.story-body[data-story-id="story-13"] .storyhead__controls .btn{
+  background: rgba(255,255,255,.06) !important;
+  border: 1px solid rgba(255,255,255,.14) !important;
+  color: rgba(255,255,255,.92) !important;
+}
+
+.story-body[data-story-id="story-13"] .storyhead__controls .btn--primary{
+  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
+  border-color: rgba(255,255,255,.16) !important;
+  color: rgba(10,10,12,.92) !important;
+  box-shadow: 0 0 26px var(--accentShadow) !important;
+}
+
+.story-body[data-story-id="story-13"] .storyhead__controls .iconbtn:focus,
+.story-body[data-story-id="story-13"] .storyhead__controls .iconbtn:focus-visible,
+.story-body[data-story-id="story-13"] .storyhead__controls .btn:focus,
+.story-body[data-story-id="story-13"] .storyhead__controls .btn:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(160,230,255,.22) !important;
+}
+
+/* =========================================================
+   6) READER: поддержка .reader__paper (норм) и .reader__inner (криво)
+   ========================================================= */
+.story-body[data-story-id="story-13"] .reader{ margin-top: 14px; }
+
+/* если у тебя правильная разметка — ничего не трогаем; если .reader__inner — делаем как .reader__paper */
+.story-body[data-story-id="story-13"] .reader__inner{
+  padding: 18px 18px 16px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,.12);
+  background:
+    radial-gradient(800px 220px at 20% 0%, rgba(160,230,255,.10), transparent 60%),
+    rgba(255,255,255,.04);
+  backdrop-filter: blur(12px);
+  position: relative;
+  box-shadow: 0 25px 70px rgba(0,0,0,.55);
+}
+
+/* page label/counter в “кривой” разметке */
+.story-body[data-story-id="story-13"] .page-label,
+.story-body[data-story-id="story-13"] .page-counter{
+  display:inline-flex;
+  align-items:center;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.18);
+  font-size: 12px;
+  color: rgba(255,255,255,.86);
+  margin-bottom: 10px;
+}
+
+/* акценты в тексте */
+.story-body[data-story-id="story-13"] .story__content p strong{
+  color: rgba(235, 250, 255, .98);
+  text-shadow: 0 10px 24px rgba(0,0,0,.55);
+}
+
+/* картинки в тексте — как у Story-3 */
+.story-body[data-story-id="story-13"] .story__content img{
+  display: block;
+  width: 100% !important;
+  max-width: 980px !important;
+  height: auto;
+  margin: 18px auto 22px;
+  border-radius: 18px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
+  border: 1px solid rgba(255,255,255,.12);
+  max-height: none;
+}
+
+/* =========================================================
+   7) MOBILE
+   ========================================================= */
+@media (max-width: 780px){
+  .story-body[data-story-id="story-13"] .storyhead{ border-radius: 22px; }
+  .story-body[data-story-id="story-13"] .storyhead__content{ padding: 200px 18px 14px; }
+  .story-body[data-story-id="story-13"] .reader__inner{ padding: 14px; border-radius: 22px; }
+  .story-body[data-story-id="story-13"] .story__content img{ border-radius: 16px; }
+  .story-body[data-story-id="story-13"] .pagination{ justify-content: center; }
+  .story-body[data-story-id="story-13"] .controls__row{ justify-content: center; }
+}
+
+/* =========================================================
+   8) Anti “white tile” artifacts (TG/Chrome)
+   ========================================================= */
+.story-body[data-story-id="story-13"] .controls,
+.story-body[data-story-id="story-13"] .controls *{ -webkit-tap-highlight-color: transparent; }
+
+.story-body[data-story-id="story-13"] .btn,
+.story-body[data-story-id="story-13"] .iconbtn{
+  -webkit-appearance: none;
+  appearance: none;
+  background-clip: padding-box;
+}

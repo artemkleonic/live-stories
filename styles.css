@@ -1,9 +1,10 @@
 /* =========================================================
-   DOLIUM / STORIES — PREMIUM AMBER UI (FULL CSS)
-   стиль: DOLIUM VENANDI (референс), тепло, золото, дерево, искры
+   DOLIUM / STORIES — PREMIUM AMBER UI (INDEX / HOME ONLY)
+   ТОЛЬКО ГЛАВНАЯ СТРАНИЦА: топбар, карточки, панели, фон
+   Типографика: iPhone-like (SF/Segoe) + читабельность на ПК
    ========================================================= */
 
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap");
 
 :root{
   /* base */
@@ -11,12 +12,12 @@
   --bg1:#090402;
   --bg2:#120805;
 
-  /* amber / gold */
+  /* amber / gold (натурально, без красного) */
   --gold:#f6d3a6;
   --gold2:#ffe5c8;
-  --amber:#ffb36b;
-  --copper:#c8753a;
-  --ember:#ff7a3a;
+  --amber:#f1b06b;
+  --copper:#b77743;
+  --ember:#d79a56;
 
   /* text */
   --txt: rgba(255,255,255,.94);
@@ -46,9 +47,19 @@
   /* motion */
   --ease: 320ms cubic-bezier(.2,.85,.2,1);
 
-  /* card sizing */
+  /* cards */
   --cardH: 160px;
   --cardHsm: 150px;
+
+  /* typography */
+  --font-ui: -apple-system, BlinkMacSystemFont,
+             "SF Pro Text","SF Pro Display",
+             "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Cinzel", serif;
+
+  --text-size: 16px; /* главная компактнее */
+  --text-lh: 1.55;
+  --text-track: 0.12px;
 }
 
 *{ box-sizing:border-box; }
@@ -57,18 +68,27 @@ html,body{ height:100%; }
 body{
   margin:0;
   color: var(--txt);
-  font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: var(--font-ui);
+  font-size: var(--text-size);
+  line-height: var(--text-lh);
+  letter-spacing: var(--text-track);
+
+  font-weight: 400;
   background: var(--bg0);
   overflow-x:hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 a{ color:inherit; text-decoration:none; }
 p{ margin:0; }
 h1,h2,h3,h4{ margin:0; }
-::selection{ background: rgba(255,179,107,.22); }
+::selection{ background: rgba(241,176,107,.22); }
 
 /* =========================================================
-   BACKGROUND (as on ref: warm embers, but NOT “hell”)
+   BACKGROUND — warm, not “hell”
    ========================================================= */
 .bg{
   position: fixed;
@@ -76,49 +96,41 @@ h1,h2,h3,h4{ margin:0; }
   z-index: -3;
 
   background:
-    /* мягкие “лампы” */
     radial-gradient(1100px 650px at 18% 18%, rgba(255,192,130,.14), transparent 64%),
-    radial-gradient(900px 520px at 82% 20%, rgba(255,150,80,.12), transparent 64%),
-
-    /* тёплая дымка снизу */
+    radial-gradient(900px 520px at 82% 20%, rgba(255,150,80,.10), transparent 64%),
     radial-gradient(1200px 850px at 50% 120%, rgba(0,0,0,.80), transparent 58%),
-
-    /* вуаль */
     linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.72)),
-
-    /* твой фон */
     url("./img/bg-index.jpg");
 
   background-size: cover;
   background-position: center;
-  filter: saturate(1.14) contrast(1.07) brightness(.92);
-  transform: scale(1.02);
+  filter: saturate(1.08) contrast(1.06) brightness(.92);
+  transform: none;
 }
 
-/* искры (мягкие, дорогие, без “адской” агрессии) */
 .bg::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity:.55;
+  opacity:.50;
   mix-blend-mode: screen;
   background:
     radial-gradient(2px 2px at 10% 30%, rgba(255,226,191,.55), transparent 60%),
-    radial-gradient(2px 2px at 18% 68%, rgba(255,122,58,.45), transparent 60%),
-    radial-gradient(2px 2px at 28% 40%, rgba(255,179,107,.45), transparent 60%),
-    radial-gradient(2px 2px at 42% 22%, rgba(255,226,191,.35), transparent 60%),
-    radial-gradient(2px 2px at 62% 18%, rgba(255,226,191,.40), transparent 60%),
-    radial-gradient(2px 2px at 74% 55%, rgba(255,122,58,.35), transparent 60%),
-    radial-gradient(2px 2px at 86% 34%, rgba(255,179,107,.35), transparent 60%),
-    radial-gradient(2px 2px at 90% 72%, rgba(255,226,191,.30), transparent 60%);
+    radial-gradient(2px 2px at 18% 68%, rgba(215,154,86,.35), transparent 60%),
+    radial-gradient(2px 2px at 28% 40%, rgba(241,176,107,.40), transparent 60%),
+    radial-gradient(2px 2px at 42% 22%, rgba(255,226,191,.30), transparent 60%),
+    radial-gradient(2px 2px at 62% 18%, rgba(255,226,191,.34), transparent 60%),
+    radial-gradient(2px 2px at 74% 55%, rgba(215,154,86,.28), transparent 60%),
+    radial-gradient(2px 2px at 86% 34%, rgba(241,176,107,.28), transparent 60%),
+    radial-gradient(2px 2px at 90% 72%, rgba(255,226,191,.26), transparent 60%);
   filter: blur(.35px);
   animation: emberFloat 9s ease-in-out infinite alternate;
 }
 
 @keyframes emberFloat{
-  from{ transform: translateY(0px); opacity:.42; }
-  to{ transform: translateY(-14px); opacity:.62; }
+  from{ transform: translateY(0px); opacity:.40; }
+  to{ transform: translateY(-14px); opacity:.60; }
 }
 
 /* =========================================================
@@ -130,7 +142,7 @@ h1,h2,h3,h4{ margin:0; }
 }
 
 /* =========================================================
-   TOPBAR — like DOLIUM header (gold serif + glass)
+   TOPBAR
    ========================================================= */
 .topbar{
   width: min(var(--max), calc(100% - 28px));
@@ -141,10 +153,11 @@ h1,h2,h3,h4{ margin:0; }
   border: 1px solid rgba(246,211,166,.26);
 
   background:
-    radial-gradient(680px 260px at 20% 0%, rgba(255,122,58,.12), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
-    linear-gradient(180deg, rgba(16,9,6,.86), rgba(16,9,6,.46));
+    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
+    linear-gradient(180deg, rgba(14,9,7,.86), rgba(14,9,7,.46));
 
+  /* если в TG белые плитки — ниже есть отключение на мобиле */
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow2);
   position: relative;
@@ -156,13 +169,12 @@ h1,h2,h3,h4{ margin:0; }
   gap: 18px;
 }
 
-/* тонкий “золотой блик” */
 .topbar::after{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
-  opacity:.22;
+  opacity:.18;
   background: linear-gradient(90deg, transparent, rgba(255,226,191,.18), transparent);
   transform: translateX(-65%);
   animation: topSheen 7s ease-in-out infinite;
@@ -170,7 +182,7 @@ h1,h2,h3,h4{ margin:0; }
 
 @keyframes topSheen{
   0%{ transform: translateX(-70%); opacity:.10; }
-  50%{ transform: translateX(65%); opacity:.24; }
+  50%{ transform: translateX(65%); opacity:.20; }
   100%{ transform: translateX(130%); opacity:.12; }
 }
 
@@ -180,12 +192,14 @@ h1,h2,h3,h4{ margin:0; }
   align-items:flex-start;
 }
 
-/* RM квадрат скрываем — он ломает “брендовый” вид */
+/* RM квадрат скрываем */
 .brand__mark{ display:none; }
 
+.brand__text{ display:flex; flex-direction:column; }
+
 .brand__title{
-  font-family: "Cinzel", serif;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 800;
   letter-spacing: .12em;
   text-transform: uppercase;
   color: rgba(246,211,166,.96);
@@ -211,6 +225,7 @@ h1,h2,h3,h4{ margin:0; }
 }
 
 .nav__link{
+  font-family: var(--font-ui);
   font-size: 13px;
   padding: 9px 12px;
   border-radius: 999px;
@@ -227,18 +242,16 @@ h1,h2,h3,h4{ margin:0; }
   transform: translateY(-1px);
   border-color: rgba(246,211,166,.26);
   background:
-    radial-gradient(220px 120px at 30% 10%, rgba(255,122,58,.18), transparent 62%),
+    radial-gradient(220px 120px at 30% 10%, rgba(215,154,86,.14), transparent 62%),
     rgba(0,0,0,.22);
   box-shadow: 0 16px 34px rgba(0,0,0,.44);
 }
 .nav__link:active{ transform: translateY(0); }
 
 /* =========================================================
-   HERO — скрываем (референс = только витрина карточек)
+   HERO / section headings hidden (as you wanted)
    ========================================================= */
 .hero{ display:none; }
-
-/* sections (тоже убираем заголовки, как на рефе) */
 .section{ margin-top: 14px; padding: 0; }
 .section__head{ display:none; }
 
@@ -252,141 +265,114 @@ h1,h2,h3,h4{ margin:0; }
 }
 
 /* =========================================================
-   CARD — “витрина” как на рефе
-   uses: --img:url(...)
+   CARD 2-LEVEL LAYOUT (image top + text bottom)
+   Требует разметку:
+   <a class="card" style="--img:url(...)">
+     <div class="card__media"><div class="card__top">...</div></div>
+     <div class="card__body">...</div>
+   </a>
    ========================================================= */
 .card{
   position: relative;
+  padding: 0;
+  min-height: unset;
+
   border-radius: 26px;
   overflow:hidden;
-
-  padding: 16px 16px 14px;
-  min-height: var(--cardH);
 
   border: 1px solid rgba(246,211,166,.22);
   box-shadow: var(--shadow2);
 
-  /* богато: подсветка + затемнение + картинка */
-   background:
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.55)),
-    var(--img);
+  background:
+    radial-gradient(680px 260px at 20% 0%, rgba(255,226,191,.08), transparent 62%),
+    linear-gradient(180deg, rgba(16,9,6,.66), rgba(16,9,6,.34));
 
-  filter:
-    saturate(1.35)
-    contrast(1.15)
-    brightness(1.08);
-
-  background-size: cover;
-  background-position: center;
   transform: translateZ(0);
   transition: var(--ease);
 }
 
-/* внутренняя виньетка */
-.card::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-   background:
-    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.06), transparent 62%),
-    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.62), transparent 68%);
-  opacity: .85;
-
+.card__media{
+  position: relative;
+  height: 190px;
+  background-image: var(--img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: saturate(1.18) contrast(1.08) brightness(1.05);
 }
 
-/* тонкая внутренняя рамка */
-.card::after{
+.card__media::before{
   content:"";
   position:absolute;
   inset:0;
   pointer-events:none;
   background:
-    linear-gradient(
-      135deg,
-      rgba(255,226,191,.18),
-      transparent 45%,
-      rgba(255,122,58,.12)
-    );
-  mix-blend-mode: screen;
-  opacity:.55;
+    radial-gradient(900px 420px at 50% 10%, rgba(0,0,0,.10), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.46));
 }
 
-
-.card:hover{
-  transform: translateY(-4px);
-  filter:
-    saturate(1.55)
-    contrast(1.18)
-    brightness(1.14);
-}
-
-
-/* top row */
 .card__top{
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  inset: 14px 14px auto 14px;
+  z-index: 2;
+
   display:flex;
   align-items:center;
   justify-content: space-between;
   gap: 10px;
 }
 
-/* badge / meta */
 .badge,
-.pill--num{
+.meta,
+.pill{
+  font-family: var(--font-ui);
   font-size: 12px;
-  font-weight: 800;
   padding: 7px 10px;
   border-radius: 999px;
-
-  border: 1px solid rgba(246,211,166,.26);
-  background:
-    radial-gradient(180px 90px at 30% 10%, rgba(255,122,58,.18), transparent 62%),
-    rgba(0,0,0,.18);
-
-  color: rgba(255,226,191,.96);
   backdrop-filter: blur(8px);
+  -webkit-tap-highlight-color: transparent;
 }
 
-.meta,
-.pill--time{
-  font-size: 12px;
-  padding: 7px 10px;
-  border-radius: 999px;
+.badge{
+  font-weight: 800;
+  border: 1px solid rgba(246,211,166,.26);
+  background:
+    radial-gradient(180px 90px at 30% 10%, rgba(215,154,86,.14), transparent 62%),
+    rgba(0,0,0,.18);
+  color: rgba(255,226,191,.96);
+}
 
+.meta{
   border: 1px solid rgba(255,255,255,.12);
   background: rgba(0,0,0,.26);
   color: rgba(255,255,255,.86);
-  backdrop-filter: blur(8px);
 }
 
-/* title */
+.card__body{
+  padding: 14px 16px 14px;
+  background:
+    radial-gradient(520px 220px at 20% 0%, rgba(246,211,166,.10), transparent 62%),
+    linear-gradient(180deg, rgba(16,9,6,.80), rgba(16,9,6,.42));
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
 .card__title{
-  position: relative;
-  z-index: 1;
-  margin-top: 10px;
-
-  font-family:"Cinzel", serif;
-  font-weight: 800;
-  letter-spacing: .03em;
-
-  font-size: clamp(26px, 4.2vw, 40px);
-  line-height: 1.04;
-
+  font-family: var(--font-display);
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.15;
+  letter-spacing: .06em;
+  text-transform: uppercase;
   color: rgba(255,255,255,.96);
-  text-shadow: 0 16px 40px rgba(0,0,0,.70);
+  text-shadow: 0 16px 40px rgba(0,0,0,.55);
 }
 
-/* desc */
 .card__desc{
-  position: relative;
-  z-index: 1;
-  margin-top: 6px;
-
-  color: rgba(255,255,255,.84);
+  margin-top: 8px;
+  font-family: var(--font-ui);
+  color: rgba(255,255,255,.88);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
 
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -394,10 +380,7 @@ h1,h2,h3,h4{ margin:0; }
   overflow: hidden;
 }
 
-/* bottom row */
 .card__bottom{
-  position: relative;
-  z-index: 1;
   margin-top: 12px;
   display:flex;
   align-items:center;
@@ -408,15 +391,11 @@ h1,h2,h3,h4{ margin:0; }
 .pill{
   font-size: 11px;
   padding: 7px 9px;
-  border-radius: 999px;
-
   border: 1px solid rgba(246,211,166,.16);
   background:
-    radial-gradient(160px 90px at 30% 10%, rgba(255,179,107,.14), transparent 62%),
+    radial-gradient(160px 90px at 30% 10%, rgba(241,176,107,.12), transparent 62%),
     rgba(0,0,0,.22);
-
   color: rgba(255,226,191,.88);
-  backdrop-filter: blur(9px);
 }
 
 .card__arrow{
@@ -427,38 +406,25 @@ h1,h2,h3,h4{ margin:0; }
   transition: var(--ease);
   text-shadow: 0 12px 30px rgba(0,0,0,.60);
 }
+
+.card:hover{
+  transform: translateY(-4px);
+  box-shadow: var(--shadow2), 0 18px 46px rgba(0,0,0,.45);
+}
+.card:hover .card__media{
+  filter: saturate(1.25) contrast(1.10) brightness(1.08);
+  transform: scale(1.02);
+}
 .card:hover .card__arrow{
   transform: translateX(4px);
   color: rgba(255,226,191,.98);
 }
 
-/* =========================================================
-   PROMO CARD — как баннер DOLIUM, более “плотный”
-   ========================================================= */
-.card--promo{
-  min-height: 170px;
-  border-color: rgba(246,211,166,.30);
-
-  background:
-    radial-gradient(1100px 460px at 18% 18%, rgba(255,122,58,.22), transparent 64%),
-    radial-gradient(900px 360px at 85% 16%, rgba(255,226,191,.14), transparent 64%),
-    linear-gradient(180deg, rgba(0,0,0,.06), rgba(0,0,0,.88)),
-    var(--img, linear-gradient(135deg, rgba(255,179,107,.20), rgba(0,0,0,.76)));
-}
-
-.card--promo .card__title{
-  text-transform: uppercase;
-  letter-spacing: .10em;
-  font-size: clamp(18px, 3vw, 30px);
-  color: rgba(246,211,166,.96);
-}
-
-.card--promo .card__desc{
-  -webkit-line-clamp: 4;
-}
+/* promo card */
+.card--promo .card__media{ height: 210px; }
 
 /* =========================================================
-   ABOUT / CONTACT panels — same luxury glass
+   PANELS (about/contact)
    ========================================================= */
 .section--split{
   display:grid;
@@ -473,20 +439,16 @@ h1,h2,h3,h4{ margin:0; }
   padding: 16px 16px;
 
   background:
-    radial-gradient(680px 260px at 20% 0%, rgba(255,122,58,.12), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
-    linear-gradient(180deg, rgba(16,9,6,.82), rgba(16,9,6,.34));
+    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
+    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
+    linear-gradient(180deg, rgba(14,9,7,.82), rgba(14,9,7,.34));
 
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow2);
 }
 
-.panel--soft{
-  border-color: rgba(246,211,166,.26);
-}
-
 .panel__title{
-  font-family:"Cinzel", serif;
+  font-family: var(--font-display);
   font-weight: 700;
   letter-spacing:.08em;
   text-transform: uppercase;
@@ -496,7 +458,8 @@ h1,h2,h3,h4{ margin:0; }
 
 .panel__text{
   margin-top: 8px;
-  color: rgba(255,255,255,.84);
+  font-family: var(--font-ui);
+  color: rgba(255,255,255,.86);
   font-size: 13px;
   line-height: 1.55;
 }
@@ -510,6 +473,7 @@ h1,h2,h3,h4{ margin:0; }
 
 /* buttons */
 .btn{
+  font-family: var(--font-ui);
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -520,29 +484,37 @@ h1,h2,h3,h4{ margin:0; }
 
   border: 1px solid rgba(246,211,166,.22);
   background:
-    radial-gradient(260px 140px at 30% 10%, rgba(255,122,58,.16), transparent 62%),
+    radial-gradient(260px 140px at 30% 10%, rgba(215,154,86,.12), transparent 62%),
     rgba(0,0,0,.22);
 
   color: rgba(255,226,191,.94);
   transition: var(--ease);
   box-shadow: 0 14px 30px rgba(0,0,0,.45);
+
+  -webkit-appearance:none;
+  appearance:none;
+  background-clip: padding-box;
 }
 
 .btn:hover{
   transform: translateY(-2px);
   border-color: rgba(246,211,166,.32);
-  box-shadow: var(--shadow2), 0 0 0 1px rgba(255,122,58,.12);
+  box-shadow: var(--shadow2), 0 0 0 1px rgba(215,154,86,.10);
 }
 .btn:active{ transform: translateY(0); }
 
 .btn--primary{
   background:
-    radial-gradient(320px 160px at 30% 10%, rgba(255,122,58,.24), transparent 62%),
-    radial-gradient(320px 160px at 85% 10%, rgba(255,226,191,.12), transparent 64%),
+    radial-gradient(320px 160px at 30% 10%, rgba(215,154,86,.16), transparent 62%),
+    radial-gradient(320px 160px at 85% 10%, rgba(255,233,207,.10), transparent 64%),
     rgba(0,0,0,.20);
 }
-.btn--ghost{
-  background: rgba(0,0,0,.26);
+.btn--ghost{ background: rgba(0,0,0,.26); }
+
+.btn:focus, .btn:focus-visible,
+.nav__link:focus, .nav__link:focus-visible{
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(246,211,166,.18) !important;
 }
 
 /* footer */
@@ -562,10 +534,18 @@ h1,h2,h3,h4{ margin:0; }
    ========================================================= */
 @media (max-width: 520px){
   .wrap{ width: calc(100% - 18px); }
-  .topbar{ width: calc(100% - 18px); border-radius: 22px; padding: 14px 14px 12px; }
+  .topbar{
+    width: calc(100% - 18px);
+    border-radius: 22px;
+    padding: 14px 14px 12px;
+  }
   .brand__title{ font-size: 18px; }
-  .card{ border-radius: 22px; padding: 14px 14px 12px; min-height: var(--cardHsm); }
-  .card::after{ inset: 9px; border-radius: 16px; }
+
+  .card{ border-radius: 22px; }
+  .card__media{ height: 165px; }
+  .card__top{ inset: 12px 12px auto 12px; }
+  .card__body{ padding: 12px 14px 12px; }
+  .card__title{ font-size: 17px; }
   .panel{ border-radius: 22px; }
 }
 
@@ -575,671 +555,20 @@ h1,h2,h3,h4{ margin:0; }
     gap: 16px;
   }
   .section--split{ grid-template-columns: 1fr 1fr; }
-
-  /* promo spans full width */
   .card--promo{ grid-column: 1 / -1; }
 }
 
 @media (min-width: 1100px){
   .grid{ gap: 18px; }
-  .card{ min-height: 175px; }
   .brand__title{ font-size: 22px; }
 }
 
 /* =========================================================
-   Anti “white tile” artifacts (TG/Chrome)
-   ========================================================= */
-.controls, .controls *{ -webkit-tap-highlight-color: transparent; }
-
-.btn, .card, .nav__link{
-  -webkit-appearance:none;
-  appearance:none;
-  background-clip: padding-box;
-}
-
-.btn:focus, .btn:focus-visible,
-.nav__link:focus, .nav__link:focus-visible{
-  outline: none !important;
-  box-shadow: 0 0 0 2px rgba(246,211,166,.18) !important;
-}
-/* /* =========================================================
-   FINAL OVERRIDE — NATURAL AMBER (PASTE AT VERY END)
-   ========================================================= */
-
-:root{
-  --amber:#f1b06b;
-  --ember:#d79a56;   /* вместо красного */
-}
-
-/* убираем красные “лампы” в хедере/панелях/кнопках */
-.topbar,
-.panel,
-.btn,
-.nav__link{
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
-    linear-gradient(180deg, rgba(14,9,7,.86), rgba(14,9,7,.46)) !important;
-}
-
-/* карточки: натурально, без кислотной сатурации */
-body .card{
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.14), rgba(0,0,0,.52)),
-    var(--img) !important;
-
-  filter: saturate(1.18) contrast(1.10) brightness(1.03) !important;
-}
-
-/* убираем “демонический прожектор” */
-body .card::after{
-  opacity: .30 !important;
-  mix-blend-mode: normal !important;
-  background: linear-gradient(
-    135deg,
-    rgba(255,236,210,.16),
-    transparent 55%,
-    rgba(215,154,86,.10)
-  ) !important;
-}
-
-/* виньетка мягче */
-body .card::before{
-  opacity: .78 !important;
-  background:
-    radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.03), transparent 66%),
-    radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.56), transparent 72%) !important;
-}
-
-/* hover спокойный */
-body .card:hover{
-  transform: translateY(-4px) !important;
-  filter: saturate(1.22) contrast(1.12) brightness(1.06) !important;
-}
-/* =========================================================
-   MOBILE WEBVIEW FIX — remove white tiles
+   TG/WEBVIEW — remove white tiles (disable blur on mobile)
    ========================================================= */
 @media (max-width: 900px){
-  .topbar, .panel, .controls, .controls__bar,
-  .btn, .nav__link, .badge, .meta, .pill{
+  .topbar, .panel, .btn, .nav__link, .badge, .meta, .pill{
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
   }
-}
-/* =========================================================
-   FIX "ZOOM / CROPPED" LOOK
-   вставь в самый конец styles.css
-   ========================================================= */
-
-/* 1) общий фон страницы: убираем приближение */
-.bg{
-  transform: none !important;          /* было scale(1.02) */
-  filter: saturate(1.08) contrast(1.06) brightness(.92) !important;
-}
-
-/* 2) карточки: меньше ощущения "зумится" */
-body .card{
-  background-position: center !important;
-  background-size: 100% auto !important;   /* вместо cover */
-  /* если фото вертикальные — попробуй auto 100% */
-  /* background-size: auto 100% !important; */
-}
-
-/* 3) на мобиле — чуть мягче, чтобы не рвало композицию */
-@media (max-width: 520px){
-  body .card{
-    background-size: cover !important;      /* на мобиле лучше cover */
-    background-position: center !important;
-  }
-}
-/* =========================================================
-   MOBILE BOOST — ярче на телефоне (без красного "ада")
-   вставь в КОНЕЦ styles.css
-   ========================================================= */
-
-/* 1) общий фон страницы — светлее и сочнее только на телефоне */
-@media (max-width: 780px){
-  .bg{
-    filter: saturate(1.22) contrast(1.12) brightness(1.08) !important;
-    transform: none !important;
-  }
-
-  /* чуть светлее общая типографика */
-  body{
-    color: rgba(255,255,255,.94) !important;
-  }
-}
-
-/* 2) карточки — ярче, но без красного */
-@media (max-width: 780px){
-  .card{
-    /* меньше черной пелены поверх фото */
-    background:
-      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.34)),
-      var(--img) !important;
-
-    /* яркость для мобилы */
-    filter:
-      saturate(1.55)
-      contrast(1.18)
-      brightness(1.18) !important;
-  }
-
-  /* виньетка не душит фото */
-  .card::before{
-    opacity: .48 !important;
-    background:
-      radial-gradient(900px 360px at 50% 0%, rgba(0,0,0,.03), transparent 70%),
-      radial-gradient(1200px 740px at 50% 120%, rgba(0,0,0,.34), transparent 78%) !important;
-  }
-
-  /* “прожектор” делаем золотым, не красным */
-  .card::after{
-    opacity: .70 !important;
-    mix-blend-mode: screen !important;
-    background:
-      linear-gradient(135deg,
-        rgba(255,244,220,.34),
-        transparent 42%,
-        rgba(246,211,166,.22)
-      ) !important;
-  }
-}
-
-/* 3) шапка/кнопки — меньше красных вспышек, больше тёплого золота */
-:root{
-  --ember: #d88a4a;        /* было слишком красное */
-  --amber: #f0b06a;        /* мягкий янтарь */
-  --copper:#b77743;        /* дерево/медь, без огня */
-}
-
-/* уменьшаем красные радиалки в топбаре/кнопках */
-.topbar{
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(240,176,106,.10), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,226,191,.10), transparent 64%),
-    linear-gradient(180deg, rgba(16,9,6,.86), rgba(16,9,6,.46)) !important;
-}
-
-.nav__link:hover,
-.btn,
-.btn--primary{
-  background:
-    radial-gradient(260px 140px at 30% 10%, rgba(240,176,106,.12), transparent 62%),
-    rgba(0,0,0,.22) !important;
-}
-/* TG webview обычно темнит — даем +10% */
-body.tg .bg{ filter: saturate(1.28) contrast(1.14) brightness(1.12) !important; }
-body.tg .card{ filter: saturate(1.65) contrast(1.20) brightness(1.22) !important; }
-/* =========================================================
-   MOBILE MICRO BOOST — ещё ЧУТЬ ЯРЧЕ, НО БЛАГОРОДНО
-   ========================================================= */
-
-@media (max-width: 780px){
-
-  /* фон страницы */
-  .bg{
-    filter:
-      saturate(1.30)
-      contrast(1.14)
-      brightness(1.14) !important;
-  }
-
-  /* карточки историй */
-  .card{
-    filter:
-      saturate(1.68)
-      contrast(1.22)
-      brightness(1.24) !important;
-  }
-
-  /* ещё слабее затемнение поверх фото */
-  .card::before{
-    opacity: .42 !important;
-  }
-
-  /* золотой свет — мягче, шире */
-  .card::after{
-    opacity: .78 !important;
-    background:
-      linear-gradient(
-        135deg,
-        rgba(255,248,228,.38),
-        transparent 40%,
-        rgba(246,211,166,.26)
-      ) !important;
-  }
-
-  /* текст — на полтона светлее */
-  .card__title{
-    color: rgba(255,255,255,.98) !important;
-  }
-  .card__desc{
-    color: rgba(255,255,255,.90) !important;
-  }
-}
-/* =========================================================
-   CARD 2-LEVEL LAYOUT (image top + text bottom)
-   ВСТАВЬ В САМЫЙ КОНЕЦ styles.css
-   ========================================================= */
-
-/* карточка больше НЕ является фон-картинкой */
-body .card{
-  padding: 0 !important;
-  min-height: unset !important;
-
-  border-radius: 26px;
-  overflow: hidden;
-
-  border: 1px solid rgba(246,211,166,.22);
-  box-shadow: var(--shadow2);
-
-  /* стекло/панель */
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(255,226,191,.08), transparent 62%),
-    linear-gradient(180deg, rgba(16,9,6,.66), rgba(16,9,6,.34)) !important;
-
-  filter: none !important;
-  transform: translateZ(0);
-  transition: var(--ease);
-}
-
-/* старые эффекты подсветки карточки выключаем (они были под full-bg) */
-body .card::before,
-body .card::after{
-  display: none !important;
-}
-
-/* верхняя часть — картинка */
-.card__media{
-  position: relative;
-  height: 190px;              /* можно 170–240 под вкус */
-  background-image: var(--img);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* “дорогая” пелена поверх картинки, чтобы badge читался */
-  filter: saturate(1.25) contrast(1.10) brightness(1.05);
-}
-
-/* мягкая виньетка на картинке */
-.card__media::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(900px 420px at 50% 10%, rgba(0,0,0,.10), transparent 60%),
-    linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.46));
-}
-
-/* top row остаётся поверх картинки */
-.card__media .card__top{
-  position: absolute;
-  inset: 14px 14px auto 14px;
-  z-index: 2;
-}
-
-/* низ — текстовый блок */
-.card__body{
-  padding: 14px 16px 14px;
-  background:
-    radial-gradient(520px 220px at 20% 0%, rgba(246,211,166,.10), transparent 62%),
-    linear-gradient(180deg, rgba(16,9,6,.80), rgba(16,9,6,.42));
-  border-top: 1px solid rgba(255,255,255,.08);
-}
-
-/* заголовок/описание — теперь без гигантского размера (это уже не “постер”) */
-.card__body .card__title{
-  margin-top: 0 !important;
-  font-size: 18px !important;          /* можно 17–20 */
-  line-height: 1.15 !important;
-  letter-spacing: .06em !important;
-  text-transform: uppercase;
-}
-
-.card__body .card__desc{
-  margin-top: 8px !important;
-  font-size: 13px;
-  line-height: 1.55;
-
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-/* низ с тегами */
-.card__body .card__bottom{
-  margin-top: 12px !important;
-}
-
-/* hover: слегка поднимаем и “оживляем” картинку, а не весь блок */
-body .card:hover{
-  transform: translateY(-4px);
-  box-shadow: var(--shadow2), 0 18px 46px rgba(0,0,0,.45);
-}
-body .card:hover .card__media{
-  filter: saturate(1.35) contrast(1.12) brightness(1.10);
-  transform: scale(1.02);
-  transition: var(--ease);
-}
-
-/* стрелка */
-.card__arrow{
-  margin-left: auto;
-}
-
-/* промо — делаем чуть выше картинку */
-.card--promo .card__media{
-  height: 210px;
-}
-
-/* адаптив */
-@media (max-width: 520px){
-  body .card{ border-radius: 22px; }
-  .card__media{ height: 165px; }
-  .card__media .card__top{ inset: 12px 12px auto 12px; }
-  .card__body{ padding: 12px 14px 12px; }
-  .card__body .card__title{ font-size: 17px !important; }
-}
-/* =========================
-   THEME: LIGHT (paper)
-   ========================= */
-.story-body[data-theme="light"]{
-  color: rgba(18,18,20,.92);
-
-  /* светлый фон + бумага */
-  --paper: rgba(255,255,255,.92);
-  --paper2: rgba(255,255,255,.78);
-
-  /* текст/вторичные */
-  --txt: rgba(18,18,20,.92);
-  --muted: rgba(18,18,20,.72);
-  --dim: rgba(18,18,20,.58);
-
-  /* обводки */
-  --stroke: rgba(0,0,0,.14);
-  --stroke2: rgba(0,0,0,.10);
-}
-
-/* фон затемняем меньше, чтобы не было “грязи” */
-.story-body[data-theme="light"] .bg-story{
-  filter: saturate(1.05) contrast(1.02) brightness(1.02);
-}
-
-/* reader paper */
-.story-body[data-theme="light"] .reader__paper,
-.story-body[data-theme="light"] .story__content{
-  color: rgba(18,18,20,.92);
-}
-
-/* controls — чтобы не вываливались белые/чёрные квадраты */
-.story-body[data-theme="light"] .controls{
-  background: rgba(255,255,255,.66) !important;
-  border: 1px solid rgba(0,0,0,.12) !important;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-/* кнопки */
-.story-body[data-theme="light"] .chip,
-.story-body[data-theme="light"] .btn,
-.story-body[data-theme="light"] .iconbtn{
-  background: rgba(255,255,255,.72) !important;
-  border: 1px solid rgba(0,0,0,.14) !important;
-  color: rgba(18,18,20,.92) !important;
-}
-
-/* hover */
-.story-body[data-theme="light"] .chip:hover,
-.story-body[data-theme="light"] .btn:hover,
-.story-body[data-theme="light"] .iconbtn:hover{
-  background: rgba(255,255,255,.88) !important;
-}
-
-/* акцентная */
-.story-body[data-theme="light"] .chip--accent,
-.story-body[data-theme="light"] .btn--primary{
-  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
-  border-color: rgba(0,0,0,.10) !important;
-  color: rgba(10,10,12,.92) !important;
-}
-
-/* фокус — аккуратно, без белого квадрата */
-.story-body[data-theme="light"] .chip:focus,
-.story-body[data-theme="light"] .chip:focus-visible,
-.story-body[data-theme="light"] .btn:focus,
-.story-body[data-theme="light"] .btn:focus-visible,
-.story-body[data-theme="light"] .iconbtn:focus,
-.story-body[data-theme="light"] .iconbtn:focus-visible{
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(0,0,0,.14) !important;
-}
-
-/* мета/вторичный текст */
-.story-body[data-theme="light"] .story__meta,
-.story-body[data-theme="light"] .brand__tag,
-.story-body[data-theme="light"] .pagehint__chip--muted{
-  color: rgba(18,18,20,.66) !important;
-}
-
-/* topbar */
-.story-body[data-theme="light"] .topbar{
-  background: rgba(255,255,255,.62);
-  border-bottom: 1px solid rgba(0,0,0,.10);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-/* FIX: в light теме шапка истории должна быть светлой (она на тёмном фоне) */
-.story-body[data-theme="light"] .story__kicker,
-.story-body[data-theme="light"] .story__title,
-.story-body[data-theme="light"] .story__meta{
-  color: rgba(255,255,255,.92) !important;
-  text-shadow:
-    0 18px 50px rgba(0,0,0,.78),
-    0 2px 0 rgba(0,0,0,.30);
-}
-
-/* вторичное в мета чуть мягче */
-.story-body[data-theme="light"] .story__meta{
-  color: rgba(255,255,255,.80) !important;
-}
-
-/* а вот ВНУТРИ бумаги — наоборот, тёмный текст */
-.story-body[data-theme="light"] .reader__paper,
-.story-body[data-theme="light"] .reader__paper .story__content{
-  color: rgba(18,18,20,.92) !important;
-  text-shadow: none !important;
-}
-/* =========================================================
-   FIX: controls плохо видны в LIGHT теме
-   ========================================================= */
-
-.story-body[data-theme="light"] .storyhead__controls,
-.story-body[data-theme="light"] .controls{
-  background: rgba(245,246,248,.92) !important; /* плотный светлый */
-  border-top: 1px solid rgba(0,0,0,.12) !important;
-  box-shadow:
-    0 -1px 0 rgba(255,255,255,.6) inset,
-    0 10px 28px rgba(0,0,0,.14) !important;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-/* сами кнопки — тёмный текст + чёткая рамка */
-.story-body[data-theme="light"] .chip,
-.story-body[data-theme="light"] .iconbtn,
-.story-body[data-theme="light"] .btn{
-  background: rgba(255,255,255,.96) !important;
-  color: rgba(20,22,26,.92) !important;
-  border: 1px solid rgba(0,0,0,.18) !important;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.8) inset,
-    0 2px 6px rgba(0,0,0,.10);
-}
-
-/* hover — чтобы было видно, что это кнопка */
-.story-body[data-theme="light"] .chip:hover,
-.story-body[data-theme="light"] .iconbtn:hover,
-.story-body[data-theme="light"] .btn:hover{
-  background: rgba(255,255,255,1) !important;
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.9) inset,
-    0 4px 10px rgba(0,0,0,.16);
-}
-
-/* активная (нажатая) */
-.story-body[data-theme="light"] .chip:active,
-.story-body[data-theme="light"] .iconbtn:active,
-.story-body[data-theme="light"] .btn:active{
-  transform: translateY(1px);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,.6) inset,
-    0 1px 3px rgba(0,0,0,.18);
-}
-
-/* акцентная кнопка (Поделиться) — оставить цвет */
-.story-body[data-theme="light"] .chip--accent,
-.story-body[data-theme="light"] .btn--primary{
-  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
-  color: rgba(10,10,12,.92) !important;
-  border-color: rgba(0,0,0,.14) !important;
-}
-
-/* иконки/буквы A− A+ сделать контрастнее */
-.story-body[data-theme="light"] .chip--icon,
-.story-body[data-theme="light"] .iconbtn{
-  font-weight: 700;
-}
-/* =========================================================
-   LIGHT THEME — НОРМАЛЬНО: светлая бумага + тёмный UI
-   (убирает белые “простыни” и делает кнопки/заголовки видимыми)
-   ========================================================= */
-
-.story-body[data-theme="light"]{
-  /* Светлая "бумага" для чтения */
-  --paper: rgba(255, 252, 246, .96);
-  --paper2: rgba(255, 252, 246, .86);
-
-  /* Текст на бумаге */
-  --txt: rgba(16, 18, 20, .92);
-  --muted: rgba(16, 18, 20, .68);
-  --dim: rgba(16, 18, 20, .55);
-
-  /* Обводки */
-  --stroke2: rgba(16,18,20,.14);
-}
-
-/* 1) Заголовок/мета на картинке: добавляем тёмную вуаль, чтобы всё читалось */
-.story-body[data-theme="light"] .story__head,
-.story-body[data-theme="light"] .story__kicker,
-.story-body[data-theme="light"] .story__title,
-.story-body[data-theme="light"] .story__meta{
-  position: relative;
-  z-index: 1;
-}
-
-.story-body[data-theme="light"] .story__head::before{
-  content:"";
-  position:absolute;
-  left:-16px; right:-16px;
-  top:-14px; bottom:-14px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.18));
-  box-shadow: 0 18px 40px rgba(0,0,0,.22);
-  z-index: -1;
-}
-
-.story-body[data-theme="light"] .story__kicker{
-  color: rgba(255,255,255,.78) !important;
-}
-.story-body[data-theme="light"] .story__meta{
-  color: rgba(255,255,255,.75) !important;
-}
-.story-body[data-theme="light"] .story__title{
-  color: rgba(255,255,255,.96) !important;
-  text-shadow: 0 18px 46px rgba(0,0,0,.55) !important;
-}
-
-/* 2) Панель controls в светлой теме НЕ белая. Это тёмное стекло. */
-.story-body[data-theme="light"] .controls,
-.story-body[data-theme="light"] .controls__bar{
-  background: transparent !important;
-}
-
-.story-body[data-theme="light"] .controls{
-  background: rgba(12, 14, 18, .55) !important;
-  border: 1px solid rgba(255,255,255,.14) !important;
-  box-shadow: 0 14px 38px rgba(0,0,0,.28) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 18px;
-}
-
-/* 3) Кнопки/чипы — нормальный контраст (видно всегда) */
-.story-body[data-theme="light"] .chip,
-.story-body[data-theme="light"] .iconbtn,
-.story-body[data-theme="light"] .btn{
-  background: rgba(12, 14, 18, .38) !important;
-  border: 1px solid rgba(255,255,255,.16) !important;
-  color: rgba(255,255,255,.92) !important;
-  box-shadow: 0 1px 0 rgba(255,255,255,.08) inset !important;
-}
-
-.story-body[data-theme="light"] .chip:hover,
-.story-body[data-theme="light"] .iconbtn:hover,
-.story-body[data-theme="light"] .btn:hover{
-  background: rgba(12, 14, 18, .52) !important;
-}
-
-.story-body[data-theme="light"] .chip:focus,
-.story-body[data-theme="light"] .chip:focus-visible,
-.story-body[data-theme="light"] .btn:focus,
-.story-body[data-theme="light"] .btn:focus-visible,
-.story-body[data-theme="light"] .iconbtn:focus,
-.story-body[data-theme="light"] .iconbtn:focus-visible{
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(140,200,255,.22) !important;
-}
-
-/* Акцентная кнопка — остаётся акцентной, но не “пластик” */
-.story-body[data-theme="light"] .chip--accent,
-.story-body[data-theme="light"] .btn--primary{
-  background: linear-gradient(90deg, var(--accentA), var(--accentB)) !important;
-  border-color: rgba(255,255,255,.16) !important;
-  color: rgba(10,10,12,.92) !important;
-}
-
-/* 4) Читалка: бумага светлая, текст тёмный — читаемость максимальная */
-.story-body[data-theme="light"] .reader__paper{
-  background: var(--paper) !important;
-  border: 1px solid rgba(16,18,20,.10) !important;
-  box-shadow: 0 20px 60px rgba(0,0,0,.14) !important;
-}
-
-.story-body[data-theme="light"] .story__content{
-  color: var(--txt) !important;
-}
-.story-body[data-theme="light"] .story__content p{
-  color: var(--txt) !important;
-}
-.story-body[data-theme="light"] .story__content h2{
-  color: rgba(12,14,16,.92) !important;
-}
-
-/* 5) Pagehint (твои “Страница 5 / 5”): чтобы не выглядело бледно */
-.story-body[data-theme="light"] .pagehint__chip{
-  background: rgba(12,14,18,.40) !important;
-  border: 1px solid rgba(255,255,255,.14) !important;
-  color: rgba(255,255,255,.90) !important;
-}
-.story-body[data-theme="light"] .pagehint__chip--muted{
-  color: rgba(255,255,255,.78) !important;
-}
-
-/* 6) Прогресс-бар — пусть остаётся “дорогим” */
-.story-body[data-theme="light"] .readbar__fill{
-  box-shadow: 0 0 22px var(--accentShadow);
 }
