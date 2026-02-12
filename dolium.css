@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/* =========================
+   GLOBAL
+========================= */
+
+body{
+  font-family: "Roboto Mono", serif;
+  margin:0;
+  padding:0;
+  background:#1f1b24;
+  color:#e0c9a6;
+  line-height:1.8;
+  overflow-x:hidden;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#4a2f49;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,.5);
+}
+
+nav a{
+  color:#e0c9a6;
+  text-decoration:none;
+  padding:12px 24px;
+  font-weight:bold;
+  transition:all .3s ease;
+  border-radius:50px;
+}
+
+nav a:hover,
+nav a.active{
+  background:#ffcc00;
+  color:#1f1b24;
+  transform:scale(1.08);
+}
+
+/* отступ под фиксированную навигацию */
+.spacer{
+  height:60px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  text-align:center;
+  padding:30px 20px;
+  background:#4a2f49;
+  animation:fadeIn 1s ease-in-out;
+  box-shadow:0 4px 10px rgba(0,0,0,.5);
+}
+
+.hero h1{
+  font-size:2.6rem;
+  font-weight:bold;
+  color:#ffcc00;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  text-shadow:2px 2px 5px rgba(0,0,0,.5);
+  margin:0;
+}
+
+.hero p{
+  margin-top:10px;
+  font-size:1.1rem;
+}
+
+/* =========================
+   INTRO BLOCK
+========================= */
+
+.intro{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:70px;
+  padding:100px 40px 60px;
+  max-width:1300px;
+  margin:0 auto;
+}
+
+.intro-text{
+  flex:1;
+  max-width:650px;
+  animation:slideInLeft 1s ease-in-out;
+}
+
+.intro-text h2{
+  font-size:2rem;
+  color:#ffcc00;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  text-shadow:1px 1px 4px rgba(0,0,0,.5);
+}
+
+.intro-text p{
+  margin-bottom:16px;
+  font-size:1.05rem;
+}
+
+.intro-text b{
+  color:#ffcc00;
+}
+
+/* =========================
+   IMAGE SIDE
+========================= */
+
+.intro-image{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  animation:slideInRight 1s ease-in-out;
+}
+
+.intro-image img{
+  width:100%;
+  max-width:480px;
+  border-radius:14px;
+  box-shadow:0 15px 50px rgba(0,0,0,.6);
+  transition:transform .6s ease, box-shadow .6s ease;
+}
+
+.intro-image img:hover{
+  transform:scale(1.04);
+  box-shadow:0 25px 70px rgba(0,0,0,.8);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+  margin-top:25px;
+}
+
+.btn{
+  display:inline-block;
+  background:#ffcc00;
+  color:#1f1b24;
+  padding:14px 28px;
+  font-size:1.1rem;
+  font-weight:bold;
+  text-decoration:none;
+  border-radius:8px;
+  transition:all .3s ease;
+  box-shadow:0 6px 15px rgba(255,204,0,.4);
+}
+
+.btn:hover{
+  background:#e0b900;
+  transform:scale(1.05);
+  box-shadow:0 10px 25px rgba(255,204,0,.6);
+}
+
+.subbtn{
+  display:inline-block;
+  margin-left:15px;
+  padding:14px 20px;
+  border-radius:8px;
+  border:1px solid rgba(255,204,0,.4);
+  color:#e0c9a6;
+  text-decoration:none;
+  transition:all .3s ease;
+  font-weight:bold;
+}
+
+.subbtn:hover{
+  background:rgba(255,204,0,.1);
+  transform:scale(1.03);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:#1f1022;
+  color:#d7b29d;
+  font-size:1rem;
+  margin-top:60px;
+  box-shadow:0 -5px 15px rgba(0,0,0,.3);
+}
+
+footer:hover{
+  background:#28122d;
+  transition:background .5s ease-in-out;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px){
+
+  .intro{
+    flex-direction:column;
+    padding:70px 20px;
+    gap:35px;
+  }
+
+  .intro-image img{
+    max-width:100%;
+  }
+
+  .actions{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .subbtn{
+    margin-left:0;
+  }
+
+  .hero h1{
+    font-size:2rem;
+  }
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes slideInLeft{
+  from{
+    transform:translateX(-60px);
+    opacity:0;
+  }
+  to{
+    transform:translateX(0);
+    opacity:1;
+  }
+}
+
+@keyframes slideInRight{
+  from{
+    transform:translateX(60px);
+    opacity:0;
+  }
+  to{
+    transform:translateX(0);
+    opacity:1;
+  }
+}
