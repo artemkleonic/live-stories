@@ -2,7 +2,7 @@
    DOLIUM / STORIES — PREMIUM AMBER UI (INDEX / HOME ONLY)
    ТОЛЬКО ГЛАВНАЯ СТРАНИЦА: топбар, карточки, панели, фон
    Типографика: iPhone-like (SF/Segoe) + читабельность на ПК
-   ========================================================= */
+========================================================= */
 
 @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&display=swap");
 
@@ -11,59 +11,51 @@
   --bg0:#050302;
   --bg1:#090402;
   --bg2:#120805;
-
   /* amber / gold (натурально, без красного) */
   --gold:#f6d3a6;
   --gold2:#ffe5c8;
   --amber:#f1b06b;
   --copper:#b77743;
   --ember:#d79a56;
-
   /* text */
   --txt: rgba(255,255,255,.94);
   --muted: rgba(255,255,255,.82);
   --dim: rgba(255,255,255,.62);
-
   /* strokes */
   --stroke: rgba(246,211,166,.28);
   --stroke2: rgba(255,255,255,.12);
-
   /* glass */
   --glassA: rgba(16, 9, 6, .76);
   --glassB: rgba(16, 9, 6, .42);
-
   /* shadows */
   --shadow: 0 26px 90px rgba(0,0,0,.66);
   --shadow2: 0 14px 45px rgba(0,0,0,.56);
-
   /* radius */
   --r: 14px;
   --r2: 22px;
   --r3: 28px;
-
   /* layout */
   --max: 1120px;
-
   /* motion */
   --ease: 320ms cubic-bezier(.2,.85,.2,1);
-
   /* cards */
   --cardH: 160px;
   --cardHsm: 150px;
-
   /* typography */
-  --font-ui: -apple-system, BlinkMacSystemFont,
-             "SF Pro Text","SF Pro Display",
-             "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "SF Pro Text","SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-display: "Cinzel", serif;
-
   --text-size: 16px; /* главная компактнее */
   --text-lh: 1.55;
   --text-track: 0.12px;
 }
 
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+}
 
 body{
   margin:0;
@@ -72,36 +64,43 @@ body{
   font-size: var(--text-size);
   line-height: var(--text-lh);
   letter-spacing: var(--text-track);
-
   font-weight: 400;
   background: var(--bg0);
   overflow-x:hidden;
-
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
-a{ color:inherit; text-decoration:none; }
-p{ margin:0; }
-h1,h2,h3,h4{ margin:0; }
-::selection{ background: rgba(241,176,107,.22); }
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+p{
+  margin:0;
+}
+
+h1,h2,h3,h4{
+  margin:0;
+}
+
+::selection{
+  background: rgba(241,176,107,.22);
+}
 
 /* =========================================================
    BACKGROUND — warm, not “hell”
-   ========================================================= */
+========================================================= */
 .bg{
   position: fixed;
   inset: 0;
   z-index: -3;
-
-  background:
-    radial-gradient(1100px 650px at 18% 18%, rgba(255,192,130,.14), transparent 64%),
-    radial-gradient(900px 520px at 82% 20%, rgba(255,150,80,.10), transparent 64%),
-    radial-gradient(1200px 850px at 50% 120%, rgba(0,0,0,.80), transparent 58%),
-    linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.72)),
-    url("./img/bg-index.jpg");
-
+  background: radial-gradient(1100px 650px at 18% 18%, rgba(255,192,130,.14), transparent 64%),
+              radial-gradient(900px 520px at 82% 20%, rgba(255,150,80,.10), transparent 64%),
+              radial-gradient(1200px 850px at 50% 120%, rgba(0,0,0,.80), transparent 58%),
+              linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.72)),
+              url("./img/bg-index.jpg");
   background-size: cover;
   background-position: center;
   filter: saturate(1.08) contrast(1.06) brightness(.92);
@@ -115,15 +114,14 @@ h1,h2,h3,h4{ margin:0; }
   pointer-events:none;
   opacity:.50;
   mix-blend-mode: screen;
-  background:
-    radial-gradient(2px 2px at 10% 30%, rgba(255,226,191,.55), transparent 60%),
-    radial-gradient(2px 2px at 18% 68%, rgba(215,154,86,.35), transparent 60%),
-    radial-gradient(2px 2px at 28% 40%, rgba(241,176,107,.40), transparent 60%),
-    radial-gradient(2px 2px at 42% 22%, rgba(255,226,191,.30), transparent 60%),
-    radial-gradient(2px 2px at 62% 18%, rgba(255,226,191,.34), transparent 60%),
-    radial-gradient(2px 2px at 74% 55%, rgba(215,154,86,.28), transparent 60%),
-    radial-gradient(2px 2px at 86% 34%, rgba(241,176,107,.28), transparent 60%),
-    radial-gradient(2px 2px at 90% 72%, rgba(255,226,191,.26), transparent 60%);
+  background: radial-gradient(2px 2px at 10% 30%, rgba(255,226,191,.55), transparent 60%),
+              radial-gradient(2px 2px at 18% 68%, rgba(215,154,86,.35), transparent 60%),
+              radial-gradient(2px 2px at 28% 40%, rgba(241,176,107,.40), transparent 60%),
+              radial-gradient(2px 2px at 42% 22%, rgba(255,226,191,.30), transparent 60%),
+              radial-gradient(2px 2px at 62% 18%, rgba(255,226,191,.34), transparent 60%),
+              radial-gradient(2px 2px at 74% 55%, rgba(215,154,86,.28), transparent 60%),
+              radial-gradient(2px 2px at 86% 34%, rgba(241,176,107,.28), transparent 60%),
+              radial-gradient(2px 2px at 90% 72%, rgba(255,226,191,.26), transparent 60%);
   filter: blur(.35px);
   animation: emberFloat 9s ease-in-out infinite alternate;
 }
@@ -135,7 +133,7 @@ h1,h2,h3,h4{ margin:0; }
 
 /* =========================================================
    WRAP
-   ========================================================= */
+========================================================= */
 .wrap{
   width: min(var(--max), calc(100% - 28px));
   margin: 14px auto 40px;
@@ -143,26 +141,20 @@ h1,h2,h3,h4{ margin:0; }
 
 /* =========================================================
    TOPBAR
-   ========================================================= */
+========================================================= */
 .topbar{
   width: min(var(--max), calc(100% - 28px));
   margin: 12px auto 0;
   padding: 16px 18px 14px;
-
   border-radius: 26px;
   border: 1px solid rgba(246,211,166,.26);
-
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
-    linear-gradient(180deg, rgba(14,9,7,.86), rgba(14,9,7,.46));
-
-  /* если в TG белые плитки — ниже есть отключение на мобиле */
+  background: radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
+              radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
+              linear-gradient(180deg, rgba(14,9,7,.86), rgba(14,9,7,.46));
   backdrop-filter: blur(14px);
   box-shadow: var(--shadow2);
   position: relative;
   overflow:hidden;
-
   display:flex;
   align-items:flex-start;
   justify-content: space-between;
@@ -192,10 +184,14 @@ h1,h2,h3,h4{ margin:0; }
   align-items:flex-start;
 }
 
-/* RM квадрат скрываем */
-.brand__mark{ display:none; }
+.brand__mark{
+  display:none;
+}
 
-.brand__text{ display:flex; flex-direction:column; }
+.brand__text{
+  display:flex;
+  flex-direction:column;
+}
 
 .brand__title{
   font-family: var(--font-display);
@@ -229,11 +225,9 @@ h1,h2,h3,h4{ margin:0; }
   font-size: 13px;
   padding: 9px 12px;
   border-radius: 999px;
-
   border: 1px solid rgba(246,211,166,.16);
   background: rgba(0,0,0,.18);
   color: rgba(255,226,191,.86);
-
   transition: var(--ease);
   box-shadow: 0 10px 26px rgba(0,0,0,.28);
 }
@@ -241,23 +235,24 @@ h1,h2,h3,h4{ margin:0; }
 .nav__link:hover{
   transform: translateY(-1px);
   border-color: rgba(246,211,166,.26);
-  background:
-    radial-gradient(220px 120px at 30% 10%, rgba(215,154,86,.14), transparent 62%),
-    rgba(0,0,0,.22);
+  background: radial-gradient(220px 120px at 30% 10%, rgba(215,154,86,.14), transparent 62%), rgba(0,0,0,.22);
   box-shadow: 0 16px 34px rgba(0,0,0,.44);
 }
-.nav__link:active{ transform: translateY(0); }
+
+.nav__link:active{
+  transform: translateY(0);
+}
 
 /* =========================================================
    HERO / section headings hidden (as you wanted)
-   ========================================================= */
+========================================================= */
 .hero{ display:none; }
 .section{ margin-top: 14px; padding: 0; }
 .section__head{ display:none; }
 
 /* =========================================================
    GRID
-   ========================================================= */
+========================================================= */
 .grid{
   display:grid;
   grid-template-columns: 1fr;
@@ -265,28 +260,18 @@ h1,h2,h3,h4{ margin:0; }
 }
 
 /* =========================================================
-   CARD 2-LEVEL LAYOUT (image top + text bottom)
-   Требует разметку:
-   <a class="card" style="--img:url(...)">
-     <div class="card__media"><div class="card__top">...</div></div>
-     <div class="card__body">...</div>
-   </a>
-   ========================================================= */
+   CARD 2-LEVEL LAYOUT 
+========================================================= */
 .card{
   position: relative;
   padding: 0;
   min-height: unset;
-
   border-radius: 26px;
   overflow:hidden;
-
   border: 1px solid rgba(246,211,166,.22);
   box-shadow: var(--shadow2);
-
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(255,226,191,.08), transparent 62%),
-    linear-gradient(180deg, rgba(16,9,6,.66), rgba(16,9,6,.34));
-
+  background: radial-gradient(680px 260px at 20% 0%, rgba(255,226,191,.08), transparent 62%),
+              linear-gradient(180deg, rgba(16,9,6,.66), rgba(16,9,6,.34));
   transform: translateZ(0);
   transition: var(--ease);
 }
@@ -306,25 +291,21 @@ h1,h2,h3,h4{ margin:0; }
   position:absolute;
   inset:0;
   pointer-events:none;
-  background:
-    radial-gradient(900px 420px at 50% 10%, rgba(0,0,0,.10), transparent 60%),
-    linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.46));
+  background: radial-gradient(900px 420px at 50% 10%, rgba(0,0,0,.10), transparent 60%),
+              linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.46));
 }
 
 .card__top{
   position: absolute;
   inset: 14px 14px auto 14px;
   z-index: 2;
-
   display:flex;
   align-items:center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.badge,
-.meta,
-.pill{
+.badge, .meta, .pill{
   font-family: var(--font-ui);
   font-size: 12px;
   padding: 7px 10px;
@@ -336,9 +317,7 @@ h1,h2,h3,h4{ margin:0; }
 .badge{
   font-weight: 800;
   border: 1px solid rgba(246,211,166,.26);
-  background:
-    radial-gradient(180px 90px at 30% 10%, rgba(215,154,86,.14), transparent 62%),
-    rgba(0,0,0,.18);
+  background: radial-gradient(180px 90px at 30% 10%, rgba(215,154,86,.14), transparent 62%), rgba(0,0,0,.18);
   color: rgba(255,226,191,.96);
 }
 
@@ -350,9 +329,8 @@ h1,h2,h3,h4{ margin:0; }
 
 .card__body{
   padding: 14px 16px 14px;
-  background:
-    radial-gradient(520px 220px at 20% 0%, rgba(246,211,166,.10), transparent 62%),
-    linear-gradient(180deg, rgba(16,9,6,.80), rgba(16,9,6,.42));
+  background: radial-gradient(520px 220px at 20% 0%, rgba(246,211,166,.10), transparent 62%),
+              linear-gradient(180deg, rgba(16,9,6,.80), rgba(16,9,6,.42));
   border-top: 1px solid rgba(255,255,255,.08);
 }
 
@@ -373,7 +351,6 @@ h1,h2,h3,h4{ margin:0; }
   color: rgba(255,255,255,.88);
   font-size: 13px;
   line-height: 1.55;
-
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -392,9 +369,7 @@ h1,h2,h3,h4{ margin:0; }
   font-size: 11px;
   padding: 7px 9px;
   border: 1px solid rgba(246,211,166,.16);
-  background:
-    radial-gradient(160px 90px at 30% 10%, rgba(241,176,107,.12), transparent 62%),
-    rgba(0,0,0,.22);
+  background: radial-gradient(160px 90px at 30% 10%, rgba(241,176,107,.12), transparent 62%), rgba(0,0,0,.22);
   color: rgba(255,226,191,.88);
 }
 
@@ -411,10 +386,12 @@ h1,h2,h3,h4{ margin:0; }
   transform: translateY(-4px);
   box-shadow: var(--shadow2), 0 18px 46px rgba(0,0,0,.45);
 }
+
 .card:hover .card__media{
   filter: saturate(1.25) contrast(1.10) brightness(1.08);
   transform: scale(1.02);
 }
+
 .card:hover .card__arrow{
   transform: translateX(4px);
   color: rgba(255,226,191,.98);
@@ -425,7 +402,7 @@ h1,h2,h3,h4{ margin:0; }
 
 /* =========================================================
    PANELS (about/contact)
-   ========================================================= */
+========================================================= */
 .section--split{
   display:grid;
   grid-template-columns: 1fr;
@@ -437,12 +414,9 @@ h1,h2,h3,h4{ margin:0; }
   border-radius: 26px;
   border: 1px solid rgba(246,211,166,.20);
   padding: 16px 16px;
-
-  background:
-    radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
-    radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
-    linear-gradient(180deg, rgba(14,9,7,.82), rgba(14,9,7,.34));
-
+  background: radial-gradient(680px 260px at 20% 0%, rgba(215,154,86,.10), transparent 62%),
+              radial-gradient(680px 260px at 85% 0%, rgba(255,233,207,.10), transparent 64%),
+              linear-gradient(180deg, rgba(14,9,7,.82), rgba(14,9,7,.34));
   backdrop-filter: blur(12px);
   box-shadow: var(--shadow2);
 }
@@ -478,19 +452,13 @@ h1,h2,h3,h4{ margin:0; }
   align-items:center;
   justify-content:center;
   gap: 10px;
-
   padding: 12px 14px;
   border-radius: 18px;
-
   border: 1px solid rgba(246,211,166,.22);
-  background:
-    radial-gradient(260px 140px at 30% 10%, rgba(215,154,86,.12), transparent 62%),
-    rgba(0,0,0,.22);
-
+  background: radial-gradient(260px 140px at 30% 10%, rgba(215,154,86,.12), transparent 62%), rgba(0,0,0,.22);
   color: rgba(255,226,191,.94);
   transition: var(--ease);
   box-shadow: 0 14px 30px rgba(0,0,0,.45);
-
   -webkit-appearance:none;
   appearance:none;
   background-clip: padding-box;
@@ -501,18 +469,22 @@ h1,h2,h3,h4{ margin:0; }
   border-color: rgba(246,211,166,.32);
   box-shadow: var(--shadow2), 0 0 0 1px rgba(215,154,86,.10);
 }
-.btn:active{ transform: translateY(0); }
+
+.btn:active{
+  transform: translateY(0);
+}
 
 .btn--primary{
-  background:
-    radial-gradient(320px 160px at 30% 10%, rgba(215,154,86,.16), transparent 62%),
-    radial-gradient(320px 160px at 85% 10%, rgba(255,233,207,.10), transparent 64%),
-    rgba(0,0,0,.20);
+  background: radial-gradient(320px 160px at 30% 10%, rgba(215,154,86,.16), transparent 62%),
+              radial-gradient(320px 160px at 85% 10%, rgba(255,233,207,.10), transparent 64%),
+              rgba(0,0,0,.20);
 }
-.btn--ghost{ background: rgba(0,0,0,.26); }
 
-.btn:focus, .btn:focus-visible,
-.nav__link:focus, .nav__link:focus-visible{
+.btn--ghost{
+  background: rgba(0,0,0,.26);
+}
+
+.btn:focus, .btn:focus-visible, .nav__link:focus, .nav__link:focus-visible{
   outline: none !important;
   box-shadow: 0 0 0 2px rgba(246,211,166,.18) !important;
 }
@@ -527,20 +499,41 @@ h1,h2,h3,h4{ margin:0; }
   color: rgba(246,211,166,.56);
   font-size: 12px;
 }
-.footer__right{ opacity: .95; }
+
+.footer__right{
+  opacity: .95;
+}
+
+/* =========================================================
+   NEW INTRO BLOCK (Цитата и подписка)
+========================================================= */
+.intro-block {
+  margin-bottom: 24px;
+  text-align: center;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.intro-block__quote {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: rgba(246,211,166,.96);
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-shadow: 0 14px 34px rgba(0,0,0,.62);
+}
 
 /* =========================================================
    RESPONSIVE
-   ========================================================= */
+========================================================= */
 @media (max-width: 520px){
   .wrap{ width: calc(100% - 18px); }
-  .topbar{
-    width: calc(100% - 18px);
-    border-radius: 22px;
-    padding: 14px 14px 12px;
-  }
+  .topbar{ width: calc(100% - 18px); border-radius: 22px; padding: 14px 14px 12px; }
   .brand__title{ font-size: 18px; }
-
   .card{ border-radius: 22px; }
   .card__media{ height: 165px; }
   .card__top{ inset: 12px 12px auto 12px; }
@@ -550,12 +543,10 @@ h1,h2,h3,h4{ margin:0; }
 }
 
 @media (min-width: 780px){
-  .grid{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 16px;
-  }
+  .grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .section--split{ grid-template-columns: 1fr 1fr; }
   .card--promo{ grid-column: 1 / -1; }
+  .intro-block__quote { font-size: 18px; }
 }
 
 @media (min-width: 1100px){
@@ -565,7 +556,7 @@ h1,h2,h3,h4{ margin:0; }
 
 /* =========================================================
    TG/WEBVIEW — remove white tiles (disable blur on mobile)
-   ========================================================= */
+========================================================= */
 @media (max-width: 900px){
   .topbar, .panel, .btn, .nav__link, .badge, .meta, .pill{
     -webkit-backdrop-filter: none !important;
