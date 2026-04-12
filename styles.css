@@ -563,3 +563,94 @@ h1,h2,h3,h4{
     backdrop-filter: none !important;
   }
 }
+/* =========================================================
+   FIX GRID / STORY CARDS
+========================================================= */
+
+/* чтобы карточки не плясали по высоте и держали одинаковую структуру */
+.grid{
+  align-items: start;
+}
+
+.card{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+}
+
+/* верхняя картинка карточки */
+.card__media{
+  flex: 0 0 auto;
+  height: clamp(180px, 18vw, 235px);
+  transition: var(--ease);
+}
+
+/* нижняя часть карточки */
+.card__body{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 150px;
+}
+
+/* описание не должно раздувать карточку */
+.card__desc{
+  flex: 0 0 auto;
+  min-height: 60px;
+}
+
+/* низ карточки всегда прижат вниз */
+.card__bottom{
+  margin-top: auto;
+}
+
+/* ВАЖНО:
+   если случайно карточке дали class="card card--wide",
+   она не должна растягиваться на всю строку */
+.card--wide{
+  grid-column: auto !important;
+}
+
+/* только промо-карточка может быть широкой */
+.card--promo{
+  grid-column: auto;
+}
+
+@media (min-width: 780px){
+  .card--promo{
+    grid-column: 1 / -1;
+  }
+}
+
+/* чтобы длинные заголовки не ломали сетку */
+.card__title{
+  word-break: break-word;
+}
+
+/* чуть аккуратнее для больших экранов */
+@media (min-width: 780px){
+  .grid{
+    grid-auto-rows: 1fr;
+  }
+}
+
+/* мобила */
+@media (max-width: 779px){
+  .card--wide,
+  .card--promo{
+    grid-column: auto !important;
+  }
+
+  .card__media{
+    height: 190px;
+  }
+
+  .card__body{
+    min-height: auto;
+  }
+
+  .card__desc{
+    min-height: auto;
+  }
+}
