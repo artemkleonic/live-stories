@@ -1,0 +1,75 @@
+.story-body{
+  --paper: rgba(15,18,22,.75);
+  --paper2: rgba(15,18,22,.5);
+
+  --reader-font: clamp(16px, 1.1vw, 20px);
+
+  --glow: rgba(255,200,120,.12);
+}
+
+.bg-story{
+  position: fixed;
+  inset:0;
+  z-index:-1;
+
+  background:
+    radial-gradient(900px 600px at 30% 20%, var(--glow), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)),
+    url("./img/bg-story-25.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+.storyhead__content{
+  padding: 420px 24px 20px;
+}
+
+.story__content{
+  font-size: var(--reader-font);
+  line-height: 1.9;
+}
+
+.story__content p{
+  margin-bottom: 1.1em;
+}
+.storyhead__controls{
+  position: relative;
+  z-index: 5;
+
+  padding: 16px;
+  margin-top: 10px;
+
+  background: rgba(10,12,16,.85);
+  border-top: 1px solid rgba(255,255,255,.12);
+
+  backdrop-filter: blur(8px);
+}
+
+.controls{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.controls__left,
+.controls__right{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.bg-story{
+  background:
+    radial-gradient(1000px 650px at 24% 10%, var(--glow), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.38), rgba(0,0,0,.82)),
+    url("./img/bg-story-27.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.storyhead__bg{
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.12), rgba(0,0,0,.76)),
+    url("./img/bg-story-27.jpg") center / cover no-repeat;
+}

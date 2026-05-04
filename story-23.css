@@ -1,0 +1,68 @@
+/* =========================
+   STORY 23: Баловень судьбы
+   ========================= */
+
+.story-body{
+  --paper: rgba(15, 18, 22, .72);
+  --paper2: rgba(15, 18, 22, .50);
+
+  --reader-font: clamp(16px, 1.1vw, 20px);
+
+  --glow: rgba(180, 160, 255, .12);
+  --accentA: rgba(200, 180, 255, .9);
+  --accentB: rgba(255, 220, 200, .3);
+}
+
+.bg-story{
+  background:
+    radial-gradient(1000px 650px at 20% 10%, var(--glow), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.4), rgba(0,0,0,.9)),
+    url("./img/bg-story-23.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.storyhead{
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.8)),
+    url("./img/bg-story-23.jpg") center/cover;
+}
+
+.storyhead__content{
+  position: relative;
+  padding: 420px 24px 20px;
+}
+
+.story__title{
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 800;
+}
+
+.story__meta{
+  margin-top: 10px;
+  opacity: .7;
+}
+
+.reader__paper{
+  margin-top: 20px;
+  padding: 24px;
+  background: linear-gradient(180deg, var(--paper), var(--paper2));
+  border-radius: 20px;
+}
+
+.story__content{
+  font-size: var(--reader-font);
+  line-height: 1.85;
+}
+
+.story__content p{
+  margin-bottom: 1.1em;
+}

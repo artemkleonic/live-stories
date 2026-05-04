@@ -1,0 +1,101 @@
+/* =========================
+   STORY 24: Дом на краю обрыва
+   ========================= */
+
+.story-body{
+  --paper: rgba(15,18,22,.75);
+  --paper2: rgba(15,18,22,.5);
+
+  --reader-font: clamp(16px, 1.1vw, 20px);
+
+  --glow: rgba(180,200,255,.12);
+  --accentA: rgba(200,220,255,.9);
+  --accentB: rgba(255,230,200,.25);
+}
+
+/* фон */
+.bg-story{
+  position: fixed;
+  inset:0;
+  z-index:-1;
+
+  background:
+    radial-gradient(900px 600px at 30% 20%, var(--glow), transparent 60%),
+    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.85)),
+    url("./img/bg-story-24.jpg");
+
+  background-size: cover;
+  background-position: center;
+}
+
+/* шапка */
+.storyhead{
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.storyhead__bg{
+  position:absolute;
+  inset:0;
+
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.8)),
+    url("./img/bg-story-24.jpg") center/cover;
+
+  transform: scale(1.02);
+}
+
+.storyhead__content{
+  position: relative;
+  padding: 420px 24px 20px;
+}
+
+.story__title{
+  font-size: clamp(32px, 3vw, 48px);
+  font-weight: 800;
+}
+
+.story__meta{
+  margin-top: 10px;
+  opacity: .7;
+}
+
+/* бумага */
+.reader__paper{
+  padding: 28px;
+  border-radius: 20px;
+
+  background:
+    linear-gradient(180deg, var(--paper), var(--paper2));
+
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+/* текст */
+.story__content{
+  font-size: var(--reader-font);
+  line-height: 1.9;
+}
+
+.story__content p{
+  margin-bottom: 1.1em;
+}
+
+.story__content h2{
+  margin: 2em 0 1em;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+/* мобила */
+@media (max-width: 780px){
+  .storyhead__content{
+    padding: 220px 18px 16px;
+  }
+
+  .reader__paper{
+    padding: 18px;
+  }
+}
