@@ -415,3 +415,29 @@
   pageIndex = clamp(pageIndex, 0, pages.length - 1);
   renderPage({ scrollTop: false });
 })();
+
+(function(){
+  if (!document.body || !document.body.classList.contains('story-body')) return;
+
+  if (!document.querySelector('link[href="ratings.css"]')) {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'ratings.css';
+    document.head.appendChild(link);
+  }
+
+  function loadScript(src){
+    return new Promise(function(resolve){
+      if (document.querySelector('script[src="' + src + '"]')) return resolve();
+      var s = document.createElement('script');
+      s.src = src;
+      s.defer = true;
+      s.onload = resolve;
+      document.body.appendChild(s);
+    });
+  }
+
+  loadScript('ratings-config.js').then(function(){
+    return loadScript('ratings.js');
+  });
+})();
