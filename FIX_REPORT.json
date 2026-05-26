@@ -1,0 +1,80 @@
+{
+  "optimized_images": [
+    {
+      "file": "bg-story-11.jpg",
+      "before": 250295,
+      "after": 229576,
+      "saved": 20719
+    }
+  ],
+  "total_saved_bytes": 20719,
+  "optimized_images_final": [
+    {
+      "file": "bg-index.jpg",
+      "before": 2667752,
+      "after": 299608,
+      "saved": 2368144
+    },
+    {
+      "file": "bg-story-1.jpg",
+      "before": 2199217,
+      "after": 208919,
+      "saved": 1990298
+    },
+    {
+      "file": "bg-story-12.jpg",
+      "before": 192173,
+      "after": 184295,
+      "saved": 7878
+    },
+    {
+      "file": "bg-story-13.jpg",
+      "before": 133699,
+      "after": 128772,
+      "saved": 4927
+    },
+    {
+      "file": "bg-story-14.jpg",
+      "before": 204586,
+      "after": 189756,
+      "saved": 14830
+    },
+    {
+      "file": "bg-story-2.jpg",
+      "before": 2130488,
+      "after": 185091,
+      "saved": 1945397
+    },
+    {
+      "file": "bg-story-5.jpg",
+      "before": 2466354,
+      "after": 263821,
+      "saved": 2202533
+    },
+    {
+      "file": "bg-story-6.jpg",
+      "before": 2631122,
+      "after": 282736,
+      "saved": 2348386
+    },
+    {
+      "file": "bg-story-7.jpg",
+      "before": 2214598,
+      "after": 208729,
+      "saved": 2005869
+    },
+    {
+      "file": "bg-story-8.jpg",
+      "before": 1525143,
+      "after": 140646,
+      "saved": 1384497
+    },
+    {
+      "file": "promo-index.jpg",
+      "before": 1431649,
+      "after": 122418,
+      "saved": 1309231
+    }
+  ],
+  "total_saved_bytes_final": 15581990
+}
