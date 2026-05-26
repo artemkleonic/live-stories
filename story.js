@@ -84,6 +84,40 @@
   const storyTitle = getBodyDataset("storyTitle", document.title);
   const storyAuthor = getBodyDataset("storyAuthor", "");
   const storyDate = getBodyDataset("storyDate", "");
+  const storyLang = getBodyDataset("storyLang", "ru").toLowerCase();
+  const normalizedStoryLang = storyLang === "uk" ? "ua" : storyLang;
+  const UI = normalizedStoryLang === "en" ? {
+    siteTitle: "Stories of a Thinking Person",
+    shareText: "Story:",
+    copied: "Link copied",
+    page: "Page",
+    min: "min",
+    themeDark: "Theme: dark",
+    themeSepia: "Theme: sepia",
+    themeLight: "Theme: light"
+  } : normalizedStoryLang === "ua" ? {
+    siteTitle: "Думки мислячої людини",
+    shareText: "Оповідання:",
+    copied: "Посилання скопійовано",
+    page: "Сторінка",
+    min: "хв",
+    themeDark: "Тема: темна",
+    themeSepia: "Тема: сепія",
+    themeLight: "Тема: світла"
+  } : {
+    siteTitle: "Рассказы моего отца",
+    shareText: "Рассказ:",
+    copied: "Ссылка скопирована",
+    page: "Страница",
+    min: "мин",
+    themeDark: "Тема: тёмная",
+    themeSepia: "Тема: сепия",
+    themeLight: "Тема: светлая"
+  };
+
+  function libraryUrl() {
+    return normalizedStoryLang === "ru" ? "index.html?lang=ru#stories" : `index.html?lang=${normalizedStoryLang}#stories`;
+  }
 
   const titleEl = $("storyTitle");
   const authorEl = $("storyAuthor");
@@ -118,7 +152,7 @@
     const next = THEMES[(idx + 1 + THEMES.length) % THEMES.length] || "ink";
     document.body.setAttribute("data-theme", next);
     localStorage.setItem(keyTheme, next);
-    toast(next === "ink" ? "Тема: тёмная" : next === "sepia" ? "Тема: сепия" : "Тема: светлая");
+    toast(next === "ink" ? UI.themeDark : next === "sepia" ? UI.themeSepia : UI.themeLight);
   }
 
   safeOn($("btnTheme"), "click", cycleTheme);
@@ -136,20 +170,20 @@
 
   // ===== back =====
   safeOn($("btnBack"), "click", () => {
-    window.location.href = "index.html#stories";
+    window.location.href = libraryUrl();
   });
 
   // ===== share/copy link =====
   const shareData = {
-    title: `${storyTitle} — Рассказы моего отца`,
-    text: `Рассказ: «${storyTitle}».`,
+    title: `${storyTitle} — ${UI.siteTitle}`,
+    text: `${UI.shareText} «${storyTitle}».`,
     url: window.location.href
   };
 
   async function copyLink() {
     try {
       await navigator.clipboard.writeText(window.location.href);
-      toast("Ссылка скопирована");
+      toast(UI.copied);
     } catch {
       const tmp = document.createElement("textarea");
       tmp.value = window.location.href;
@@ -157,7 +191,7 @@
       tmp.select();
       document.execCommand("copy");
       tmp.remove();
-      toast("Ссылка скопирована");
+      toast(UI.copied);
     }
   }
 
@@ -194,7 +228,7 @@
   const wpm = 190;
   const mins = Math.max(1, Math.round(totalWords / wpm));
   const readingEl = $("readingTime");
-  if (readingEl) readingEl.textContent = `~${mins} мин`;
+  if (readingEl) readingEl.textContent = `~${mins} ${UI.min}`;
 
   // ===== NEW: bigger pages + "merge tiny last page" =====
   function wordsPerPage() {
@@ -307,7 +341,7 @@
 
     const human = pageIndex + 1;
 
-    if (pageLabel) pageLabel.textContent = `Страница ${human}`;
+    if (pageLabel) pageLabel.textContent = `${UI.page} ${human}`;
 
     if (pageCounter) pageCounter.textContent = `${human} / ${pages.length}`;
     if (pagePill) pagePill.textContent = `${human} / ${pages.length}`;
@@ -352,7 +386,7 @@
 
     if (e.key === "ArrowLeft") { e.preventDefault(); go(-1); }
     if (e.key === "ArrowRight") { e.preventDefault(); go(+1); }
-    if (e.key === "Escape") { window.location.href = "index.html#stories"; }
+    if (e.key === "Escape") { window.location.href = libraryUrl(); }
   });
 
   // ===== mobile swipe paging (safe: ignores vertical scroll) =====

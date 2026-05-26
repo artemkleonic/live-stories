@@ -1,18 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Мысли думающего человека</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6QBR8B6SFB"></script>
+<head>
+<meta charset="utf-8"/>
+<meta content="Литературный сайт «Мысли думающего человека»: русская библиотека рассказов, английские переводы и будущие украинские версии без машинной имитации." name="description"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Мысли думающего человека — рассказы на трёх языках</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="./styles.css" rel="stylesheet"/>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-6QBR8B6SFB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -20,1109 +18,1009 @@
 
   gtag('config', 'G-6QBR8B6SFB');
 </script>
-  </head>
-  <body>
-    <div class="bg" aria-hidden="true"></div>
+<link href="https://roy.in.ua/?lang=ru" hreflang="ru" rel="alternate"/><link href="https://roy.in.ua/?lang=en" hreflang="en" rel="alternate"/><link href="https://roy.in.ua/?lang=ua" hreflang="uk" rel="alternate"/><link href="https://roy.in.ua/" hreflang="x-default" rel="alternate"/></head>
+<body>
+<div aria-hidden="true" class="bg"></div>
+<header class="topbar">
+<div class="brand">
+<div class="brand__mark">RM</div>
+<div class="brand__text">
+<div class="brand__title" data-i18n="brand.title">Мысли думающего человека</div>
+<div class="brand__tag" data-i18n="brand.tag">Сборник рассказов Горизонт событий.</div>
+</div>
+</div>
+<nav class="nav">
+<a class="nav__link" data-about-link="true" data-i18n="nav.about" href="about-project.html">О проекте</a>
+<a class="nav__link" data-i18n="nav.contacts" href="#contact">Контакты</a>
+<a class="nav__link" data-i18n="nav.stories" href="#stories">Рассказы</a>
+<button class="nav__link nav__link--button nav__language-launch" data-i18n="nav.language" data-open-language-modal="true" type="button">Язык</button><div aria-label="Выбор языка" class="nav-lang"><button class="nav__link nav__link--button nav__lang" data-lang-switch="ru" type="button">RU</button><button class="nav__link nav__link--button nav__lang" data-lang-switch="en" type="button">EN</button><button class="nav__link nav__link--button nav__lang" data-lang-switch="ua" type="button">UA</button></div></nav>
+</header>
+<div aria-hidden="true" aria-labelledby="languageModalTitle" aria-modal="true" class="language-modal" id="languageModal" role="dialog">
+<div class="language-modal__backdrop" data-close-language-modal="true"></div>
+<div class="language-modal__sheet" role="document">
+<button aria-label="Close" class="language-modal__close" data-close-language-modal="true" type="button">×</button>
+<div aria-hidden="true" class="language-modal__stage">
+<div class="language-modal__orb"></div>
+<div class="hello-slider hello-slider--modal">
+<span>Hello</span><span>Вітаю</span><span>Привет</span><span>Bonjour</span><span>Ciao</span><span>Hola</span><span>Guten Tag</span><span>Добрий день</span>
+</div>
+</div>
+<div class="language-modal__content">
+<div class="language-gate__eyebrow" data-i18n="modal.eyebrow">Choose the voice</div>
+<h2 class="language-modal__title" data-i18n="modal.title" id="languageModalTitle">One site. Three doors. One human voice.</h2>
+<p class="language-modal__text" data-i18n="modal.text">Select the language of the library. Only real texts are shown here: if a story has not yet been translated, it does not pretend to exist.</p>
+<div aria-label="Reading language" class="language-actions language-actions--modal" role="group">
+<button class="language-card language-card--en" data-lang-switch="en" data-modal-select="true" type="button">
+<span class="language-card__hello">Hello</span><strong>English</strong><em data-lang-count="en">2 stories</em><small data-i18n="modal.enNote">Translated with literary care.</small>
+</button>
+<button class="language-card language-card--ua" data-lang-switch="ua" data-modal-select="true" type="button">
+<span class="language-card__hello">Вітаю</span><strong>Українська</strong><em data-lang-count="ua">0 оповідань</em><small data-i18n="modal.uaNote">The shelf is waiting for its first voice.</small>
+</button>
+<button class="language-card language-card--ru" data-lang-switch="ru" data-modal-select="true" type="button">
+<span class="language-card__hello">Привет</span><strong>Русский</strong><em data-lang-count="ru">38 рассказов</em><small data-i18n="modal.ruNote">The main living library.</small>
+</button>
+</div>
+<p class="language-modal__foot" data-i18n="modal.foot">No automatic translation. No cardboard literature. Only a text that has been allowed to breathe.</p>
+</div>
+</div>
+</div>
+<button aria-label="Выбрать язык" class="language-fab" data-open-language-modal="true" type="button"><span>🌐</span><b data-i18n="fab.language">Язык</b></button>
 
-    <header class="topbar">
-      <div class="brand">
-        <div class="brand__mark">RM</div>
-        <div class="brand__text">
-          <div class="brand__title">Мысли думающего человека</div>
-          <div class="brand__tag">Сборник рассказов Горизонт событий.</div>
-        </div>
-      </div>
-      <nav class="nav">
-        <a class="nav__link" href="about-project.html">О проекте</a>
-        <a class="nav__link" href="#contact">Контакты</a>
-        <a class="nav__link" href="#stories">Рассказы</a>
-      </nav>
-    </header>
+<main class="wrap">
+<section aria-hidden="true" class="hero"></section>
+<section aria-label="Многоязычная библиотека" class="world-panel panel">
+<div class="world-panel__main">
+<span class="world-panel__kicker" data-i18n="world.kicker">Многоязычная библиотека</span>
+<h2 data-i18n="world.title">Один автор. Несколько языков. Ни одного бездушного перевода.</h2>
+<p data-i18n="world.text">Сайт открывает только те полки, где уже есть живые тексты. Русская библиотека полная, английская уже начала дышать, украинская готовится к своему первому честному голосу.</p>
+</div>
+<div aria-label="Статистика переводов" class="world-panel__stats">
+<button class="world-stat" data-lang-switch="ru" type="button"><strong data-lang-count="ru">38 рассказов</strong><span>Русский</span></button>
+<button class="world-stat" data-lang-switch="en" type="button"><strong data-lang-count="en">2 stories</strong><span>English</span></button>
+<button class="world-stat" data-lang-switch="ua" type="button"><strong data-lang-count="ua">0 оповідань</strong><span>Українська</span></button>
+</div>
+</section>
 
-    <main class="wrap">
-      <section class="hero" aria-hidden="true"></section>
 
-      <section class="intro-block panel">
-        <div class="intro-block__quote">
-          «Это не рассказы. Это попытка понять, зачем вообще жить.<br />
-          Это не книга. Это разговор.<br />
+<section class="intro-block panel">
+<div class="intro-block__quote" data-i18n="intro.quote">
+          «Это не рассказы. Это попытка понять, зачем вообще жить.<br/>
+          Это не книга. Это разговор.<br/>
           Если тебе кажется, что ты всё понял — тебе не сюда.»
         </div>
-        <a
-          class="btn btn--primary"
-          href="https://t.me/venandi_dolium"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+<a class="btn btn--primary" data-i18n="intro.cta" href="https://t.me/venandi_dolium" rel="noopener noreferrer" target="_blank">
           Подписаться на Telegram
         </a>
-      </section>
-
-      <section id="about" class="section">
-        <div class="section__head">
-          <h3 class="section__title">О проекте</h3>
-          <p class="section__sub">
+</section>
+<section class="section" id="about">
+<div class="section__head">
+<h3 class="section__title" data-i18n="about.title">О проекте</h3>
+<p class="section__sub" data-i18n="about.sub">
             История о том, как появился Рой, почему вещи иногда становятся
             почти святыми и как из жизни собирается улей рассказов.
           </p>
-        </div>
-
-        <div class="grid">
-          <a
-            class="card story-card"
-            href="about-project.html"
-            aria-label="Открыть рассказ: О проекте"
-            style="--img: url('./img/spec-text.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="О проекте">
-              <div class="card__top">
-                <span class="badge">Спецтекст</span>
-                <span class="meta">12–18 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">О проекте</h3>
-              <p class="card__desc">
+</div>
+<div class="grid">
+<a aria-label="Открыть рассказ: О проекте" class="card story-card" data-about-link="true" href="about-project.html" style="--img: url('./img/spec-text.jpg')">
+<div aria-label="О проекте" class="card__media" role="img">
+<div class="card__top">
+<span class="badge" data-i18n="about.cardBadge">Спецтекст</span>
+<span class="meta">12–18 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h3 class="card__title" data-i18n="about.cardTitle">О проекте</h3>
+<p class="card__desc" data-i18n="about.cardDesc">
                 Несколько слов о том, откуда берутся эти тексты, почему «Рой» —
                 не просто старый ник из интернета, и как один камуфляжный
                 спальник стал почти святыней.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Рой</span>
-                <span class="pill">Истоки</span>
-                <span class="card__arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-
-          <div id="contact" class="panel panel--soft">
-            <h3 class="panel__title">Контакты</h3>
-            <p class="panel__text">
+<div class="card__bottom">
+<span class="pill" data-i18n="about.cardPill1">Рой</span>
+<span class="pill" data-i18n="about.cardPill2">Истоки</span>
+<span aria-hidden="true" class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<div class="panel panel--soft" id="contact">
+<h3 class="panel__title" data-i18n="contact.title">Контакты</h3>
+<p class="panel__text" data-i18n="contact.text">
               Telegram:
-              <a
-                href="https://t.me/aleksey_Ivakhnenko"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://t.me/aleksey_Ivakhnenko" rel="noopener noreferrer" target="_blank">
                 @aleksey_Ivakhnenko
               </a>
-              <br />
+<br/>
               Facebook:
-              <a
-                href="https://www.facebook.com/aleksej.ivahnenko"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.facebook.com/aleksej.ivahnenko" rel="noopener noreferrer" target="_blank">
                 Алексей Ивахненко
               </a>
-            </p>
-            <div class="contact">
-              <a
-                class="btn btn--primary"
-                href="https://t.me/aleksey_Ivakhnenko"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+</p>
+<div class="contact">
+<a class="btn btn--primary" data-i18n="contact.write" href="https://t.me/aleksey_Ivakhnenko" rel="noopener noreferrer" target="_blank">
                 Написать
               </a>
-              <a
-                class="btn btn--ghost"
-                href="https://www.facebook.com/aleksej.ivahnenko"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+<a class="btn btn--ghost" data-i18n="contact.facebook" href="https://www.facebook.com/aleksej.ivahnenko" rel="noopener noreferrer" target="_blank">
                 Facebook
               </a>
-            </div>
-          </div>
-        </div>
-      </section>
+</div>
+</div>
+</div>
+</section>
 
-      <section id="stories" class="section">
-        <div class="section__head">
-          <h3 class="section__title">Рассказы</h3>
-          <p class="section__sub">
+<section aria-label="Принцип перевода" class="translation-manifesto panel">
+<div class="translation-manifesto__head">
+<span data-i18n="manifesto.kicker">Translation manifesto</span>
+<h3 data-i18n="manifesto.title">A story is not a suitcase. It cannot simply be moved from one language to another.</h3>
+</div>
+<div class="manifesto-grid">
+<div><b data-i18n="manifesto.item1Title">Voice first</b><p data-i18n="manifesto.item1Text">The rhythm, irony and silence of the author matter as much as the meaning of the words.</p></div>
+<div><b data-i18n="manifesto.item2Title">No fake shelves</b><p data-i18n="manifesto.item2Text">If a story is not ready in a language, it stays hidden instead of pretending.</p></div>
+<div><b data-i18n="manifesto.item3Title">Slow is honest</b><p data-i18n="manifesto.item3Text">Translations will appear one by one, because literature should not be rushed through a machine.</p></div>
+</div>
+</section>
+<section class="section" id="stories">
+<div class="section__head">
+<h3 class="section__title" data-i18n="stories.title">Рассказы</h3>
+<p class="section__sub" data-i18n="stories.sub">
             Нажми на карточку — откроется отдельная страница рассказа.
           </p>
-        </div>
-
-        <div class="grid">
-          <a
-            class="card story-card"
-            href="story-3.html"
-            aria-label="Открыть историю: Лаврентий"
-            style="--img: url('./img/bg-story-3.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Лаврентий">
-              <div class="card__top">
-                <span class="badge">№3</span>
-                <span class="meta">9–12 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h3 class="card__title">Лаврентий</h3>
-              <p class="card__desc">
+</div>
+<div aria-live="polite" class="story-language-status panel panel--soft" id="languageStatus">
+<div>
+<div class="story-language-status__kicker" data-i18n="status.kicker">Текущий язык</div>
+<h3 class="story-language-status__title" id="statusTitle">Русская библиотека</h3>
+<p class="story-language-status__text" id="statusText">Сейчас показаны рассказы, доступные на русском языке.</p>
+</div>
+<a class="btn btn--ghost story-language-status__link" data-i18n="status.link" href="#stories">К рассказам</a>
+</div>
+<div class="grid">
+<a aria-label="Открыть историю: Лаврентий" class="card story-card" data-lang="ru" data-story-id="story-3" href="story-3.html" style="--img: url('./img/bg-story-3.jpg')">
+<div aria-label="Лаврентий" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№3</span>
+<span class="meta">9–12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h3 class="card__title">Лаврентий</h3>
+<p class="card__desc">
                 Кот в чёрно-белом «смокинге», который пришёл сам — и остался.
                 История о тишине, доме, войне и странном ощущении, что рядом есть
                 наблюдатель… и хранитель направления.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Кот</span>
-                <span class="pill">Мистика</span>
-                <span class="card__arrow" aria-hidden="true">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-4.html"
-            style="--img: url('./img/bg-story-4.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Бандитский Петербург">
-              <div class="card__top">
-                <span class="badge">№4</span>
-                <span class="meta">8–10 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Бандитский Петербург</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Кот</span>
+<span class="pill">Мистика</span>
+<span aria-hidden="true" class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-4" href="story-4.html" style="--img: url('./img/bg-story-4.jpg')">
+<div aria-label="Бандитский Петербург" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№4</span>
+<span class="meta">8–10 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Бандитский Петербург</h4>
+<p class="card__desc">
                 Коммуналка на Невском, врачи, стажировки и ощущение, что город
                 тебя проверяет на прочность.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Город</span>
-                <span class="pill">Воспоминания</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-5.html"
-            style="--img: url('./img/bg-story-5.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="По собачьей тропе">
-              <div class="card__top">
-                <span class="badge">№5</span>
-                <span class="meta">7–10 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">По собачьей тропе</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Город</span>
+<span class="pill">Воспоминания</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-5" href="story-5.html" style="--img: url('./img/bg-story-5.jpg')">
+<div aria-label="По собачьей тропе" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№5</span>
+<span class="meta">7–10 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">По собачьей тропе</h4>
+<p class="card__desc">
                 Про мороз, территорию и свободу, которая начинается не с
                 лозунгов, а с права иметь своё.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Смысл</span>
-                <span class="pill">Зима</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-6.html"
-            style="--img: url('./img/bg-story-6.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Гамбринус">
-              <div class="card__top">
-                <span class="badge">№6</span>
-                <span class="meta">12–16 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Гамбринус</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Смысл</span>
+<span class="pill">Зима</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-6" href="story-6.html" style="--img: url('./img/bg-story-6.jpg')">
+<div aria-label="Гамбринус" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№6</span>
+<span class="meta">12–16 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Гамбринус</h4>
+<p class="card__desc">
                 Одесса, холодное море, музыка в полуподвале и две лошади ночью
                 на пустой Дерибасовской.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Одесса</span>
-                <span class="pill">Дружба</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-7.html"
-            style="--img: url('./img/bg-story-7.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Вечер перед вылетом">
-              <div class="card__top">
-                <span class="badge">№7</span>
-                <span class="meta">10–14 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Вечер перед вылетом</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Одесса</span>
+<span class="pill">Дружба</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-7" href="story-7.html" style="--img: url('./img/bg-story-7.jpg')">
+<div aria-label="Вечер перед вылетом" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№7</span>
+<span class="meta">10–14 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Вечер перед вылетом</h4>
+<p class="card__desc">
                 Про дождь, камин, запах дороги и простую мысль: прошлое —
                 кладовая, а жить нужно в настоящем.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Камин</span>
-                <span class="pill">Раздумье</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card card--promo"
-            href="products.html"
-            style="--img: url('./img/promo-index.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="DOLIUM VENANDI">
-              <div class="card__top">
-                <span class="badge">DOLIUM VENANDI</span>
-                <span class="meta">акция</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Вино и крепкий алкоголь</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Камин</span>
+<span class="pill">Раздумье</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a><a class="card" data-lang="en" data-story-id="story-7-en" href="story-7-en.html" style="--img: url('./img/bg-story-7.jpg')">
+<div aria-label="The Evening Before Departure" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№7</span>
+<span class="meta">12–18 min</span>
+</div>
+</div>
+<div class="card__body"><div class="translation-ribbon" data-i18n="card.translationReady">English version available</div>
+<h4 class="card__title">The Evening Before Departure</h4>
+<p class="card__desc">A late-November night with rain, blackouts, smoky whisky, airport sounds and an old hunting memory. A story about the past, comfort and the courage to live in the present.</p>
+<div class="card__bottom"><span class="pill">Memory</span><span class="pill">Road</span><span class="pill">Present</span><span class="pill">Fireplace</span><span class="card__arrow">→</span></div>
+</div>
+</a>
+<a class="card card--promo" data-lang="ru" href="products.html" style="--img: url('./img/promo-index.jpg')">
+<div aria-label="DOLIUM VENANDI" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">DOLIUM VENANDI</span>
+<span class="meta">акция</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Вино и крепкий алкоголь</h4>
+<p class="card__desc">
                 Для настоящих охотников и гурманов. Подборки, дегустации,
                 подарочные наборы.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Подробнее</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-8.html"
-            style="--img: url('./img/bg-story-8.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Про время">
-              <div class="card__top">
-                <span class="badge">№8</span>
-                <span class="meta">8–12 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Про время</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Подробнее</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-8" href="story-8.html" style="--img: url('./img/bg-story-8.jpg')">
+<div aria-label="Про время" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№8</span>
+<span class="meta">8–12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Про время</h4>
+<p class="card__desc">
                 Тост, который звучит не в начале. Про вещи, у которых короткая
                 весна — и их нельзя откладывать.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Тост</span>
-                <span class="pill">Философия</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-9.html"
-            style="--img: url('./img/bg-story-9.jpg')"
-          >
-            <div
-              class="card__media"
-              role="img"
-              aria-label="О димедроле и взрывчатке"
-            >
-              <div class="card__top">
-                <span class="badge">№9</span>
-                <span class="meta">10–14 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">О димедроле и взрывчатке</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Тост</span>
+<span class="pill">Философия</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a><a class="card" data-lang="en" data-story-id="story-8-en" href="story-8-en.html" style="--img: url('./img/bg-story-8.jpg')">
+<div aria-label="About Time" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№8</span>
+<span class="meta">10–15 min</span>
+</div>
+</div>
+<div class="card__body"><div class="translation-ribbon" data-i18n="card.translationReady">English version available</div>
+<h4 class="card__title">About Time</h4>
+<p class="card__desc">A toast to seasons that do not wait: children, love, friends, rivers, boats, hunting and the strange currency we can never earn back.</p>
+<div class="card__bottom"><span class="pill">Time</span><span class="pill">Life</span><span class="pill">Memory</span><span class="pill">Choice</span><span class="card__arrow">→</span></div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-9" href="story-9.html" style="--img: url('./img/bg-story-9.jpg')">
+<div aria-label="О димедроле и взрывчатке" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№9</span>
+<span class="meta">10–14 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">О димедроле и взрывчатке</h4>
+<p class="card__desc">
                 Колхоз, сапка, школьные тайны и снаряд в нужнике. История о
                 том, как мелочи иногда опаснее настоящих взрывов.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Юность</span>
-                <span class="pill">Ирония</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-10.html"
-            style="--img: url('./img/bg-story-10.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Палата №6">
-              <div class="card__top">
-                <span class="badge">№10</span>
-                <span class="meta">18–28 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Палата №6</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Юность</span>
+<span class="pill">Ирония</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-10" href="story-10.html" style="--img: url('./img/bg-story-10.jpg')">
+<div aria-label="Палата №6" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№10</span>
+<span class="meta">18–28 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Палата №6</h4>
+<p class="card__desc">
                 Психиатрия, армия, система и тонкая граница между «нормой» и
                 диагнозом. История о состоянии, из которого труднее выйти, чем
                 войти.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Медицина</span>
-                <span class="pill">Философия</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-11.html"
-            style="--img: url('./img/bg-story-11.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="История 11">
-              <div class="card__top">
-                <span class="badge">№11</span>
-                <span class="meta">8–12 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">В селе тихо</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Медицина</span>
+<span class="pill">Философия</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-11" href="story-11.html" style="--img: url('./img/bg-story-11.jpg')">
+<div aria-label="История 11" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№11</span>
+<span class="meta">8–12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">В селе тихо</h4>
+<p class="card__desc">
                 Одна сцена, одна фраза — и вдруг становится ясно, кто есть кто.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Люди</span>
-                <span class="pill">Тишина</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-12.html"
-            style="--img: url('./img/bg-story-12.jpg')"
-          >
-            <div
-              class="card__media"
-              role="img"
-              aria-label="Моя вишнёвая девочка"
-            >
-              <div class="card__top">
-                <span class="badge">№12</span>
-                <span class="meta">20–35 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Моя вишнёвая девочка</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Люди</span>
+<span class="pill">Тишина</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-12" href="story-12.html" style="--img: url('./img/bg-story-12.jpg')">
+<div aria-label="Моя вишнёвая девочка" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№12</span>
+<span class="meta">20–35 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Моя вишнёвая девочка</h4>
+<p class="card__desc">
                 Про время, первую машину и момент, когда прошлое отпускает —
                 даже если ты держишься изо всех сил.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Дорога</span>
-                <span class="pill">Ностальгия</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-13.html"
-            style="--img: url('./img/bg-story-13.jpg')"
-          >
-            <div
-              class="card__media"
-              role="img"
-              aria-label="Не кормите белых лебедей"
-            >
-              <div class="card__top">
-                <span class="badge">№13</span>
-                <span class="meta">25–45 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Не кормите белых лебедей</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Дорога</span>
+<span class="pill">Ностальгия</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-13" href="story-13.html" style="--img: url('./img/bg-story-13.jpg')">
+<div aria-label="Не кормите белых лебедей" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№13</span>
+<span class="meta">25–45 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Не кормите белых лебедей</h4>
+<p class="card__desc">
                 Про уважение, взросление, ошибки и людей-лебедей, которые берут
                 хлеб — и улетают.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Семья</span>
-                <span class="pill">Смысл</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-14.html"
-            style="--img: url('./img/bg-story-14.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Золотая рыбка">
-              <div class="card__top">
-                <span class="badge">№14</span>
-                <span class="meta">10–16 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Золотая рыбка</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Семья</span>
+<span class="pill">Смысл</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-14" href="story-14.html" style="--img: url('./img/bg-story-14.jpg')">
+<div aria-label="Золотая рыбка" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№14</span>
+<span class="meta">10–16 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Золотая рыбка</h4>
+<p class="card__desc">
                 Ночь, ПВО и карась, который разговаривает слишком спокойно.
                 История о тишине и желаниях, которые опаснее взрывов.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Ирония</span>
-                <span class="pill">Аллегория</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-1.html"
-            style="--img: url('./img/bg-story-1.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Целлофан">
-              <div class="card__top">
-                <span class="badge">№1</span>
-                <span class="meta">5–7 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Целлофан</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Ирония</span>
+<span class="pill">Аллегория</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-1" href="story-1.html" style="--img: url('./img/bg-story-1.jpg')">
+<div aria-label="Целлофан" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№1</span>
+<span class="meta">5–7 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Целлофан</h4>
+<p class="card__desc">
                 Про мороз, тишину и человеческую привычку спасать хоть что-то —
                 даже если поздно.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Философия</span>
-                <span class="pill">Зима</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-2.html"
-            style="--img: url('./img/bg-story-2.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Голова и шея">
-              <div class="card__top">
-                <span class="badge">№2</span>
-                <span class="meta">6–8 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Голова и шея</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Зима</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-2" href="story-2.html" style="--img: url('./img/bg-story-2.jpg')">
+<div aria-label="Голова и шея" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№2</span>
+<span class="meta">6–8 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Голова и шея</h4>
+<p class="card__desc">
                 Про то, как меняются роли, когда жизнь резко становится взрослой
                 — и что остаётся внутри.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Люди</span>
-                <span class="pill">Ирония</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card card--wide"
-            href="story-15.html"
-            style="--img: url('./img/bg-story-15.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Мартышка">
-              <div class="card__top">
-                <span class="badge">№15</span>
-                <span class="meta">18–30 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Мартышка</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Люди</span>
+<span class="pill">Ирония</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card card--wide" data-lang="ru" data-story-id="story-15" href="story-15.html" style="--img: url('./img/bg-story-15.jpg')">
+<div aria-label="Мартышка" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№15</span>
+<span class="meta">18–30 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Мартышка</h4>
+<p class="card__desc">
                 Ялта, лихие девяностые, фотографы, орёл, мартышка и длинный
                 путь от пляжной суеты к земле, сидру и настоящему наследию.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Память</span>
-                <span class="pill">Путь</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-16.html"
-            style="--img: url('./img/bg-story-16.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Рефлекс">
-              <div class="card__top">
-                <span class="badge">№16</span>
-                <span class="meta">14–20 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Рефлекс</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Память</span>
+<span class="pill">Путь</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-16" href="story-16.html" style="--img: url('./img/bg-story-16.jpg')">
+<div aria-label="Рефлекс" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№16</span>
+<span class="meta">14–20 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Рефлекс</h4>
+<p class="card__desc">
                 Врач, война, блокпосты, охота и одна тревожная мысль: что в
                 человеке включается раньше — разум или то, что умеет выживать
                 без него.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Врач</span>
-                <span class="pill">Психика</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-17.html"
-            style="--img: url('./img/bg-story-17.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Плот">
-              <div class="card__top">
-                <span class="badge">№17</span>
-                <span class="meta">10–14 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Плот</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Врач</span>
+<span class="pill">Психика</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-17" href="story-17.html" style="--img: url('./img/bg-story-17.jpg')">
+<div aria-label="Плот" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№17</span>
+<span class="meta">10–14 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Плот</h4>
+<p class="card__desc">
                 История о человеке, который мечтал об одиночестве, тишине и
                 реке, а получил друзей, родню, гармошку и почти библейский
                 ковчег.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Юмор</span>
-                <span class="pill">Отпуск</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <a
-            class="card"
-            href="story-18.html"
-            style="--img: url('./img/bg-story-18.jpg')"
-          >
-            <div class="card__media" role="img" aria-label="Не кормите троллей">
-              <div class="card__top">
-                <span class="badge">№18</span>
-                <span class="meta">12–18 мин</span>
-              </div>
-            </div>
-            <div class="card__body">
-              <h4 class="card__title">Не кормите троллей</h4>
-              <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Юмор</span>
+<span class="pill">Отпуск</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-18" href="story-18.html" style="--img: url('./img/bg-story-18.jpg')">
+<div aria-label="Не кормите троллей" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№18</span>
+<span class="meta">12–18 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Не кормите троллей</h4>
+<p class="card__desc">
                 Про дрова, злость, пустоту в интернете и редкое искусство — не
                 тратить себя на шум, когда перед тобой давно уже не человек, а
                 забор.
               </p>
-              <div class="card__bottom">
-                <span class="pill">Ирония</span>
-                <span class="pill">Слово</span>
-                <span class="card__arrow">→</span>
-              </div>
-            </div>
-          </a>
-            <a
-    class="card"
-    href="story-19.html"
-    style="--img: url('./img/bg-story-19.jpg')"
-  >
-    <div class="card__media" role="img" aria-label="Картошечка с луком">
-      <div class="card__top">
-        <span class="badge">№19</span>
-        <span class="meta">12–18 мин</span>
-      </div>
-    </div>
-    <div class="card__body">
-      <h4 class="card__title">Картошечка с луком</h4>
-      <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Ирония</span>
+<span class="pill">Слово</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-19" href="story-19.html" style="--img: url('./img/bg-story-19.jpg')">
+<div aria-label="Картошечка с луком" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№19</span>
+<span class="meta">12–18 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Картошечка с луком</h4>
+<p class="card__desc">
         Ужгород, диспансер, синий линолеум и странная традиция врача-психиатра.
         История о том, как иногда, чтобы не сойти с ума, достаточно простой еды,
         закрытой двери и людей, которым от тебя ничего не нужно.
       </p>
-      <div class="card__bottom">
-        <span class="pill">Медицина</span>
-        <span class="pill">Жизнь</span>
-        <span class="card__arrow">→</span>
-      </div>
-    </div>
-  </a>
-  <a
-  class="card"
-  href="story-20.html"
-  style="--img: url('./img/bg-story-20.jpg')"
->
-  <div class="card__media" role="img" aria-label="Камень">
-    <div class="card__top">
-      <span class="badge">№20</span>
-      <span class="meta">18–30 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Камень</h4>
-    <p class="card__desc">
+<div class="card__bottom">
+<span class="pill">Медицина</span>
+<span class="pill">Жизнь</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-20" href="story-20.html" style="--img: url('./img/bg-story-20.jpg')">
+<div aria-label="Камень" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№20</span>
+<span class="meta">18–30 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Камень</h4>
+<p class="card__desc">
       О движении и покое, о людях, которые застывают, и о тех, кто всё-таки
       меняет что-то вокруг себя. История про форму, выбор и цену человека.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Философия</span>
-      <span class="pill">Люди</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Люди</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-21.html"
-  style="--img: url('./img/bg-story-21.jpg')"
->
-  <div class="card__media" role="img" aria-label="Мыш">
-    <div class="card__top">
-      <span class="badge">№21</span>
-      <span class="meta">18–28 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">МЫ Ш</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-21" href="story-21.html" style="--img: url('./img/bg-story-21.jpg')">
+<div aria-label="Мыш" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№21</span>
+<span class="meta">18–28 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">МЫ Ш</h4>
+<p class="card__desc">
       История о мальчике, мыши в картонном замке, одесском детстве, странностях,
       которые сначала кажутся талантом, и решётке, за которой не всегда понятно,
       кто на самом деле находится.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Память</span>
-      <span class="pill">Психика</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Память</span>
+<span class="pill">Психика</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-22.html"
-  style="--img: url('./img/bg-story-22.jpg')"
->
-  <div class="card__media" role="img" aria-label="Пасха">
-    <div class="card__top">
-      <span class="badge">№22</span>
-      <span class="meta">12–20 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Пасха</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-22" href="story-22.html" style="--img: url('./img/bg-story-22.jpg')">
+<div aria-label="Пасха" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№22</span>
+<span class="meta">12–20 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Пасха</h4>
+<p class="card__desc">
       История о поздравлениях без человека, о дедушке, который писал открытки
       рукой, и о том, как иногда принятие можно найти в пиццерии легче, чем в храме.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Праздник</span>
-      <span class="pill">Люди</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Праздник</span>
+<span class="pill">Люди</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-23.html"
-  style="--img: url('./img/bg-story-23.jpg')"
->
-  <div class="card__media" role="img" aria-label="Баловень судьбы">
-    <div class="card__top">
-      <span class="badge">№23</span>
-      <span class="meta">14–22 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Баловень судьбы</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-23" href="story-23.html" style="--img: url('./img/bg-story-23.jpg')">
+<div aria-label="Баловень судьбы" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№23</span>
+<span class="meta">14–22 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Баловень судьбы</h4>
+<p class="card__desc">
       История о человеке, который мог переступить черту, но снова и снова
       удерживал руку. О силе, злости, выборе и той тонкой грани, где добро
       ещё не стало насилием.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Выбор</span>
-      <span class="pill">Сила</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Выбор</span>
+<span class="pill">Сила</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-24.html"
-  style="--img: url('./img/bg-story-24.jpg')"
->
-  <div class="card__media" role="img" aria-label="Дом на краю обрыва">
-    <div class="card__top">
-      <span class="badge">№24</span>
-      <span class="meta">20–30 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Дом на краю обрыва</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-24" href="story-24.html" style="--img: url('./img/bg-story-24.jpg')">
+<div aria-label="Дом на краю обрыва" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№24</span>
+<span class="meta">20–30 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Дом на краю обрыва</h4>
+<p class="card__desc">
       О людях, которые не умеют молчать внутри себя. О шуме, который они несут
       другим, и о редких местах, где человек наконец слышит собственную правду.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Психология</span>
-      <span class="pill">Выбор</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Психология</span>
+<span class="pill">Выбор</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card card--wide"
-  href="story-25.html"
-  style="--img: url('./img/bg-story-25.jpg')"
->
-  <div class="card__media" role="img" aria-label="Улей">
-    <div class="card__top">
-      <span class="badge">№25</span>
-      <span class="meta">18–28 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Улей</h4>
-
-    <p class="card__desc">
+<a class="card card--wide" data-lang="ru" data-story-id="story-25" href="story-25.html" style="--img: url('./img/bg-story-25.jpg')">
+<div aria-label="Улей" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№25</span>
+<span class="meta">18–28 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Улей</h4>
+<p class="card__desc">
       История о том, как люди становятся системой. О стае, которая не выбирала
       быть ульем, но стала им. И о главном навыке выживания — не отдавать
       свою голову в аренду.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Война</span>
-      <span class="pill">Мы</span>
-      <span class="pill">Выбор</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Война</span>
+<span class="pill">Мы</span>
+<span class="pill">Выбор</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-26.html"
-  style="--img: url('./img/bg-story-26.jpg')"
->
-  <div class="card__media" role="img" aria-label="Камни в кровати">
-    <div class="card__top">
-      <span class="badge">№26</span>
-      <span class="meta">16–24 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Камни в кровати</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-26" href="story-26.html" style="--img: url('./img/bg-story-26.jpg')">
+<div aria-label="Камни в кровати" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№26</span>
+<span class="meta">16–24 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Камни в кровати</h4>
+<p class="card__desc">
       История о наследии, которое не покупают и не передают по документам.
       О камнях, памяти и странной ответственности перед теми, кого уже нет.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Память</span>
-      <span class="pill">Наследие</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Память</span>
+<span class="pill">Наследие</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-
-<a
-  class="card"
-  href="story-27.html"
-  style="--img: url('./img/bg-story-27.jpg')"
->
-  <div class="card__media" role="img" aria-label="Женька">
-    <div class="card__top">
-      <span class="badge">№27</span>
-      <span class="meta">8–12 мин</span>
-    </div>
-  </div>
-  <div class="card__body">
-    <h4 class="card__title">Женька</h4>
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-27" href="story-27.html" style="--img: url('./img/bg-story-27.jpg')">
+<div aria-label="Женька" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№27</span>
+<span class="meta">8–12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Женька</h4>
+<p class="card__desc">
       Про детство, взлётку, глупость и ту самую грань,
       за которой игра заканчивается и начинается жизнь.
     </p>
-    <div class="card__bottom">
-      <span class="pill">Юность</span>
-      <span class="pill">Выбор</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Юность</span>
+<span class="pill">Выбор</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-28.html"
-  style="--img: url('./img/bg-story-28.jpg')"
->
-  <div class="card__media" role="img" aria-label="Мешок картошки">
-    <div class="card__top">
-      <span class="badge">№28</span>
-      <span class="meta">5–8 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Мешок картошки</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-28" href="story-28.html" style="--img: url('./img/bg-story-28.jpg')">
+<div aria-label="Мешок картошки" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№28</span>
+<span class="meta">5–8 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Мешок картошки</h4>
+<p class="card__desc">
       История, где немного абсурда, немного охоты и один мешок картошки
       неожиданно решают судьбу семьи. Иногда жизнь пишет сценарии
       лучше любого режиссёра.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Юмор</span>
-      <span class="pill">Жизнь</span>
-      <span class="pill">Семья</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Юмор</span>
+<span class="pill">Жизнь</span>
+<span class="pill">Семья</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-29.html"
-  style="--img: url('./img/bg-story-29.jpg')"
->
-  <div class="card__media" role="img" aria-label="Первый пациент">
-    <div class="card__top">
-      <span class="badge">№29</span>
-      <span class="meta">18–26 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Первый пациент</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-29" href="story-29.html" style="--img: url('./img/bg-story-29.jpg')">
+<div aria-label="Первый пациент" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№29</span>
+<span class="meta">18–26 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Первый пациент</h4>
+<p class="card__desc">
       История о первом самостоятельном пациенте, врачебной благодарности,
       случайных чудесах и самом простом критерии хорошей медицины:
       готов ли ты привести туда свою маму.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Медицина</span>
-      <span class="pill">Память</span>
-      <span class="pill">Доверие</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Медицина</span>
+<span class="pill">Память</span>
+<span class="pill">Доверие</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-
-<a
-  class="card"
-  href="story-30.html"
-  style="--img: url('./img/bg-story-30.jpg')"
->
-  <div class="card__media"
-       role="img"
-       aria-label="Чистое небо">
-
-    <div class="card__top">
-      <span class="badge">№30</span>
-      <span class="meta">22–35 мин</span>
-    </div>
-
-  </div>
-
-  <div class="card__body">
-
-    <h4 class="card__title">
+<a class="card" data-lang="ru" data-story-id="story-30" href="story-30.html" style="--img: url('./img/bg-story-30.jpg')">
+<div aria-label="Чистое небо" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№30</span>
+<span class="meta">22–35 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">
       Чистое небо
     </h4>
-
-    <p class="card__desc">
+<p class="card__desc">
       История о первых компьютерах, студенческой жизни,
       ночных звонках, преждевременных родах,
       Чернобыле, дружбе и странной игре,
       в которую незаметно превращается сама жизнь.
     </p>
-
-    <div class="card__bottom">
-
-      <span class="pill">Жизнь</span>
-
-      <span class="pill">Память</span>
-
-      <span class="pill">Философия</span>
-
-      <span class="card__arrow">
+<div class="card__bottom">
+<span class="pill">Жизнь</span>
+<span class="pill">Память</span>
+<span class="pill">Философия</span>
+<span class="card__arrow">
         →
       </span>
-
-    </div>
-
-  </div>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-31.html"
-  style="--img: url('./img/bg-story-31.jpg')"
->
-  <div class="card__media" role="img" aria-label="О-Сознание. Исповедь">
-    <div class="card__top">
-      <span class="badge">№31</span>
-      <span class="meta">18–28 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">О-Сознание. Исповедь</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-31" href="story-31.html" style="--img: url('./img/bg-story-31.jpg')">
+<div aria-label="О-Сознание. Исповедь" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№31</span>
+<span class="meta">18–28 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">О-Сознание. Исповедь</h4>
+<p class="card__desc">
       История-исповедь о войне как диагнозе, о медицине, системе,
       российских инвесторах, МИБС и том моменте, когда хаос наконец
       складывается в осознание.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Исповедь</span>
-      <span class="pill">Война</span>
-      <span class="pill">Система</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Исповедь</span>
+<span class="pill">Война</span>
+<span class="pill">Система</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-32.html"
-  style="--img: url('./img/bg-story-32.jpg')"
->
-  <div class="card__media" role="img" aria-label="Архивариусы тихих судеб">
-    <div class="card__top">
-      <span class="badge">№32</span>
-      <span class="meta">~55 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Архивариусы тихих судеб</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-32" href="story-32.html" style="--img: url('./img/bg-story-32.jpg')">
+<div aria-label="Архивариусы тихих судеб" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№32</span>
+<span class="meta">~55 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Архивариусы тихих судеб</h4>
+<p class="card__desc">
       История о душе, выборе, наставниках и странных совпадениях,
       которые люди привыкли называть судьбой. Между рождением и смертью
       здесь лишь одна дверь.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Философия</span>
-      <span class="pill">Мистика</span>
-      <span class="pill">Жизнь</span>
-      <span class="pill">Ирония</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Мистика</span>
+<span class="pill">Жизнь</span>
+<span class="pill">Ирония</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-33.html"
-  style="--img: url('./img/bg-story-33.jpg')"
->
-  <div class="card__media" role="img" aria-label="Ангел временного пребывания">
-    <div class="card__top">
-      <span class="badge">№33</span>
-      <span class="meta">~45 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Ангел временного пребывания</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-33" href="story-33.html" style="--img: url('./img/bg-story-33.jpg')">
+<div aria-label="Ангел временного пребывания" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№33</span>
+<span class="meta">~45 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Ангел временного пребывания</h4>
+<p class="card__desc">
       История о докторе, ангеле в кроксах, сингулярном напитке
       и странной командировке на Землю, где даже небесные инструкции
       начинают трещать по швам.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Философия</span>
-      <span class="pill">Ирония</span>
-      <span class="pill">Мистика</span>
-      <span class="pill">Жизнь</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Ирония</span>
+<span class="pill">Мистика</span>
+<span class="pill">Жизнь</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-
-<a
-  class="card"
-  href="story-34.html"
-  style="--img: url('./img/bg-story-34.jpg')"
->
-  <div class="card__media" role="img" aria-label="Адвокат дьявола">
-    <div class="card__top">
-      <span class="badge">№34</span>
-      <span class="meta">~30 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Адвокат дьявола</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-34" href="story-34.html" style="--img: url('./img/bg-story-34.jpg')">
+<div aria-label="Адвокат дьявола" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№34</span>
+<span class="meta">~30 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Адвокат дьявола</h4>
+<p class="card__desc">
       История о враче, страхе, сострадании и праве человека
       быть услышанным прежде, чем в него полетит первый камень.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Философия</span>
-      <span class="pill">Медицина</span>
-      <span class="pill">Люди</span>
-      <span class="pill">Исповедь</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Медицина</span>
+<span class="pill">Люди</span>
+<span class="pill">Исповедь</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-<a
-  class="card"
-  href="story-35.html"
-  style="--img: url('./img/bg-story-35.jpg')"
->
-  <div class="card__media" role="img" aria-label="Предел достаточности">
-    <div class="card__top">
-      <span class="badge">№35</span>
-      <span class="meta">~18 мин</span>
-    </div>
-  </div>
-
-  <div class="card__body">
-    <h4 class="card__title">Предел достаточности</h4>
-
-    <p class="card__desc">
+<a class="card" data-lang="ru" data-story-id="story-35" href="story-35.html" style="--img: url('./img/bg-story-35.jpg')">
+<div aria-label="Предел достаточности" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№35</span>
+<span class="meta">~18 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Предел достаточности</h4>
+<p class="card__desc">
       История о богатстве, мере, свободе и той самой границе,
       за которой роскошь перестаёт насыщать и начинает владеть человеком.
     </p>
-
-    <div class="card__bottom">
-      <span class="pill">Философия</span>
-      <span class="pill">Ирония</span>
-      <span class="pill">Жизнь</span>
-      <span class="pill">Деньги</span>
-      <span class="card__arrow">→</span>
-    </div>
-  </div>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Ирония</span>
+<span class="pill">Жизнь</span>
+<span class="pill">Деньги</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
 </a>
-
-        </div>
-        
-      </section>
-
-      <footer class="footer"></footer>
-    </main>
-    <script>
+<a class="card" data-lang="ru" data-story-id="story-36" href="story-36.html" style="--img: url('./img/bg-story-36.jpg')">
+<div aria-label="Уличная еда" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№36</span>
+<span class="meta">~12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Уличная еда</h4>
+<p class="card__desc">
+      Рассказ о дыме, специях, красной икре, крафте и тех вкусах,
+      которые невозможно повторить, потому что они случаются только один раз.
+    </p>
+<div class="card__bottom">
+<span class="pill">Крафт</span>
+<span class="pill">Еда</span>
+<span class="pill">Ирония</span>
+<span class="pill">Философия</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-37" href="story-37.html" style="--img: url('./img/bg-story-37.jpg')">
+<div aria-label="Мысли обрывки о правосудии" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№37</span>
+<span class="meta">~12 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Мысли обрывки о правосудии</h4>
+<p class="card__desc">
+      Рассказ о законе, страхе, Семёне Пуле, искусственном интеллекте
+      и том неудобном месте, где буква закона впервые сталкивается с совестью.
+    </p>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Правосудие</span>
+<span class="pill">ИИ</span>
+<span class="pill">История</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+<a class="card" data-lang="ru" data-story-id="story-38" href="story-38.html" style="--img: url('./img/bg-story-38.jpg')">
+<div aria-label="Выбор" class="card__media" role="img">
+<div class="card__top">
+<span class="badge">№38</span>
+<span class="meta">~16 мин</span>
+</div>
+</div>
+<div class="card__body">
+<h4 class="card__title">Выбор</h4>
+<p class="card__desc">
+      Рассказ о медицинском институте, распределении, армии, свободе
+      и той цене, которую человек узнаёт только после собственного выбора.
+    </p>
+<div class="card__bottom">
+<span class="pill">Философия</span>
+<span class="pill">Медицина</span>
+<span class="pill">Выбор</span>
+<span class="pill">Жизнь</span>
+<span class="card__arrow">→</span>
+</div>
+</div>
+</a>
+</div>
+</section>
+<footer class="footer"></footer>
+</main>
+<script defer="True" src="./site-multilang.js"></script><script>
       document.getElementById("y") && (document.getElementById("y").textContent = new Date().getFullYear());
     </script>
-  </body>
+</body>
 </html>
